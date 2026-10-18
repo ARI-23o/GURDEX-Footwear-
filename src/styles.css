@@ -1020,17 +1020,7 @@ h1 em, h2 em {
 }
 
 .breadcrumbs {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  font-size: 13px;
-  color: #7d8792;
-  margin-bottom: 26px;
-}
-
-.breadcrumbs a {
-  color: #b4711e;
-  font-weight: 600;
+  display: none !important;
 }
 
 .page-intro h1 {
@@ -2249,10 +2239,7 @@ h1 em, h2 em {
     right: -270px;
     top: -140px;
   }
-  .breadcrumbs {
-    margin-bottom: 22px;
-    font-size: 12px;
-  }
+
   .page-intro h1 {
     font-size: 36px;
     margin: 12px 0;

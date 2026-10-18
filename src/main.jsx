@@ -217,13 +217,10 @@ function FloatingWhatsApp() {
   );
 }
 
-function PageIntro({ title, description, crumb }) {
+function PageIntro({ title, description }) {
   return (
     <section className="page-intro">
       <div className="container">
-        <div className="breadcrumbs">
-          <Link to="/">Home</Link><span>/</span><span>{crumb || title}</span>
-        </div>
         <h1>{title}</h1>
         <p>{description}</p>
       </div>

@@ -89,14 +89,35 @@ function Brand({ light=false }) {
 }
 
 function Header() {
-  const [open,setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const location = useLocation();
-  React.useEffect(()=>setOpen(false),[location.pathname]);
+
+  React.useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  React.useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
+
+  React.useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 1040 && open) setOpen(false);
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [open]);
+
   return (
     <>
       <div className="topbar">
         <div className="container topbar-inner">
-          <span><ShieldCheck size={14}/> Product Brand: FORGEX™ | {CONFIG.legalName}</span>
+          <span className="topbar-left"><ShieldCheck size={14}/> Product Brand: FORGEX™ | {CONFIG.legalName}</span>
           <span className="topbar-right">
             <a href={`tel:${CONFIG.primaryPhone.replace(/\s+/g,'')}`} style={{display:'inline-flex', alignItems:'center', gap:'6px', marginRight:'16px'}}>
               <Phone size={13}/> {CONFIG.primaryPhone}
@@ -110,16 +131,23 @@ function Header() {
       <header className="header">
         <div className="container nav-wrap">
           <Brand/>
-          <nav className={open?'nav nav-open':'nav'} aria-label="Main navigation">
-            {navItems.map(([label,path])=><NavLink key={path} to={path} end={path==='/'}>{label}</NavLink>)}
+          {open && <div className="nav-backdrop" onClick={() => setOpen(false)} aria-hidden="true"/>}
+          <nav className={open ? 'nav nav-open' : 'nav'} aria-label="Main navigation">
+            {navItems.map(([label, path]) => (
+              <NavLink key={path} to={path} end={path === '/'} onClick={() => setOpen(false)}>
+                {label}
+              </NavLink>
+            ))}
             <div className="mobile-cta">
-              <Link className="btn btn-primary" to="/corporate-enquiry">Get a Bulk Quote <ArrowRight size={16}/></Link>
+              <Link className="btn btn-primary" to="/corporate-enquiry" onClick={() => setOpen(false)}>
+                Get a Bulk Quote <ArrowRight size={16}/>
+              </Link>
             </div>
           </nav>
           <div className="nav-actions">
             <Link className="btn btn-primary nav-quote" to="/corporate-enquiry">Get a Bulk Quote <ArrowUpRight size={16}/></Link>
-            <button className="menu-btn" aria-label={open?'Close menu':'Open menu'} onClick={()=>setOpen(!open)}>
-              {open?<X/>:<Menu/>}
+            <button className="menu-btn" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>
+              {open ? <X size={22}/> : <Menu size={22}/>}
             </button>
           </div>
         </div>

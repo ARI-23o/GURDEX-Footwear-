@@ -134,18 +134,15 @@ function Footer() {
       <div className="container footer-grid">
         <div className="footer-about">
           <Brand light/>
-          <p style={{marginTop:'16px', fontWeight: 600, color: '#fff'}}>
+          <p style={{marginTop:'16px', fontWeight: 700, color: '#fff', fontSize:'15px'}}>
             {CONFIG.legalName}
           </p>
-          <p style={{margin: '4px 0 12px', color: '#f3a33b', fontWeight: 700}}>
+          <p style={{margin: '4px 0 12px', color: '#f3a33b', fontWeight: 700, fontSize:'14px'}}>
             Product Brand: FORGEX | Industrial Safety Footwear
           </p>
-          <p style={{fontSize: '13px', lineHeight: '1.6'}}>
-            Discover FORGEX industrial safety footwear with advanced PU double-density soles engineered for tough work environments.
-          </p>
-          <div className="status-pill status-pill-dark">
+          <div className="status-pill status-pill-dark" style={{marginTop:'12px'}}>
             <Factory size={16}/>
-            <span>{CONFIG.statusNote}</span>
+            <span style={{fontSize:'12.5px', lineHeight:'1.5'}}>{CONFIG.statusNote}</span>
           </div>
         </div>
 
@@ -172,18 +169,20 @@ function Footer() {
         </div>
 
         <div>
-          <h4>Contact & Orders</h4>
+          <h4>Website & Enquiries</h4>
           <p className="contact-line">
             <Globe size={16}/>
-            <a href={CONFIG.websiteUrl} target="_blank" rel="noreferrer" style={{color:'#fff', fontWeight:600}}>
-              {CONFIG.websiteDisplay}
-            </a>
+            <span>
+              Website: <a href={CONFIG.websiteUrl} target="_blank" rel="noreferrer" style={{color:'#fff', fontWeight:600}}>
+                {CONFIG.websiteDisplay}
+              </a>
+            </span>
           </p>
           <p className="contact-line">
             <Mail size={16}/>
             <span>
-              Sales: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#f3a33b'}}>{CONFIG.salesEmail}</a><br/>
-              General: <a href={`mailto:${CONFIG.infoEmail}`} style={{color:'#d0d8df'}}>{CONFIG.infoEmail}</a>
+              Sales: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#f3a33b', fontWeight:600}}>{CONFIG.salesEmail}</a><br/>
+              General Enquiries: <a href={`mailto:${CONFIG.infoEmail}`} style={{color:'#d0d8df'}}>{CONFIG.infoEmail}</a>
             </span>
           </p>
           <p className="contact-line">
@@ -203,8 +202,8 @@ function Footer() {
       </div>
 
       <div className="container footer-bottom">
-        <span>{CONFIG.copyright}</span>
-        <span>Product Brand: FORGEX™ | Website: {CONFIG.websiteDisplay}</span>
+        <span>© 2026 GURDEX Footwear Private Limited. All rights reserved.</span>
+        <span>Product Brand: FORGEX | Industrial Safety Footwear | Website: <a href="https://www.guardexfootwear.com" target="_blank" rel="noreferrer" style={{color:'#f3a33b', textDecoration:'none'}}>www.guardexfootwear.com</a></span>
       </div>
     </footer>
   );
@@ -510,6 +509,27 @@ function Home() {
             </div>
           </div>
         </section>
+
+        {/* LEADERSHIP & MANAGEMENT SECTION */}
+        <section className="section soft-section">
+          <div className="container">
+            <SectionHeading
+              title="Leadership & Management"
+              description="Experienced leadership guiding GURDEX Footwear Private Limited towards operational excellence and customer trust."
+              center
+            />
+            <div className="leadership-grid">
+              {leadership.map(l => (
+                <div className="leadership-card" key={l.name}>
+                  <h3>{l.name}</h3>
+                  <div className="leadership-role">{l.role}</div>
+                  <p>{l.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <PartnerWithForgex/>
       </main>
     </>

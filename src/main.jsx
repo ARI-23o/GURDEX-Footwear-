@@ -319,10 +319,35 @@ function Home() {
         <section className="section section-products">
           <div className="container">
             <div className="section-top">
-              <SectionHeading title="FORGEX Product Range" description="Engineered for high-risk industrial, manufacturing, construction and logistics environments with PU double-density technology."/>
+              <SectionHeading title="Our Product Range" description="Industrial footwear developed for manufacturing, engineering, construction, warehousing and logistics applications."/>
               <Link className="text-link desktop-link" to="/products">View all products <ArrowRight size={16}/></Link>
             </div>
+
+            <div className="range-overview-grid">
+              <div className="range-card">
+                <h3>Industrial Safety Shoes</h3>
+                <p>Industrial footwear developed for manufacturing, engineering, construction, warehousing and logistics applications.</p>
+              </div>
+              <div className="range-card">
+                <h3>PU Double-Density Safety Shoes</h3>
+                <p>Safety footwear under development using a double-density polyurethane sole construction, subject to individual model specifications.</p>
+              </div>
+              <div className="range-card">
+                <h3>Industrial Footwear Solutions</h3>
+                <p>We aim to develop footwear options for industrial customers and business buyers with requirements varying by application, size and product specification.</p>
+              </div>
+            </div>
+
             <div className="product-grid">{productData.slice(0,3).map(p=><ProductCard key={p.id} product={p}/>)}</div>
+
+            <div className="range-notice-box">
+              <ClipboardCheck size={24}/>
+              <div>
+                <p><strong>For model availability, sizes, technical details, product testing status and bulk pricing, please contact our team.</strong></p>
+                <p>Product availability and protection features will be confirmed according to the relevant model specifications and applicable certifications.</p>
+              </div>
+            </div>
+
             <div className="mobile-center"><Link className="btn btn-outline-dark" to="/products">Explore all products <ArrowRight size={16}/></Link></div>
           </div>
         </section>
@@ -470,9 +495,25 @@ function Products() {
   const filtered = useMemo(() => productData.filter(p => (category === 'All' || p.category === category) && `${p.name} ${p.id} ${p.desc}`.toLowerCase().includes(search.toLowerCase())), [category, search]);
   return (
     <>
-      <PageIntro title="FORGEX Safety Footwear Catalogue" description="Explore our range of PU double-density safety shoes and heavy-duty boots engineered by GURDEX Footwear Private Limited."/>
+      <PageIntro title="Our Product Range" description="Industrial footwear developed for manufacturing, engineering, construction, warehousing and logistics applications."/>
       <section className="section">
         <div className="container">
+
+          <div className="range-overview-grid">
+            <div className="range-card">
+              <h3>Industrial Safety Shoes</h3>
+              <p>Industrial footwear developed for manufacturing, engineering, construction, warehousing and logistics applications.</p>
+            </div>
+            <div className="range-card">
+              <h3>PU Double-Density Safety Shoes</h3>
+              <p>Safety footwear under development using a double-density polyurethane sole construction, subject to individual model specifications.</p>
+            </div>
+            <div className="range-card">
+              <h3>Industrial Footwear Solutions</h3>
+              <p>We aim to develop footwear options for industrial customers and business buyers with requirements varying by application, size and product specification.</p>
+            </div>
+          </div>
+
           <div className="catalog-toolbar">
             <div className="catalog-count">
               <strong>{filtered.length.toString().padStart(2, '0')}</strong>
@@ -507,9 +548,14 @@ function Products() {
               <button className="btn btn-outline-dark" onClick={() => { setSearch(''); setCategory('All'); }}>Clear filters</button>
             </div>
           )}
-          <p className="catalog-disclaimer">
-            Note: {CONFIG.statusNote} All technical parameters are verified according to standard industrial testing criteria. Contact us for bulk specifications and custom order sizing.
-          </p>
+
+          <div className="range-notice-box">
+            <ClipboardCheck size={24}/>
+            <div>
+              <p><strong>For model availability, sizes, technical details, product testing status and bulk pricing, please contact our team.</strong></p>
+              <p>Product availability and protection features will be confirmed according to the relevant model specifications and applicable certifications.</p>
+            </div>
+          </div>
         </div>
       </section>
       <CTA title="Request a Sample or Custom Quote" text="Discuss bulk quantities, sizes, and pricing with our sales team on WhatsApp or email."/>

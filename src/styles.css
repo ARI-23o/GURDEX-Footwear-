@@ -2556,6 +2556,66 @@ h1 em, h2 em {
   }
 }
 
+/* OUR PRODUCT RANGE STYLES */
+.range-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 32px 0 36px;
+}
+.range-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 26px;
+  border-radius: 6px;
+  border-top: 3px solid var(--orange);
+  transition: transform .2s, box-shadow .2s;
+}
+.range-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(17, 31, 44, .06);
+}
+.range-card h3 {
+  font-size: 20px;
+  color: var(--navy);
+  margin: 0 0 10px;
+}
+.range-card p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+}
+.range-notice-box {
+  background: #fff8ee;
+  border: 1px solid #f2d9b6;
+  border-radius: 6px;
+  padding: 22px 24px;
+  margin-top: 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.range-notice-box svg {
+  color: var(--orange-dark);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.range-notice-box p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5a4831;
+  margin: 0 0 6px;
+}
+.range-notice-box p:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 900px) {
+  .range-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *:before, *:after {
     scroll-behavior: auto !important;

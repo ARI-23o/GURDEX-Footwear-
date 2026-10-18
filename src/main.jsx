@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight, ArrowRight, ShieldCheck, Factory, BadgeCheck, Truck, CheckCircle2, ChevronDown, HardHat, Footprints, Settings, ClipboardCheck, Phone, Mail, MapPin, MessageCircle, Send, Search, Filter, Clock3, Building2, PackageCheck, Layers3, Wrench, FlaskConical, Globe } from 'lucide-react';
+import { Menu, X, ArrowUpRight, ArrowRight, ShieldCheck, Factory, BadgeCheck, Truck, CheckCircle2, ChevronDown, HardHat, Footprints, Settings, ClipboardCheck, Phone, Mail, MapPin, MessageCircle, Send, Search, Filter, Clock3, Building2, PackageCheck, Layers3, Wrench, FlaskConical, Globe, Target, Eye } from 'lucide-react';
 import './styles.css';
 
 const CONFIG = {
@@ -445,7 +445,7 @@ function Home() {
 function About() {
   return (
     <>
-      <PageIntro title="Built around the people who do the work." description="FORGEX is the industrial safety footwear brand of GURDEX Footwear Private Limited, India."/>
+      <PageIntro title="About GURDEX Footwear Private Limited" description="An Indian footwear company developing its industrial safety footwear business under the brand name FORGEX."/>
       <section className="section">
         <div className="container split-layout about-split">
           <div className="split-image about-image">
@@ -455,17 +455,63 @@ function About() {
             </div>
           </div>
           <div className="split-copy">
-            <h2>FORGEX – Protection Begins with the Right Footwear.</h2>
-            <p><strong>FORGEX</strong> is the industrial safety footwear brand of <strong>{CONFIG.legalName}</strong>, India.</p>
-            <p>We are developing industrial safety footwear solutions for manufacturing units, engineering industries, construction businesses, warehouses, logistics operations and other demanding workplaces.</p>
-            <p>Our focus is on durable product design, PU double-density sole technology, comfort and quality-oriented manufacturing processes.</p>
-            <p>Our manufacturing setup is currently in progress, and we are working towards developing a range of industrial safety footwear for business customers across India.</p>
+            <h2>About GURDEX Footwear Private Limited</h2>
+            <p><strong>GURDEX Footwear Private Limited</strong> is an Indian footwear company developing its industrial safety footwear business under the brand name <strong>FORGEX</strong>.</p>
+            <p>Our objective is to develop dependable industrial safety footwear for professionals and businesses operating in demanding work environments.</p>
+            <p>We are establishing our manufacturing capabilities with a planned production setup featuring a <strong>60-station PU pouring conveyor machine</strong>, a <strong>double-density PU system</strong> and <strong>aluminium moulds</strong>.</p>
+            <p>We aim to build long-term relationships with industrial buyers, dealers, distributors and corporate customers through product quality, reliable service and a commitment to continuous improvement.</p>
             <div className="info-note">
               <ShieldCheck/>
               <span>
                 <strong>Manufacturing & Quality Status</strong>
                 <small>{CONFIG.statusNote}</small>
               </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MISSION & VISION */}
+      <section className="section" style={{background:'#f6f8f9', padding:'70px 0'}}>
+        <div className="container">
+          <SectionHeading title="Our Mission & Vision" description="Guiding principles driving FORGEX industrial safety footwear." center/>
+          <div className="mission-vision-grid">
+            <div className="mission-card">
+              <h3><Target size={26} color="#bd781f"/> Our Mission</h3>
+              <p>To develop durable and practical industrial safety footwear that supports worker protection, comfort and the requirements of modern workplaces.</p>
+            </div>
+            <div className="mission-card">
+              <h3><Eye size={26} color="#bd781f"/> Our Vision</h3>
+              <p>To establish FORGEX as a trusted Indian industrial safety footwear brand serving customers across India.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR VALUES */}
+      <section className="section">
+        <div className="container">
+          <SectionHeading title="Our Values" description="The core values that define our manufacturing culture and client relationships." center/>
+          <div className="values-grid-cards">
+            <div className="value-mini-card">
+              <Factory size={28}/>
+              <strong>Quality-oriented manufacturing</strong>
+            </div>
+            <div className="value-mini-card">
+              <Footprints size={28}/>
+              <strong>Practical product design</strong>
+            </div>
+            <div className="value-mini-card">
+              <MessageCircle size={28}/>
+              <strong>Customer-focused service</strong>
+            </div>
+            <div className="value-mini-card">
+              <Building2 size={28}/>
+              <strong>Long-term business partnerships</strong>
+            </div>
+            <div className="value-mini-card">
+              <Layers3 size={28}/>
+              <strong>Continuous product development</strong>
             </div>
           </div>
         </div>
@@ -487,24 +533,6 @@ function About() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <SectionHeading title="The Core Pillars of FORGEX" description="Clear values that guide our production, partner relations, and service delivery." center/>
-          <div className="value-grid">
-            {[
-              { icon: Footprints, title: 'PU Double-Density Technology', text: 'Dual density polyurethane soles that combine lightweight shock absorption with high abrasion resistance.' },
-              { icon: Building2, title: 'Partner-Centric Growth', text: 'Direct, transparent communication and dedicated commercial support for dealers, distributors and corporate buyers.' },
-              { icon: BadgeCheck, title: 'Quality & Compliance', text: 'Adhering to Indian industrial safety norms with active BIS/ISI testing and rigorous in-house batch inspections.' },
-            ].map(v => (
-              <div className="value-card" key={v.title}>
-                <v.icon size={28}/>
-                <h3>{v.title}</h3>
-                <p>{v.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
       <CTA title="Partner with FORGEX" text="Connect directly with our leadership team for dealership or institutional supply agreements."/>
     </>
   );
@@ -645,6 +673,14 @@ function Manufacturing() {
           <div className="status-pill" style={{marginTop:'28px', fontSize:'15px', padding:'12px 18px'}}>
             <Factory size={20}/>
             <span>{CONFIG.statusNote}</span>
+          </div>
+
+          <div className="range-notice-box" style={{background:'#ffffff', border:'1px solid var(--line)', marginTop:'24px', marginBottom:'28px'}}>
+            <Settings size={28} color="#bd781f"/>
+            <div>
+              <p style={{fontSize:'16px', color:'var(--navy)', marginBottom:'6px'}}><strong>Planned Production Setup & Machinery</strong></p>
+              <p style={{fontSize:'15px', color:'var(--muted)', margin:0}}>We are establishing our manufacturing capabilities with a planned production setup featuring a <strong>60-station PU pouring conveyor machine</strong>, a <strong>double-density PU system</strong> and <strong>aluminium moulds</strong>.</p>
+            </div>
           </div>
 
           <div className="process-grid">

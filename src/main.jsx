@@ -280,11 +280,19 @@ function Home() {
           <div className="hero-bg"/>
           <div className="container hero-content">
             <div className="hero-copy">
-              <h1>Protection that works <em>as hard as you do.</em></h1>
-              <p>Discover <strong>FORGEX™</strong> industrial safety footwear manufactured by <strong>{CONFIG.legalName}</strong>. Engineered with PU double-density injection soles and steel toe protection for tough industrial demands.</p>
+              <h1>FORGEX – Built for Demanding Work Environments</h1>
+              <p style={{fontSize:'19px', fontWeight:700, color:'#f3a33b', margin:'0 0 16px', letterSpacing:'.02em'}}>
+                Industrial Safety Footwear | Designed for Work. Built for Durability.
+              </p>
+              <p style={{marginBottom:'14px'}}>
+                FORGEX is the industrial safety footwear brand of GURDEX Footwear Private Limited, India.
+              </p>
+              <p style={{marginBottom:'24px'}}>
+                We are developing industrial safety footwear solutions for manufacturing units, engineering industries, construction businesses, warehouses, logistics operations and other demanding workplaces.
+              </p>
               <div className="hero-buttons">
-                <Link className="btn btn-primary" to="/products">Explore the Range <ArrowRight size={17}/></Link>
-                <Link className="btn btn-outline-light" to="/corporate-enquiry">Corporate Bulk Enquiry <ArrowUpRight size={17}/></Link>
+                <Link className="btn btn-primary" to="/contact">Contact Us <ArrowRight size={17}/></Link>
+                <Link className="btn btn-outline-light" to="/corporate-enquiry">Business Enquiry <ArrowUpRight size={17}/></Link>
               </div>
               <div className="hero-proof">
                 <div className="proof-icon"><ShieldCheck size={20}/></div>
@@ -365,14 +373,25 @@ function Home() {
               </div>
             </div>
             <div className="split-copy">
-              <h2>More than footwear.<br/><em>Confidence on every shift.</em></h2>
-              <p>From shop floors to harsh outdoor infrastructure sites, FORGEX safety footwear by GURDEX Footwear Private Limited delivers unmatched comfort, grip, and toe protection.</p>
-              <div className="feature-list">
-                <div><CheckCircle2/><span><strong>PU Double-Density Direct Injection</strong><small>Enhanced longevity, slip resistance & flexibility</small></span></div>
-                <div><CheckCircle2/><span><strong>BIS / ISI Testing Standards</strong><small>Application & testing in progress</small></span></div>
-                <div><CheckCircle2/><span><strong>Direct Manufacturer Pricing</strong><small>Transparent bulk quotes for distributors & corporates</small></span></div>
+              <h2>FORGEX – Protection Begins with the Right Footwear.</h2>
+              <p>Our focus is on durable product design, PU double-density sole technology, comfort and quality-oriented manufacturing processes.</p>
+              <p>Our manufacturing setup is currently in progress, and we are working towards developing a range of industrial safety footwear for business customers across India.</p>
+
+              <div style={{margin:'26px 0 30px'}}>
+                <h3 style={{fontSize:'19px', color:'#f3a33b', margin:'0 0 14px', letterSpacing:'.03em'}}>Our Focus</h3>
+                <div className="feature-list" style={{margin:0, gap:'14px'}}>
+                  <div><CheckCircle2 size={20}/><span><strong>Industrial safety footwear</strong></span></div>
+                  <div><CheckCircle2 size={20}/><span><strong>PU double-density sole technology</strong></span></div>
+                  <div><CheckCircle2 size={20}/><span><strong>Product development and quality control</strong></span></div>
+                  <div><CheckCircle2 size={20}/><span><strong>Dealer and distributor enquiries</strong></span></div>
+                  <div><CheckCircle2 size={20}/><span><strong>Corporate and bulk-order enquiries</strong></span></div>
+                </div>
               </div>
-              <Link className="btn btn-primary" to="/about">About GURDEX & Leadership <ArrowRight size={16}/></Link>
+
+              <div style={{display:'flex', gap:'12px', flexWrap:'wrap'}}>
+                <Link className="btn btn-primary" to="/contact">Contact Us <ArrowRight size={16}/></Link>
+                <Link className="btn btn-outline-light" to="/corporate-enquiry">Business Enquiry <ArrowUpRight size={16}/></Link>
+              </div>
             </div>
           </div>
         </section>
@@ -426,7 +445,7 @@ function Home() {
 function About() {
   return (
     <>
-      <PageIntro title="Built around the people who do the work." description="GURDEX Footwear Private Limited is dedicated to producing reliable, protective, and comfortable industrial safety footwear under the brand FORGEX™."/>
+      <PageIntro title="Built around the people who do the work." description="FORGEX is the industrial safety footwear brand of GURDEX Footwear Private Limited, India."/>
       <section className="section">
         <div className="container split-layout about-split">
           <div className="split-image about-image">
@@ -436,9 +455,11 @@ function About() {
             </div>
           </div>
           <div className="split-copy">
-            <h2>Industrial footwear.<br/><em>A manufacturer's commitment.</em></h2>
-            <p><strong>{CONFIG.legalName}</strong> manufactures <strong>FORGEX™</strong> industrial safety footwear, focusing on PU double-density safety shoes engineered for performance, durability, and user protection.</p>
-            <p>With our state-of-the-art facility located at Shankheshwar Industries Estate in Vasai, Maharashtra, we are committed to building long-term relationships with distributors, corporate procurement heads, and safety officers across India.</p>
+            <h2>FORGEX – Protection Begins with the Right Footwear.</h2>
+            <p><strong>FORGEX</strong> is the industrial safety footwear brand of <strong>{CONFIG.legalName}</strong>, India.</p>
+            <p>We are developing industrial safety footwear solutions for manufacturing units, engineering industries, construction businesses, warehouses, logistics operations and other demanding workplaces.</p>
+            <p>Our focus is on durable product design, PU double-density sole technology, comfort and quality-oriented manufacturing processes.</p>
+            <p>Our manufacturing setup is currently in progress, and we are working towards developing a range of industrial safety footwear for business customers across India.</p>
             <div className="info-note">
               <ShieldCheck/>
               <span>

@@ -282,24 +282,7 @@ img {
 }
 
 .hero-kicker, .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  letter-spacing: .15em;
-  font-weight: 800;
-  color: #bd741d;
-  text-transform: uppercase;
-}
-
-.hero-kicker {
-  color: #f7b34e;
-}
-
-.kicker-line {
-  width: 36px;
-  height: 2px;
-  background: var(--orange);
+  display: none !important;
 }
 
 h1, h2, h3, h4, p {
@@ -493,7 +476,7 @@ h1 em, h2 em {
 .quality-feature h2 {
   font-size: clamp(32px, 3.6vw, 46px);
   line-height: 1.15;
-  margin: 14px 0 16px;
+  margin: 0 0 16px;
 }
 
 .section-heading p,

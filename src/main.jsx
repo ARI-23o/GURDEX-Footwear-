@@ -70,7 +70,8 @@ const navItems = [
   ['About Us','/about'],
   ['Products Catalogue','/products'],
   ['Manufacturing Facility','/manufacturing'],
-  ['Quality & Certifications','/quality'],
+  ['Quality & Compliance','/quality'],
+  ['Contact Us','/contact'],
 ];
 
 function Brand({ light=false }) {
@@ -154,7 +155,7 @@ function Footer() {
           <Link to="/about">About Us & Leadership</Link>
           <Link to="/products">Products Catalogue</Link>
           <Link to="/manufacturing">Manufacturing Facility</Link>
-          <Link to="/quality">Quality & Certifications</Link>
+          <Link to="/quality">Quality & Compliance</Link>
           <Link to="/contact">Contact Us</Link>
         </div>
 
@@ -255,6 +256,74 @@ function ProductCard({ product }) {
         <Link className="text-link" to={`/products/${product.id}`}>View details <ArrowRight size={15}/></Link>
       </div>
     </article>
+  );
+}
+
+function PartnerWithForgex() {
+  const categories = [
+    { title: 'Industrial and corporate buyers', icon: Building2 },
+    { title: 'Manufacturing companies and factories', icon: Factory },
+    { title: 'Safety equipment suppliers', icon: ShieldCheck },
+    { title: 'Footwear dealers and distributors', icon: Truck },
+    { title: 'Contractors and bulk purchasers', icon: PackageCheck },
+  ];
+
+  return (
+    <section className="section partner-section">
+      <div className="container">
+        <div className="partner-header text-center" style={{maxWidth:'820px', margin:'0 auto 30px'}}>
+          <h2>Partner with FORGEX</h2>
+          <p className="partner-lead">We welcome business enquiries from:</p>
+        </div>
+
+        <div className="partner-categories-grid">
+          {categories.map((c, i) => (
+            <div className="partner-category-card" key={i}>
+              <div className="partner-icon-wrap">
+                <c.icon size={26}/>
+              </div>
+              <h3>{c.title}</h3>
+            </div>
+          ))}
+        </div>
+
+        <div className="partner-invite-box">
+          <p className="partner-invite-text">
+            If your business requires industrial safety footwear, we invite you to contact us to discuss product development, future availability, bulk requirements and dealership opportunities.
+          </p>
+
+          <div className="partner-channels-grid">
+            <div className="partner-email-block">
+              <Mail size={22} color="#f3a33b"/>
+              <div>
+                <span className="partner-channel-label">Sales Enquiries:</span>
+                <a href={`mailto:${CONFIG.salesEmail}`} className="partner-channel-link">{CONFIG.salesEmail}</a>
+              </div>
+            </div>
+
+            <div className="partner-email-block">
+              <Mail size={22} color="#f3a33b"/>
+              <div>
+                <span className="partner-channel-label">General Enquiries:</span>
+                <a href={`mailto:${CONFIG.infoEmail}`} className="partner-channel-link">{CONFIG.infoEmail}</a>
+              </div>
+            </div>
+          </div>
+
+          <div className="partner-actions-row">
+            <Link className="btn btn-primary" to="/corporate-enquiry">
+              Corporate Bulk Enquiry <ArrowRight size={16}/>
+            </Link>
+            <Link className="btn btn-outline-light" to="/dealer-enquiry">
+              Become a Dealer / Distributor <ArrowUpRight size={16}/>
+            </Link>
+            <a className="btn btn-wa" href={waLink('Hello GURDEX, we are interested in discussing partnership opportunities for FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer">
+              <MessageCircle size={17}/> WhatsApp Us Direct
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -420,23 +489,28 @@ function Home() {
         <section className="section quality-preview">
           <div className="container quality-inner">
             <div>
-              <h2>Trust starts with transparent standards.</h2>
-              <p>We believe in full transparency with our partners. Our manufacturing facility in Vasai is equipped for modern PU double-density production, with ISI/BIS testing currently in progress.</p>
-              <div className="status-pill" style={{marginBottom:'20px'}}>
+              <h2>Quality & Compliance</h2>
+              <p>At FORGEX, product quality and workplace safety are important considerations in our product development process.</p>
+              <p style={{marginTop:'12px', color:'var(--muted)'}}>
+                The applicable BIS/ISI application and testing process for our planned safety footwear range is currently in progress. We are working towards meeting the applicable product requirements and standards.
+              </p>
+              <div className="status-pill" style={{marginTop:'18px', marginBottom:'14px'}}>
                 <ClipboardCheck size={16}/>
                 <span>{CONFIG.statusNote}</span>
               </div>
-              <br/>
-              <Link className="text-link" to="/quality">Explore quality approach <ArrowRight size={16}/></Link>
+              <p style={{fontSize:'13px', color:'#92400e', background:'#fff8ee', borderLeft:'3px solid #d97706', padding:'10px 14px', borderRadius:'4px', margin:'14px 0 20px', fontWeight:600}}>
+                Important: BIS/ISI certification has not been represented as granted.
+              </p>
+              <Link className="text-link" to="/quality">Learn more about Quality & Compliance <ArrowRight size={16}/></Link>
             </div>
             <div className="quality-cards">
-              <div className="quality-card"><FlaskConical/><strong>Impact Testing</strong><span>200 Joules steel toe resistance</span></div>
-              <div className="quality-card"><ClipboardCheck/><strong>Quality Checks</strong><span>PU sole bonding & adhesion</span></div>
-              <div className="quality-card"><BadgeCheck/><strong>Certifications</strong><span>BIS/ISI application in progress</span></div>
+              <div className="quality-card"><FlaskConical/><strong>Testing In Progress</strong><span>BIS/ISI application underway</span></div>
+              <div className="quality-card"><ClipboardCheck/><strong>Quality Benchmark</strong><span>PU double-density sole & steel toe</span></div>
+              <div className="quality-card"><BadgeCheck/><strong>Verified Standards</strong><span>Documentation upon official grant</span></div>
             </div>
           </div>
         </section>
-        <CTA/>
+        <PartnerWithForgex/>
       </main>
     </>
   );
@@ -533,7 +607,7 @@ function About() {
         </div>
       </section>
 
-      <CTA title="Partner with FORGEX" text="Connect directly with our leadership team for dealership or institutional supply agreements."/>
+      <PartnerWithForgex/>
     </>
   );
 }
@@ -607,7 +681,7 @@ function Products() {
           </div>
         </div>
       </section>
-      <CTA title="Request a Sample or Custom Quote" text="Discuss bulk quantities, sizes, and pricing with our sales team on WhatsApp or email."/>
+      <PartnerWithForgex/>
     </>
   );
 }
@@ -651,7 +725,7 @@ function ProductDetail() {
           </div>
         </div>
       </section>
-      <CTA/>
+      <PartnerWithForgex/>
     </>
   );
 }
@@ -707,7 +781,7 @@ function Manufacturing() {
           </div>
         </div>
       </section>
-      <CTA title="Schedule a Factory Visit or Discussion" text="Connect with our production planning and marketing team for customized specifications."/>
+      <PartnerWithForgex/>
     </>
   );
 }
@@ -715,46 +789,88 @@ function Manufacturing() {
 function Quality() {
   return (
     <>
-      <PageIntro title="Quality & Certifications" description="High standards and rigorous inspection protocols for FORGEX industrial safety footwear."/>
+      <PageIntro
+        title="Quality & Compliance"
+        description="At FORGEX, product quality and workplace safety are important considerations in our product development process."
+      />
       <section className="section">
         <div className="container quality-feature">
           <div className="quality-feature-copy">
-            <h2>Commitment to industrial protection.</h2>
-            <p>Every pair of FORGEX footwear is built with safety as the primary priority. GURDEX Footwear Private Limited follows strict production benchmarks to ensure reliable slip resistance, toe protection, and long wear life.</p>
-            <div className="quality-points">
-              {[
-                { icon: ClipboardCheck, title: 'BIS / ISI Standards Benchmark', text: 'Application and official testing procedures currently in progress for BIS/ISI certifications.' },
-                { icon: FlaskConical, title: 'Steel Toe Cap Impact Resistance', text: 'Engineered to withstand 200 Joules impact energy and compression forces.' },
-                { icon: BadgeCheck, title: 'PU Double-Density Sole Tests', text: 'Testing sole flexibility, anti-skid coefficient, and oil/chemical resistance.' },
-              ].map(x => (
-                <div key={x.title}>
-                  <x.icon size={22}/>
-                  <span><strong>{x.title}</strong><small>{x.text}</small></span>
+            <h2>Quality & Compliance Standards</h2>
+            <p>
+              At <strong>FORGEX</strong>, product quality and workplace safety are important considerations in our product development process.
+            </p>
+            <p>
+              The applicable BIS/ISI application and testing process for our planned safety footwear range is currently in progress.
+            </p>
+            <p>
+              We are working towards meeting the applicable product requirements and standards.
+            </p>
+            <p>
+              Certification status, product conformity and safety-performance claims will be updated only after the relevant official approvals and supporting documentation are available.
+            </p>
+
+            <div className="compliance-disclaimer-box">
+              <ShieldCheck size={28} color="#d97706" style={{flexShrink:0}}/>
+              <div>
+                <strong>Regulatory Compliance Disclosure</strong>
+                <p>Important: BIS/ISI certification has not been represented as granted.</p>
+              </div>
+            </div>
+
+            <div className="quality-points" style={{marginTop:'32px'}}>
+              <div className="quality-point-item">
+                <ClipboardCheck size={24} color="#bd781f" style={{flexShrink:0}}/>
+                <div>
+                  <strong>Testing In Progress</strong>
+                  <p>Applicable BIS/ISI application and testing process currently in progress.</p>
                 </div>
-              ))}
+              </div>
+              <div className="quality-point-item">
+                <FlaskConical size={24} color="#bd781f" style={{flexShrink:0}}/>
+                <div>
+                  <strong>Performance & Protection Objectives</strong>
+                  <p>Developing dependable PU double-density safety shoes engineered for tough workplace protection.</p>
+                </div>
+              </div>
+              <div className="quality-point-item">
+                <BadgeCheck size={24} color="#bd781f" style={{flexShrink:0}}/>
+                <div>
+                  <strong>Transparent Documentation</strong>
+                  <p>Product conformity and safety claims will be published immediately once official certifications are awarded.</p>
+                </div>
+              </div>
             </div>
           </div>
+
           <div className="certificate-placeholder">
             <div className="certificate-inner">
-              <ShieldCheck size={42}/>
+              <ShieldCheck size={48} color="#bd781f"/>
               <div className="certificate-rule"/>
               <h3>Testing In Progress</h3>
-              <p>BIS / ISI application and laboratory testing currently underway for the FORGEX footwear line.</p>
-              <span className="certificate-stamp">TESTING<br/>IN PROGRESS</span>
+              <p>BIS / ISI application and laboratory testing currently underway for the FORGEX footwear range.</p>
+              <span className="status-badge-outline">TESTING IN PROGRESS</span>
+              <small style={{marginTop:'14px', display:'block', color:'#667085', fontSize:'13px'}}>
+                {CONFIG.legalName}
+              </small>
             </div>
           </div>
         </div>
-        <div className="container">
+
+        <div className="container" style={{marginTop:'36px'}}>
           <div className="info-note wide-note">
-            <BadgeCheck size={22}/>
+            <ShieldCheck size={24} color="#bd781f"/>
             <span>
               <strong>Regulatory & Compliance Disclosure</strong>
-              <small>{CONFIG.statusNote} Official certificate documents and test reports will be displayed immediately upon formal grant.</small>
+              <small>
+                {CONFIG.statusNote} Certification status, product conformity and safety-performance claims will be updated only after the relevant official approvals and supporting documentation are available. Important: BIS/ISI certification has not been represented as granted.
+              </small>
             </span>
           </div>
         </div>
       </section>
-      <CTA title="Need technical specifications for procurement?" text="Contact our quality & production planning head directly."/>
+
+      <PartnerWithForgex/>
     </>
   );
 }
@@ -797,21 +913,40 @@ function EnquiryForm({ type = 'corporate' }) {
       <section className="section enquiry-section">
         <div className="container enquiry-layout">
           <aside className="enquiry-aside">
-            <h2>{isDealer ? 'Grow your business with FORGEX.' : 'Get a direct manufacturer quote.'}</h2>
-            <p>{isDealer ? 'Join our expanding dealer and distributor network across industrial belts in India.' : 'Direct factory supply, reliable delivery timelines, and customized bulk packaging.'}</p>
-            <div className="enquiry-benefits">
-              {(isDealer ? [
-                ['Building2', 'Attractive dealer margins & territory support'],
-                ['Truck', 'Direct dispatches from Vasai manufacturing plant'],
-                ['MessageCircle', 'Direct access to company management'],
-              ] : [
-                ['PackageCheck', 'PU Double-Density direct manufacturer pricing'],
-                ['ClipboardCheck', 'Consistent sizing & batch traceability'],
-                ['MessageCircle', 'Prompt quotations & sample coordination'],
-              ]).map(([IconText, text]) => (
-                <div key={text}><CheckCircle2 size={18}/><span>{text}</span></div>
-              ))}
+            <h2>Partner with FORGEX</h2>
+            <p style={{marginBottom:'16px'}}>
+              If your business requires industrial safety footwear, we invite you to contact us to discuss product development, future availability, bulk requirements and dealership opportunities.
+            </p>
+
+            <div style={{marginBottom:'22px'}}>
+              <strong style={{display:'block', fontSize:'14px', color:'#bd781f', textTransform:'uppercase', letterSpacing:'.06em', marginBottom:'12px'}}>
+                We welcome business enquiries from:
+              </strong>
+              <div className="enquiry-benefits">
+                {[
+                  'Industrial and corporate buyers',
+                  'Manufacturing companies and factories',
+                  'Safety equipment suppliers',
+                  'Footwear dealers and distributors',
+                  'Contractors and bulk purchasers',
+                ].map(text => (
+                  <div key={text}><CheckCircle2 size={18}/><span>{text}</span></div>
+                ))}
+              </div>
             </div>
+
+            <div style={{background:'#f0f4f8', padding:'16px', borderRadius:'6px', marginBottom:'20px'}}>
+              <div style={{fontSize:'12px', color:'#526071', textTransform:'uppercase', fontWeight:700, marginBottom:'8px', letterSpacing:'.05em'}}>
+                Direct Email Channels
+              </div>
+              <p style={{margin:'0 0 6px', fontSize:'14px'}}>
+                Sales Enquiries: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#bd781f', fontWeight:600}}>{CONFIG.salesEmail}</a>
+              </p>
+              <p style={{margin:0, fontSize:'14px'}}>
+                General Enquiries: <a href={`mailto:${CONFIG.infoEmail}`} style={{color:'#111f2c', fontWeight:600}}>{CONFIG.infoEmail}</a>
+              </p>
+            </div>
+
             <div className="aside-contact">
               <span>Need an immediate response?</span>
               <a href={waLink(`Hello, I have a ${isDealer ? 'dealer' : 'corporate bulk'} enquiry for FORGEX.`)} target="_blank" rel="noreferrer">
@@ -982,7 +1117,7 @@ function Contact() {
           </div>
         </div>
       </section>
-      <CTA/>
+      <PartnerWithForgex/>
     </>
   );
 }

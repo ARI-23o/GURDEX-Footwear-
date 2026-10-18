@@ -128,10 +128,35 @@ img {
   border-radius: 10px;
 }
 
+.brand-logo-wrap {
+  height: 58px;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e7eb;
+  box-shadow: 0 2px 8px rgba(17, 31, 44, .04);
+  flex-shrink: 0;
+}
+
+.brand-logo-img {
+  height: 50px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+
 .brand strong {
   font: 800 23px/1.1 Manrope, sans-serif;
   letter-spacing: .06em;
   display: block;
+}
+
+.brand strong span {
+  color: var(--orange);
+  font-size: 14px;
 }
 
 .brand small {
@@ -141,6 +166,11 @@ img {
   color: #626e7a;
   display: block;
   margin-top: 3px;
+}
+
+.brand-light .brand-logo-wrap {
+  background: #ffffff;
+  border-color: #313f4d;
 }
 
 .nav {
@@ -1876,6 +1906,14 @@ h1 em, h2 em {
   .nav-wrap {
     height: 74px;
   }
+  .brand-logo-wrap {
+    height: 52px;
+    padding: 3px 8px;
+  }
+  .brand-logo-img {
+    height: 44px;
+    max-width: 175px;
+  }
   .nav {
     display: none;
     position: absolute;
@@ -2021,12 +2059,12 @@ h1 em, h2 em {
 
   /* BRAND */
   .brand-logo-wrap {
-    height: 42px;
-    padding: 3px 6px;
+    height: 48px;
+    padding: 3px 8px;
   }
   .brand-logo-img {
-    height: 32px;
-    max-width: 120px;
+    height: 42px;
+    max-width: 165px;
   }
   .brand strong {
     font-size: 19px;
@@ -2455,31 +2493,24 @@ h1 em, h2 em {
   .contact-card, .enquiry-form, .partner-invite-box {
     padding: 18px 14px;
   }
-}
-
-/* FORGEX BRAND LOGO & ENHANCEMENTS */
-.brand-logo-wrap {
-  height: 48px;
-  display: flex;
-  align-items: center;
-  background: #ffffff;
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid #e2e7eb;
-}
-.brand-logo-img {
-  height: 38px;
-  width: auto;
-  max-width: 140px;
-  object-fit: contain;
-}
-.brand-text strong span {
-  color: var(--orange);
-  font-size: 14px;
-}
-.brand-light .brand-logo-wrap {
-  background: #ffffff;
-  border-color: #313f4d;
+  .brand {
+    gap: 8px;
+  }
+  .brand-logo-wrap {
+    height: 42px;
+    padding: 2px 6px;
+  }
+  .brand-logo-img {
+    height: 36px;
+    max-width: 140px;
+  }
+  .brand strong {
+    font-size: 17px;
+  }
+  .brand small {
+    font-size: 8.5px;
+    letter-spacing: .06em;
+  }
 }
 
 /* LEADERSHIP SECTION */

@@ -2383,6 +2383,175 @@ h1 em, h2 em {
   .contact-main h2 {
     font-size: 34px;
   }
+/* FORGEX BRAND LOGO & ENHANCEMENTS */
+.brand-logo-wrap {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid #e2e7eb;
+}
+.brand-logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+}
+.brand-text strong span {
+  color: var(--orange);
+  font-size: 14px;
+}
+.brand-light .brand-logo-wrap {
+  background: #ffffff;
+  border-color: #313f4d;
+}
+
+/* LEADERSHIP SECTION */
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 36px;
+}
+.leadership-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 28px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+}
+.leadership-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(17, 31, 44, .06);
+}
+.leadership-card h3 {
+  font-size: 20px;
+  margin: 0 0 4px;
+  color: var(--navy);
+}
+.leadership-role {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--orange-dark);
+  margin-bottom: 14px;
+}
+.leadership-card p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* PHONES LIST */
+.phones-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+.phone-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #f8fafb;
+  border: 1px solid #e5eaee;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.contact-card .phone-item {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+.phone-item a {
+  font-weight: 700;
+  color: var(--navy);
+}
+.contact-card .phone-item a {
+  color: #fff;
+}
+.phone-item a:hover {
+  color: var(--orange);
+}
+.phone-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.contact-card .phone-label {
+  color: #a0acb8;
+}
+
+/* STATUS PILL */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(243, 163, 59, 0.12);
+  border: 1px solid rgba(243, 163, 59, 0.4);
+  color: #a86208;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-top: 12px;
+}
+.status-pill-dark {
+  background: rgba(243, 163, 59, 0.15);
+  color: #ffb64e;
+  border-color: rgba(243, 163, 59, 0.35);
+}
+
+/* SOCIAL & YOUTUBE */
+.youtube-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ff4444;
+  font-weight: 700;
+  font-size: 14px;
+  transition: opacity .2s;
+}
+.youtube-link:hover {
+  opacity: .85;
+}
+
+/* ADDRESS BLOCKS */
+.address-card-group {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+.address-block {
+  border: 1px solid var(--line);
+  padding: 18px;
+  border-radius: 6px;
+  background: #fff;
+}
+.address-block strong {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.address-block p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .leadership-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2392,3 +2561,4 @@ h1 em, h2 em {
     animation: none !important;
   }
 }
+

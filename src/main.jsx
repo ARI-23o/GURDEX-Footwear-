@@ -67,11 +67,11 @@ const leadership = [
 
 const navItems = [
   ['Home','/'],
-  ['About Us','/about'],
-  ['Products Catalogue','/products'],
-  ['Manufacturing Facility','/manufacturing'],
+  ['About','/about'],
+  ['Products','/products'],
+  ['Manufacturing','/manufacturing'],
   ['Quality & Compliance','/quality'],
-  ['Contact Us','/contact'],
+  ['Contact','/contact'],
 ];
 
 function Brand({ light=false }) {
@@ -107,7 +107,7 @@ function Header() {
 
   React.useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 1040 && open) setOpen(false);
+      if (window.innerWidth > 1180 && open) setOpen(false);
     };
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);

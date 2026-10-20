@@ -65,7 +65,7 @@ const leadership = [
   {
     name: 'Nimesh Joshi',
     role: 'Sales Head, Quality & Production Planning',
-    desc: 'Responsible for sales, quality coordination and production planning to support business growth and operational efficiency.',
+    desc: 'Sales, quality coordination and production planning to support business growth and operational efficiency.',
     img: '/images/leadership-nimesh.jpeg',
   },
 ];

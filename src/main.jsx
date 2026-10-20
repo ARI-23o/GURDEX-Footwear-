@@ -7,7 +7,7 @@ import './styles.css';
 const CONFIG = {
   brand: 'FORGEX',
   brandFullName: 'FORGEX™ | Industrial Safety Footwear',
-  legalName: 'GURDEX Footwear Private Limited',
+  legalName: 'GUARDEX Footwear Private Limited',
   tagline: 'Industrial Safety Footwear',
   websiteDisplay: 'www.guardexfootwear.com',
   websiteUrl: 'https://www.guardexfootwear.com',
@@ -25,7 +25,7 @@ const CONFIG = {
   officeAddress: 'Flat No. 902, Vasaione Reality, Ambadi Road, Diwanman, Vasai West, District Palghar, Maharashtra – 401202.',
   youtube: 'https://youtube.com/@forgex-safetyshoes?si=REaSka5B6_rHnmQg',
   statusNote: 'Manufacturing setup in progress. BIS/ISI application and testing in progress.',
-  copyright: '© 2026 GURDEX Footwear Private Limited. All rights reserved.',
+  copyright: '© 2026 GUARDEX Footwear Private Limited. All rights reserved.',
 };
 
 const waLink = (message) => `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -191,7 +191,7 @@ function Footer() {
           <a href={CONFIG.youtube} target="_blank" rel="noreferrer" className="youtube-link" style={{margin:'10px 0'}}>
             <YoutubeIcon size={18}/> Watch on YouTube <ArrowUpRight size={13}/>
           </a>
-          <a href={waLink('Hello GURDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" style={{color:'#20b866', fontWeight: 700}}>
+          <a href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" style={{color:'#20b866', fontWeight: 700}}>
             <MessageCircle size={15}/> WhatsApp Enquiry <ArrowUpRight size={13}/>
           </a>
         </div>
@@ -230,7 +230,7 @@ function Footer() {
       </div>
 
       <div className="container footer-bottom">
-        <span>© 2026 GURDEX Footwear Private Limited. All rights reserved.</span>
+        <span>© 2026 GUARDEX Footwear Private Limited. All rights reserved.</span>
         <span>Product Brand: FORGEX | Industrial Safety Footwear | Website: <a href="https://www.guardexfootwear.com" target="_blank" rel="noreferrer" style={{color:'#f3a33b', textDecoration:'none'}}>www.guardexfootwear.com</a></span>
       </div>
     </footer>
@@ -239,7 +239,7 @@ function Footer() {
 
 function FloatingWhatsApp() {
   return (
-    <a className="wa-float" href={waLink('Hello, I am interested in FORGEX safety footwear by GURDEX Footwear Private Limited.')} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
+    <a className="wa-float" href={waLink('Hello, I am interested in FORGEX safety footwear by GUARDEX Footwear Private Limited.')} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
       <MessageCircle size={22}/><span>Chat with us</span>
     </a>
   );
@@ -341,7 +341,7 @@ function PartnerWithForgex() {
             <Link className="btn btn-outline-light" to="/dealer-enquiry">
               Become a Dealer / Distributor <ArrowUpRight size={16}/>
             </Link>
-            <a className="btn btn-wa" href={waLink('Hello GURDEX, we are interested in discussing partnership opportunities for FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer">
+            <a className="btn btn-wa" href={waLink('Hello GUARDEX, we are interested in discussing partnership opportunities for FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer">
               <MessageCircle size={17}/> WhatsApp Us Direct
             </a>
           </div>
@@ -378,7 +378,7 @@ function Home() {
                 Industrial Safety Footwear | Designed for Work. Built for Durability.
               </p>
               <p style={{marginBottom:'14px'}}>
-                FORGEX is the industrial safety footwear brand of GURDEX Footwear Private Limited, India.
+                FORGEX is the industrial safety footwear brand of GUARDEX Footwear Private Limited, India.
               </p>
               <p style={{marginBottom:'24px'}}>
                 We are developing industrial safety footwear solutions for manufacturing units, engineering industries, construction businesses, warehouses, logistics operations and other demanding workplaces.
@@ -404,7 +404,7 @@ function Home() {
           </div>
           <div className="hero-bottom container">
             <span><span className="orange-dot"/> PU DOUBLE-DENSITY INDUSTRIAL FOOTWEAR</span>
-            <span>FORGEX™ BY GURDEX</span>
+            <span>FORGEX™ BY GUARDEX</span>
           </div>
         </section>
 
@@ -540,7 +540,7 @@ function Home() {
           <div className="container">
             <SectionHeading
               title="Leadership & Management"
-              description="Experienced leadership guiding GURDEX Footwear Private Limited towards operational excellence and customer trust."
+              description="Experienced leadership guiding GUARDEX Footwear Private Limited towards operational excellence and customer trust."
               center
             />
             <div className="leadership-grid">
@@ -564,7 +564,7 @@ function Home() {
 function About() {
   return (
     <>
-      <PageIntro title="About GURDEX Footwear Private Limited" description="An Indian footwear company developing its industrial safety footwear business under the brand name FORGEX."/>
+      <PageIntro title="About GUARDEX Footwear Private Limited" description="An Indian footwear company developing its industrial safety footwear business under the brand name FORGEX."/>
       <section className="section">
         <div className="container split-layout about-split">
           <div className="split-image about-image">
@@ -574,8 +574,8 @@ function About() {
             </div>
           </div>
           <div className="split-copy">
-            <h2>About GURDEX Footwear Private Limited</h2>
-            <p><strong>GURDEX Footwear Private Limited</strong> is an Indian footwear company developing its industrial safety footwear business under the brand name <strong>FORGEX</strong>.</p>
+            <h2>About GUARDEX Footwear Private Limited</h2>
+            <p><strong>GUARDEX Footwear Private Limited</strong> is an Indian footwear company developing its industrial safety footwear business under the brand name <strong>FORGEX</strong>.</p>
             <p>Our objective is to develop dependable industrial safety footwear for professionals and businesses operating in demanding work environments.</p>
             <p>We are establishing our manufacturing capabilities with a planned production setup featuring a <strong>60-station PU pouring conveyor machine</strong>, a <strong>double-density PU system</strong> and <strong>aluminium moulds</strong>.</p>
             <p>We aim to build long-term relationships with industrial buyers, dealers, distributors and corporate customers through product quality, reliable service and a commitment to continuous improvement.</p>
@@ -639,7 +639,7 @@ function About() {
       {/* LEADERSHIP & MANAGEMENT SECTION */}
       <section className="section soft-section">
         <div className="container">
-          <SectionHeading title="Leadership & Management" description="Experienced leadership guiding GURDEX Footwear towards operational excellence and customer trust." center/>
+          <SectionHeading title="Leadership & Management" description="Experienced leadership guiding GUARDEX Footwear towards operational excellence and customer trust." center/>
           <div className="leadership-grid">
             {leadership.map(l => (
               <div className="leadership-card" key={l.name}>
@@ -778,7 +778,7 @@ function ProductDetail() {
 function Manufacturing() {
   return (
     <>
-      <PageIntro title="Manufacturing Facility" description="Explore GURDEX Footwear Private Limited's modern production setup for FORGEX PU double-density safety shoes in Vasai, Maharashtra."/>
+      <PageIntro title="Manufacturing Facility" description="Explore GUARDEX Footwear Private Limited's modern production setup for FORGEX PU double-density safety shoes in Vasai, Maharashtra."/>
       <section className="section">
         <div className="container">
           <div className="facility-hero">
@@ -939,7 +939,7 @@ function EnquiryForm({ type = 'corporate' }) {
     setErrors(next);
     if (Object.keys(next).length) return;
     const msg = [
-      `Hello GURDEX, I am submitting a ${isDealer ? 'dealer/distributor' : 'corporate bulk'} enquiry for FORGEX footwear.`,
+      `Hello GUARDEX, I am submitting a ${isDealer ? 'dealer/distributor' : 'corporate bulk'} enquiry for FORGEX footwear.`,
       `Name: ${form.name}`,
       `Company: ${form.company || 'Not provided'}`,
       `Phone: ${form.phone}`,
@@ -1049,7 +1049,7 @@ function Field({ label, name, value, onChange, error, required, placeholder, typ
 function Contact() {
   return (
     <>
-      <PageIntro title="Contact Us" description="Get in touch with GURDEX Footwear Private Limited for FORGEX safety footwear enquiries, dealership, and bulk corporate orders."/>
+      <PageIntro title="Contact Us" description="Get in touch with GUARDEX Footwear Private Limited for FORGEX safety footwear enquiries, dealership, and bulk corporate orders."/>
       <section className="section">
         <div className="container contact-layout">
           <div className="contact-main">
@@ -1084,7 +1084,7 @@ function Contact() {
                 <div><strong>Official YouTube Channel</strong><small>Watch product & manufacturing videos</small></div>
                 <ArrowUpRight/>
               </a>
-              <a href={waLink('Hello GURDEX, I would like to get in touch regarding FORGEX footwear.')} target="_blank" rel="noreferrer">
+              <a href={waLink('Hello GUARDEX, I would like to get in touch regarding FORGEX footwear.')} target="_blank" rel="noreferrer">
                 <span style={{color:'#20b866', background:'#e8faee'}}><MessageCircle size={20}/></span>
                 <div><strong>WhatsApp Chat</strong><small>Instant response on +91 91850 38002</small></div>
                 <ArrowUpRight/>

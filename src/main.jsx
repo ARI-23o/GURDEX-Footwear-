@@ -12,19 +12,26 @@ const CONFIG = {
   websiteDisplay: 'www.guardexfootwear.com',
   websiteUrl: 'https://www.guardexfootwear.com',
   salesEmail: 'sales@guardexfootwear.com',
+  enquiryEmail: 'enquiry@guardexfootwear.com',
   infoEmail: 'info@guardexfootwear.com',
   whatsappNumber: '919185038002',
   primaryPhone: '+91 91850 38002',
   phones: [
-    { label: 'Sales & Orders', number: '+91 91850 38002', tel: '+919185038002' },
-    { label: 'Factory & Sales', number: '+91 73872 16551', tel: '+917387216551' },
-    { label: 'Landline / Office', number: '+91 79-72458345', tel: '+917972458345' },
-    { label: 'Support & Enquiries', number: '+91 97652 38002', tel: '+919765238002' },
+    { label: 'Factory Contact & WhatsApp', number: '+91 91850 38002', tel: '+919185038002' },
+    { label: 'Hirasingh', number: '+91 97652 38002', tel: '+919765238002' },
+    { label: 'Nimesh Joshi (Mobile)', number: '+91 73872 16551', tel: '+917387216551' },
+    { label: 'Nimesh Joshi (Office)', number: '+91 79-7245 8345', tel: '+917972458345' },
   ],
-  factoryAddress: 'Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Industries Estate, Near Jain Mandir, Village Mori, Vasai, District Palghar, Maharashtra – 401208.',
-  officeAddress: 'Flat No. 902, Vasaione Reality, Ambadi Road, Diwanman, Vasai West, District Palghar, Maharashtra – 401202.',
-  youtube: 'https://youtube.com/@forgex-safetyshoes?si=REaSka5B6_rHnmQg',
+  factoryAddress: 'Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Inds. Estate, Near Jain Mandir, Village Mori, Poman (Kaman Road), Tehsil Vasai, District Palghar, Maharashtra - 401208, India.',
+  officeAddress: 'Flat No. 902, Vasaione Reality, Ambadi Road, Diwanman, Vasai West, District Palghar, Maharashtra - 401202, India.',
+  officeMapUrl: 'https://maps.app.goo.gl/Xb6EA651zJ1R7bmK8?g_st=i&utm_campaign=ac-im',
   cin: 'U15201MR2026PTC481287',
+  social: {
+    youtube: 'https://youtube.com/@Forgex-safetyshoes',
+    instagram: 'https://www.instagram.com/Forgex.footwear',
+    facebook: 'https://www.facebook.com/Forgexsafetyfootwear',
+    linkedin: 'https://www.linkedin.com/company/guardex-footwear-pvt-ltd',
+  },
   copyright: '© 2026 GUARDEX Footwear Private Limited. All rights reserved.',
 };
 
@@ -34,6 +41,32 @@ function YoutubeIcon({ size = 18 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{flexShrink:0}}>
       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+    </svg>
+  );
+}
+
+function InstagramIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{flexShrink:0}}>
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+    </svg>
+  );
+}
+
+function FacebookIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{flexShrink:0}}>
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+  );
+}
+
+function LinkedinIcon({ size = 18 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{flexShrink:0}}>
+      <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.66 1.66 0 1 0 0 3.32 1.66 1.66 0 0 0 0-3.32z"/>
     </svg>
   );
 }
@@ -190,19 +223,26 @@ function Footer() {
         </div>
 
         <div>
-          <h4>Enquiries & Channels</h4>
-          <Link to="/dealer-enquiry">Become a Dealer</Link>
-          <Link to="/corporate-enquiry">Corporate Bulk Enquiry</Link>
-          <a href={CONFIG.youtube} target="_blank" rel="noreferrer" className="youtube-link" style={{margin:'10px 0'}}>
-            <YoutubeIcon size={18}/> Watch on YouTube <ArrowUpRight size={13}/>
+          <h4>Follow & Connect</h4>
+          <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="footer-social-link" style={{display:'flex', alignItems:'center', gap:'8px', color:'#fca5a5', textDecoration:'none', margin:'8px 0', fontSize:'13.5px'}}>
+            <YoutubeIcon size={16}/> YouTube: @Forgex-safetyshoes <ArrowUpRight size={12}/>
           </a>
-          <a href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" style={{color:'#20b866', fontWeight: 700}}>
-            <MessageCircle size={15}/> WhatsApp Enquiry <ArrowUpRight size={13}/>
+          <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="footer-social-link" style={{display:'flex', alignItems:'center', gap:'8px', color:'#f472b6', textDecoration:'none', margin:'8px 0', fontSize:'13.5px'}}>
+            <InstagramIcon size={16}/> Instagram: @Forgex.footwear <ArrowUpRight size={12}/>
+          </a>
+          <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="footer-social-link" style={{display:'flex', alignItems:'center', gap:'8px', color:'#93c5fd', textDecoration:'none', margin:'8px 0', fontSize:'13.5px'}}>
+            <FacebookIcon size={16}/> Facebook: @Forgex safetyfootwear <ArrowUpRight size={12}/>
+          </a>
+          <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="footer-social-link" style={{display:'flex', alignItems:'center', gap:'8px', color:'#7dd3fc', textDecoration:'none', margin:'8px 0', fontSize:'13.5px'}}>
+            <LinkedinIcon size={16}/> LinkedIn: @guardex footwear pvt ltd <ArrowUpRight size={12}/>
+          </a>
+          <a href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" style={{display:'flex', alignItems:'center', gap:'8px', color:'#20b866', fontWeight: 700, margin:'12px 0 6px', fontSize:'13.5px', textDecoration:'none'}}>
+            <MessageCircle size={16}/> WhatsApp: +91 91850 38002 <ArrowUpRight size={12}/>
           </a>
         </div>
 
         <div>
-          <h4>Website & Enquiries</h4>
+          <h4>Contact & Locations</h4>
           <p className="contact-line">
             <Globe size={16}/>
             <span>
@@ -215,22 +255,49 @@ function Footer() {
             <Mail size={16}/>
             <span>
               Sales: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#f3a33b', fontWeight:600}}>{CONFIG.salesEmail}</a><br/>
-              General Enquiries: <a href={`mailto:${CONFIG.infoEmail}`} style={{color:'#d0d8df'}}>{CONFIG.infoEmail}</a>
+              Enquiries: <a href={`mailto:${CONFIG.enquiryEmail}`} style={{color:'#d0d8df'}}>{CONFIG.enquiryEmail}</a>
             </span>
           </p>
           <p className="contact-line">
             <Phone size={16}/>
             <span>
-              <a href={`tel:${CONFIG.primaryPhone.replace(/\s+/g,'')}`} style={{color:'#fff', fontWeight:600}}>{CONFIG.primaryPhone}</a><br/>
-              <a href="tel:+917387216551" style={{color:'#c0ccd6'}}>+91 73872 16551</a>
+              <strong>Factory / WhatsApp:</strong> <a href="tel:+919185038002" style={{color:'#fff', fontWeight:600}}>+91 91850 38002</a><br/>
+              <strong>Office:</strong> <a href="tel:+917972458345" style={{color:'#c0ccd6'}}>+91 79-7245 8345</a>
             </span>
           </p>
           <p className="contact-line">
             <MapPin size={16}/>
             <span style={{fontSize:'12px', lineHeight:'1.5'}}>
-              <strong>Plant:</strong> Vasai, Palghar, Maharashtra – 401208
+              <strong>Office:</strong> Flat 902, Vasaione Reality, Ambadi Rd, Vasai West – 401202<br/>
+              <a href={CONFIG.officeMapUrl} target="_blank" rel="noreferrer" style={{color:'#f3a33b', fontWeight:700, display:'inline-flex', alignItems:'center', gap:'4px', marginTop:'3px', textDecoration:'none'}}>
+                📍 View on Google Maps <ArrowUpRight size={12}/>
+              </a>
             </span>
           </p>
+          <p className="contact-line">
+            <Factory size={16}/>
+            <span style={{fontSize:'12px', lineHeight:'1.5'}}>
+              <strong>Factory:</strong> Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Inds. Estate, Mori, Poman (Kaman Road), Tehsil Vasai – 401208
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div className="container footer-social-row">
+        <span className="social-row-label">Official Social Media:</span>
+        <div className="social-links-list">
+          <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="social-pill youtube" aria-label="YouTube">
+            <YoutubeIcon size={16}/> <span>YouTube: @Forgex-safetyshoes</span>
+          </a>
+          <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="social-pill instagram" aria-label="Instagram">
+            <InstagramIcon size={16}/> <span>Instagram: @Forgex.footwear</span>
+          </a>
+          <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="social-pill facebook" aria-label="Facebook">
+            <FacebookIcon size={15}/> <span>Facebook: @Forgex safetyfootwear</span>
+          </a>
+          <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="social-pill linkedin" aria-label="LinkedIn">
+            <LinkedinIcon size={15}/> <span>LinkedIn: @guardex footwear pvt ltd</span>
+          </a>
         </div>
       </div>
 
@@ -333,8 +400,16 @@ function PartnerWithForgex() {
             <div className="partner-email-block">
               <Mail size={22} color="#f3a33b"/>
               <div>
-                <span className="partner-channel-label">General Enquiries:</span>
-                <a href={`mailto:${CONFIG.infoEmail}`} className="partner-channel-link">{CONFIG.infoEmail}</a>
+                <span className="partner-channel-label">Business Enquiries:</span>
+                <a href={`mailto:${CONFIG.enquiryEmail}`} className="partner-channel-link">{CONFIG.enquiryEmail}</a>
+              </div>
+            </div>
+
+            <div className="partner-email-block">
+              <Phone size={22} color="#f3a33b"/>
+              <div>
+                <span className="partner-channel-label">Factory / WhatsApp:</span>
+                <a href="tel:+919185038002" className="partner-channel-link">+91 91850 38002</a>
               </div>
             </div>
           </div>
@@ -1064,13 +1139,16 @@ function Contact() {
 
             <div className="address-card-group">
               <div className="address-block">
-                <strong><Factory size={18} color="#bd781f"/> Manufacturing Facility</strong>
+                <strong><Factory size={18} color="#bd781f"/> Factory Address</strong>
                 <p>{CONFIG.factoryAddress}</p>
               </div>
 
               <div className="address-block">
                 <strong><Building2 size={18} color="#bd781f"/> Registered / Office Address</strong>
                 <p>{CONFIG.officeAddress}</p>
+                <a href={CONFIG.officeMapUrl} target="_blank" rel="noreferrer" style={{display:'inline-flex', alignItems:'center', gap:'6px', color:'#f3a33b', fontWeight:700, fontSize:'13.5px', marginTop:'8px', textDecoration:'none'}}>
+                  <MapPin size={15}/> View Office on Google Maps <ArrowUpRight size={13}/>
+                </a>
               </div>
             </div>
 
@@ -1085,14 +1163,34 @@ function Contact() {
                 <div><strong>Dealer / Distributor</strong><small>Regional distribution partnership</small></div>
                 <ArrowUpRight/>
               </Link>
-              <a href={CONFIG.youtube} target="_blank" rel="noreferrer">
-                <span style={{color:'#ff4444', background:'#fff0f0'}}><YoutubeIcon size={20}/></span>
-                <div><strong>Official YouTube Channel</strong><small>Watch product & manufacturing videos</small></div>
+              <a href={CONFIG.officeMapUrl} target="_blank" rel="noreferrer">
+                <span style={{color:'#f3a33b', background:'#fff6eb'}}><MapPin size={20}/></span>
+                <div><strong>Office on Google Maps</strong><small>Flat No. 902, Vasaione Reality, Vasai West</small></div>
                 <ArrowUpRight/>
               </a>
               <a href={waLink('Hello GUARDEX, I would like to get in touch regarding FORGEX footwear.')} target="_blank" rel="noreferrer">
                 <span style={{color:'#20b866', background:'#e8faee'}}><MessageCircle size={20}/></span>
-                <div><strong>WhatsApp Chat</strong><small>Instant response on +91 91850 38002</small></div>
+                <div><strong>WhatsApp Chat (+91 91850 38002)</strong><small>Instant sales & dealer assistance</small></div>
+                <ArrowUpRight/>
+              </a>
+              <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer">
+                <span style={{color:'#ff0000', background:'#fff0f0'}}><YoutubeIcon size={20}/></span>
+                <div><strong>YouTube: @Forgex-safetyshoes</strong><small>Watch product videos and demonstrations</small></div>
+                <ArrowUpRight/>
+              </a>
+              <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer">
+                <span style={{color:'#e1306c', background:'#fff0f5'}}><InstagramIcon size={20}/></span>
+                <div><strong>Instagram: @Forgex.footwear</strong><small>Product designs & updates</small></div>
+                <ArrowUpRight/>
+              </a>
+              <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer">
+                <span style={{color:'#1877f2', background:'#f0f5ff'}}><FacebookIcon size={20}/></span>
+                <div><strong>Facebook: @Forgex safetyfootwear</strong><small>Company updates and news</small></div>
+                <ArrowUpRight/>
+              </a>
+              <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer">
+                <span style={{color:'#0a66c2', background:'#edf5fc'}}><LinkedinIcon size={20}/></span>
+                <div><strong>LinkedIn: @guardex footwear pvt ltd</strong><small>B2B partnerships and networking</small></div>
                 <ArrowUpRight/>
               </a>
             </div>
@@ -1132,6 +1230,12 @@ function Contact() {
                 <Mail size={16}/>
                 <span>
                   Sales: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#f3a33b', fontWeight:600}}>{CONFIG.salesEmail}</a>
+                </span>
+              </p>
+              <p className="contact-line">
+                <Mail size={16}/>
+                <span>
+                  Enquiries: <a href={`mailto:${CONFIG.enquiryEmail}`} style={{color:'#f3a33b', fontWeight:600}}>{CONFIG.enquiryEmail}</a>
                 </span>
               </p>
               <p className="contact-line">

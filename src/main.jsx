@@ -406,10 +406,7 @@ function ProductModal({ product, onClose }) {
 
           <div className="flex flex-col gap-4">
             <div>
-              <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-md uppercase tracking-wider">
-                {product.tag}
-              </span>
-              <p className="mt-3 text-slate-700 leading-relaxed text-sm sm:text-base">
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
                 {product.desc}
               </p>
             </div>
@@ -585,11 +582,6 @@ function CompanyProfileCard() {
 function SectionHeading({ badge, title, description, center = false }) {
   return (
     <div className={`mb-10 sm:mb-12 ${center ? 'text-center max-w-3xl mx-auto' : 'max-w-2xl'}`}>
-      {badge && (
-        <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-md uppercase tracking-wider mb-3">
-          {badge}
-        </span>
-      )}
       <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight font-display">
         {title}
       </h2>
@@ -615,9 +607,6 @@ function PartnerWithForgex() {
     <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white border-y border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-block px-3 py-1 bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider mb-3">
-            Business Partnerships
-          </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-display text-white">
             Partner with FORGEX™
           </h2>
@@ -845,11 +834,6 @@ function PageIntro({ title, description, badge }) {
   return (
     <div className="bg-slate-900 text-white py-14 sm:py-20 border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-        {badge && (
-          <span className="inline-block px-3 py-1 bg-amber-500/20 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider mb-3">
-            {badge}
-          </span>
-        )}
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-white">
           {title}
         </h1>
@@ -884,9 +868,6 @@ function Home() {
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28 w-full flex-1 flex flex-col justify-center">
           <div className="max-w-2xl">
-            <span className="inline-block px-3.5 py-1.5 bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider mb-4">
-              Designed for Work. Built for Durability.
-            </span>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-display leading-[1.15]">
               FORGEX – Built for Demanding Work Environments
             </h1>
@@ -907,15 +888,6 @@ function Home() {
               >
                 Bulk Business Enquiry <ArrowUpRight size={18}/>
               </Link>
-            </div>
-
-            {/* Proof Badge */}
-            <div className="mt-8 p-3.5 bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl inline-flex items-center gap-3 text-xs sm:text-sm text-slate-200">
-              <ShieldCheck size={22} className="text-amber-400 shrink-0"/>
-              <div>
-                <strong className="block text-white font-semibold">PU Double-Density Safety Footwear</strong>
-                <span className="text-slate-300 text-xs">Direct injection sole technology engineered for industrial protection</span>
-              </div>
             </div>
           </div>
         </div>
@@ -983,9 +955,6 @@ function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
             <div>
-              <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-md uppercase tracking-wider mb-2">
-                Our Range
-              </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 font-display">
                 Industrial Footwear Range
               </h2>
@@ -1027,7 +996,6 @@ function Home() {
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            badge="Engineering"
             title="Protection Begins With The Right Footwear"
             description="Our manufacturing setup is built around polyurethane (PU) double-density injection moulding, durable upper materials, and certified impact protection."
             center
@@ -1071,7 +1039,6 @@ function Home() {
       <section className="py-16 sm:py-20 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-2">Industry Applications</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
               Built for Demanding Industry Sectors
             </h2>
@@ -1101,7 +1068,6 @@ function Home() {
       <section className="py-16 sm:py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            badge="Our People"
             title="Leadership & Management"
             description="Experienced leadership guiding GUARDEX Footwear Private Limited towards manufacturing excellence, quality control, and customer trust."
             center
@@ -1146,7 +1112,6 @@ function About() {
   return (
     <main>
       <PageIntro
-        badge="Company Overview"
         title="About GUARDEX Footwear Private Limited"
         description="An Indian footwear manufacturer developing industrial safety footwear and utility footwear under the brand name FORGEX™."
       />
@@ -1155,7 +1120,6 @@ function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-2">Our Foundation</span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 font-display">
                 Protecting India’s Workforce with Precision Footwear
               </h2>
@@ -1213,7 +1177,6 @@ function About() {
       <section className="py-16 sm:py-20 bg-slate-50 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            badge="Purpose"
             title="Our Mission & Vision"
             center
           />
@@ -1246,7 +1209,6 @@ function About() {
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            badge="Culture"
             title="Our Core Values"
             description="The foundational principles driving our factory floor, engineering processes, and client relationships."
             center
@@ -1276,7 +1238,6 @@ function About() {
       <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            badge="Leadership"
             title="Management Team"
             description="Experienced professionals guiding GUARDEX Footwear towards operational efficiency and customer trust."
             center
@@ -1331,7 +1292,6 @@ function Products() {
   return (
     <main>
       <PageIntro
-        badge="Catalogue"
         title="FORGEX™ Product Range"
         description="Explore our complete line of industrial safety shoes, safety boots, executive workwear, ergonomic insoles, and school footwear."
       />
@@ -1428,7 +1388,6 @@ function Manufacturing() {
   return (
     <main>
       <PageIntro
-        badge="Plant & Technology"
         title="Manufacturing Facility"
         description="Engineering excellence in Vasai, Maharashtra: 60-Station automatic PU pouring conveyor machine, precision moulds, and quality testing."
       />
@@ -1436,14 +1395,12 @@ function Manufacturing() {
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            badge="Facility Overview"
             title="Advanced Polyurethane Direct Injection Moulding"
             description="Our planned production setup is tailored specifically for direct-on-upper PU double-density safety footwear manufacturing."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-              <span className="text-amber-600 font-bold text-xs uppercase tracking-wider block mb-2">Machine Setup</span>
               <h3 className="text-xl font-bold text-slate-900 font-display">60-Station PU Pouring Conveyor</h3>
               <p className="mt-3 text-sm text-slate-600 leading-relaxed">
                 Automated continuous round-table conveyor allowing uniform cycle times, consistent metering of polyol and isocyanate, and high output productivity.
@@ -1451,7 +1408,6 @@ function Manufacturing() {
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-              <span className="text-amber-600 font-bold text-xs uppercase tracking-wider block mb-2">Polymer Formulation</span>
               <h3 className="text-xl font-bold text-slate-900 font-display">Double-Density Injection</h3>
               <p className="mt-3 text-sm text-slate-600 leading-relaxed">
                 Direct dual-injection technology: a low-density polyurethane midsole for all-day cushion paired with a high-density outsole for abrasion resistance.
@@ -1459,7 +1415,6 @@ function Manufacturing() {
             </div>
 
             <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
-              <span className="text-amber-600 font-bold text-xs uppercase tracking-wider block mb-2">Tooling</span>
               <h3 className="text-xl font-bold text-slate-900 font-display">Aluminium Moulds</h3>
               <p className="mt-3 text-sm text-slate-600 leading-relaxed">
                 CNC-machined aluminium moulds ensuring sharp tread definitions, deep anti-skid cleating, and consistent anatomical footbed ergonomics.
@@ -1470,7 +1425,6 @@ function Manufacturing() {
           {/* Plant Address Banner */}
           <div className="mt-12 p-8 rounded-2xl bg-slate-900 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">Plant Location</span>
               <h4 className="text-xl font-bold font-display text-white">Vasai Manufacturing Unit</h4>
               <p className="text-slate-300 text-sm mt-1 max-w-xl">
                 {CONFIG.factoryAddress}
@@ -1505,7 +1459,6 @@ function Quality() {
   return (
     <main>
       <PageIntro
-        badge="Standards & Testing"
         title="Quality & Compliance"
         description="Our approach to product durability, safety certifications, and continuous quality control."
       />
@@ -1513,7 +1466,6 @@ function Quality() {
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            badge="Compliance Status"
             title="Testing & Certification in Progress"
             description="At FORGEX, worker safety and product integrity are top priorities. Our planned safety footwear line is currently undergoing the applicable BIS/ISI application and laboratory testing process."
           />
@@ -1576,7 +1528,6 @@ function Contact() {
   return (
     <main>
       <PageIntro
-        badge="Get in Touch"
         title="Contact GUARDEX Footwear"
         description="Reach out to our sales desk, factory management, or visit our registered corporate office in Vasai West."
       />
@@ -1588,7 +1539,6 @@ function Contact() {
             <div className="space-y-6">
               {/* Registered Office Card */}
               <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-2">Corporate Office</span>
                 <h3 className="text-xl font-bold text-slate-900 font-display">Registered Office Address</h3>
                 <p className="mt-2 text-slate-600 text-sm leading-relaxed">
                   {CONFIG.officeAddress}
@@ -1613,7 +1563,6 @@ function Contact() {
 
               {/* Manufacturing Plant Card */}
               <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-2">Factory Unit</span>
                 <h3 className="text-xl font-bold text-slate-900 font-display">Manufacturing Plant</h3>
                 <p className="mt-2 text-slate-600 text-sm leading-relaxed">
                   {CONFIG.factoryAddress}
@@ -1654,7 +1603,6 @@ function Contact() {
 
             {/* Quick Message Form */}
             <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-1">Direct Message</span>
               <h3 className="text-2xl font-bold text-slate-900 font-display">Send us a Message</h3>
               <p className="text-slate-600 text-xs sm:text-sm mt-1 mb-6">
                 Fill out the form below and our sales coordination team will get back to you within 24 hours.
@@ -1756,7 +1704,6 @@ function CorporateEnquiry() {
   return (
     <main>
       <PageIntro
-        badge="Bulk Procurement"
         title="Corporate & Commercial Bulk Enquiry"
         description="Direct manufacturer pricing for industrial companies, civil contractors, safety equipment suppliers, and institutional distributors."
       />

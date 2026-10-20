@@ -297,14 +297,6 @@ function Footer() {
         <div>
           <h4>Contact & Locations</h4>
           <p className="contact-line">
-            <Globe size={16}/>
-            <span>
-              Website: <a href={CONFIG.websiteUrl} target="_blank" rel="noreferrer" style={{color:'#fff', fontWeight:600}}>
-                {CONFIG.websiteDisplay}
-              </a>
-            </span>
-          </p>
-          <p className="contact-line">
             <Mail size={16}/>
             <span>
               Sales: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#f3a33b', fontWeight:600}}>{CONFIG.salesEmail}</a><br/>
@@ -360,7 +352,7 @@ function Footer() {
 
       <div className="container footer-bottom">
         <span>© 2026 GUARDEX Footwear Private Limited. All rights reserved. | CIN: <strong style={{color:'#f3a33b'}}>{CONFIG.cin}</strong></span>
-        <span>Product Brand: FORGEX | Industrial Safety Footwear | Website: <a href="https://www.guardexfootwear.com" target="_blank" rel="noreferrer" style={{color:'#f3a33b', textDecoration:'none'}}>www.guardexfootwear.com</a></span>
+        <span>Product Brand: FORGEX | Industrial Safety Footwear | Designed for Work. Built for Durability.</span>
       </div>
     </footer>
   );
@@ -531,12 +523,6 @@ function Home() {
                   <span>Engineered for Maximum Workplace Protection</span>
                 </div>
               </div>
-            </div>
-            <div className="hero-stamp">
-              <span>PRODUCT BRAND</span>
-              <strong>FORGEX<br/>SAFETY</strong>
-              <div className="stamp-rule"/>
-              <span>{CONFIG.legalName.toUpperCase()}</span>
             </div>
           </div>
           <div className="hero-bottom container">
@@ -1300,18 +1286,6 @@ function Contact() {
                 <span>
                   General: <a href={`mailto:${CONFIG.infoEmail}`} style={{color:'#d0d8df'}}>{CONFIG.infoEmail}</a>
                 </span>
-              </p>
-            </div>
-
-            <div>
-              <div style={{fontSize:'12px', color:'#ffb64e', textTransform:'uppercase', letterSpacing:'.08em', fontWeight:700, marginBottom:'8px'}}>
-                Official Website
-              </div>
-              <p className="contact-line">
-                <Globe size={16}/>
-                <a href={CONFIG.websiteUrl} target="_blank" rel="noreferrer" style={{color:'#fff', fontWeight:600}}>
-                  {CONFIG.websiteDisplay}
-                </a>
               </p>
             </div>
 

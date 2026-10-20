@@ -298,21 +298,8 @@ img {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(12, 22, 32, .96) 0%, rgba(12, 22, 32, .88) 42%, rgba(12, 22, 32, .38) 75%, rgba(12, 22, 32, .15) 100%), linear-gradient(0deg, rgba(12, 22, 32, .45), transparent 40%), url('/images/hero-bg.jpeg') right center/cover no-repeat;
-  opacity: .98;
-}
-
-.hero:after {
-  content: '';
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  border: 1px solid rgba(255, 255, 255, .12);
-  border-radius: 50%;
-  right: -110px;
-  top: 40px;
-  box-shadow: 0 0 0 50px rgba(255, 255, 255, .025), 0 0 0 100px rgba(255, 255, 255, .02);
-  pointer-events: none;
+  background: linear-gradient(90deg, rgba(12, 22, 32, .96) 0%, rgba(12, 22, 32, .88) 45%, rgba(12, 22, 32, .38) 72%, rgba(12, 22, 32, .12) 100%), linear-gradient(0deg, rgba(12, 22, 32, .5), transparent 40%), url('/images/hero-clean.jpg') right center/cover no-repeat;
+  opacity: 1;
 }
 
 .hero-content {
@@ -2715,7 +2702,7 @@ h1 em, h2 em {
   }
   .hero-bg {
     background-position: center right;
-    background-image: linear-gradient(180deg, rgba(12, 22, 32, .95) 0%, rgba(12, 22, 32, .82) 55%, rgba(12, 22, 32, .95) 100%), url('/images/hero-bg.jpeg');
+    background-image: linear-gradient(180deg, rgba(12, 22, 32, .96) 0%, rgba(12, 22, 32, .85) 60%, rgba(12, 22, 32, .96) 100%), url('/images/hero-clean.jpg');
   }
   .hero-content {
     min-height: auto;

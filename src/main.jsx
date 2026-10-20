@@ -194,6 +194,59 @@ function Header() {
   );
 }
 
+function CompanyProfileCard() {
+  return (
+    <div className="company-profile-card">
+      <div className="company-profile-header">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#10b981" aria-hidden="true" style={{flexShrink:0}}>
+          <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z"/>
+        </svg>
+        <h3>Company Profile & Registration Details</h3>
+      </div>
+      <div className="company-profile-grid">
+        <div className="profile-field">
+          <span className="profile-label">Company Name:</span>
+          <span className="profile-value">GUARDEX FOOTWEAR PRIVATE LIMITED</span>
+        </div>
+        <div className="profile-field">
+          <span className="profile-label">Corporate Identification Number (CIN):</span>
+          <span className="profile-value highlight">{CONFIG.cin}</span>
+        </div>
+        <div className="profile-field">
+          <span className="profile-label">Registration Number:</span>
+          <span className="profile-value">481287</span>
+        </div>
+        <div className="profile-field">
+          <span className="profile-label">Class & Type:</span>
+          <span className="profile-value">Private, Non-government company (Company limited by shares)</span>
+        </div>
+        <div className="profile-field">
+          <span className="profile-label">Registered Office Jurisdiction:</span>
+          <span className="profile-value">Registrar of Companies (RoC-Mumbai II), Maharashtra, India</span>
+        </div>
+        <div className="profile-field">
+          <span className="profile-label">Date of Incorporation & Status:</span>
+          <span className="profile-value">29 September 2026 &nbsp;|&nbsp; <span style={{color:'#10b981', fontWeight:700}}>Active</span></span>
+        </div>
+        <div className="profile-field">
+          <span className="profile-label">Authorized Capital / Paid-up Capital:</span>
+          <span className="profile-value">₹1,00,000 / ₹1,00,000</span>
+        </div>
+        <div className="profile-field">
+          <span className="profile-label">Principal Business Activity:</span>
+          <span className="profile-value">Manufacture of footwear (NIC Code: 15201)</span>
+        </div>
+        <div className="profile-field full-width">
+          <span className="profile-label">Registered Office Address:</span>
+          <span className="profile-value" style={{fontWeight:600, fontSize:'14px', color:'#cbd5e1', lineHeight:'1.5'}}>
+            Flat No. 902, Vasai One Realty, Bldg. No. 2, Ambadi Road, Diwanman, Vasai West, Palghar, Maharashtra – 401202, India.
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Footer() {
   return (
     <footer className="footer">
@@ -281,6 +334,10 @@ function Footer() {
             </span>
           </p>
         </div>
+      </div>
+
+      <div className="container">
+        <CompanyProfileCard/>
       </div>
 
       <div className="container footer-social-row">

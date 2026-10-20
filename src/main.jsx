@@ -90,7 +90,7 @@ const leadership = [
     img: '/images/leadership-hirasingh.jpeg',
   },
   {
-    name: 'Pratiksha N. Joshi',
+    name: 'Pratiksha Joshi',
     role: 'Director',
     desc: 'Contributes to company management, business coordination and long-term growth.',
     img: '/images/leadership-pratiksha.jpeg',

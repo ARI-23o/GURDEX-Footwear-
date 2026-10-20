@@ -1,7 +1,13 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowUpRight, ArrowRight, ShieldCheck, Factory, BadgeCheck, Truck, CheckCircle2, ChevronDown, HardHat, Footprints, Settings, ClipboardCheck, Phone, Mail, MapPin, MessageCircle, Send, Search, Filter, Clock3, Building2, PackageCheck, Layers3, Wrench, FlaskConical, Globe, Target, Eye } from 'lucide-react';
+import {
+  Menu, X, ArrowUpRight, ArrowRight, ShieldCheck, Factory, BadgeCheck,
+  Truck, CheckCircle2, ChevronDown, HardHat, Footprints, Settings,
+  ClipboardCheck, Phone, Mail, MapPin, MessageCircle, Send, Search,
+  Filter, Clock3, Building2, PackageCheck, Layers3, Wrench, FlaskConical,
+  Target, Eye, Sparkles, ExternalLink, Info, Check, ChevronRight
+} from 'lucide-react';
 import './styles.css';
 
 const CONFIG = {
@@ -9,8 +15,6 @@ const CONFIG = {
   brandFullName: 'FORGEX™ | Industrial Safety Footwear',
   legalName: 'GUARDEX Footwear Private Limited',
   tagline: 'Industrial Safety Footwear',
-  websiteDisplay: 'www.guardexfootwear.com',
-  websiteUrl: 'https://www.guardexfootwear.com',
   salesEmail: 'sales@guardexfootwear.com',
   enquiryEmail: 'enquiry@guardexfootwear.com',
   infoEmail: 'info@guardexfootwear.com',
@@ -23,9 +27,15 @@ const CONFIG = {
     { label: 'Nimesh Joshi (Office)', number: '+91 79-7245 8345', tel: '+917972458345' },
   ],
   factoryAddress: 'Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Inds. Estate, Near Jain Mandir, Village Mori, Poman (Kaman Road), Tehsil Vasai, District Palghar, Maharashtra - 401208, India.',
-  officeAddress: 'Flat No. 902, Vasaione Reality, Ambadi Road, Diwanman, Vasai West, District Palghar, Maharashtra - 401202, India.',
+  officeAddress: 'Flat No. 902, Vasai One Realty, Bldg. No. 2, Ambadi Road, Diwanman, Vasai West, Palghar, Maharashtra – 401202, India.',
   officeMapUrl: 'https://maps.app.goo.gl/Xb6EA651zJ1R7bmK8?g_st=i&utm_campaign=ac-im',
   cin: 'U15201MR2026PTC481287',
+  regNumber: '481287',
+  roc: 'Registrar of Companies (RoC-Mumbai II), Maharashtra, India',
+  incorpDate: '29 September 2026',
+  status: 'Active',
+  capital: '₹1,00,000 / ₹1,00,000',
+  nicCode: 'Manufacture of footwear (NIC Code: 15201)',
   social: {
     youtube: 'https://youtube.com/@Forgex-safetyshoes',
     instagram: 'https://www.instagram.com/Forgex.footwear',
@@ -39,7 +49,7 @@ const waLink = (message) => `https://wa.me/${CONFIG.whatsappNumber}?text=${encod
 
 function YoutubeIcon({ size = 18 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{flexShrink:0}}>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="shrink-0">
       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
     </svg>
   );
@@ -47,7 +57,7 @@ function YoutubeIcon({ size = 18 }) {
 
 function InstagramIcon({ size = 18 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{flexShrink:0}}>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="shrink-0">
       <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
       <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
@@ -57,7 +67,7 @@ function InstagramIcon({ size = 18 }) {
 
 function FacebookIcon({ size = 18 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{flexShrink:0}}>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="shrink-0">
       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
     </svg>
   );
@@ -65,62 +75,161 @@ function FacebookIcon({ size = 18 }) {
 
 function LinkedinIcon({ size = 18 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{flexShrink:0}}>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="shrink-0">
       <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.66 1.66 0 1 0 0 3.32 1.66 1.66 0 0 0 0-3.32z"/>
     </svg>
   );
 }
 
+// Exactly mapped to flyer graphics and scanned content
 const productData = [
-  { id:'FX-101', name:'FORGEX Classic Steel Toe', category:'Safety Shoes', type:'Low ankle', desc:'Everyday industrial protection with PU double-density sole & certified steel toe cap.', features:['PU double-density injection sole','Steel toe impact protection (200J)','Oil & acid resistant outsole'], img:'/images/cat.jpeg', tag:'PU Double-Density' },
-  { id:'FX-204', name:'FORGEX Rugged High-Ankle Boot', category:'Safety Boots', type:'High ankle', desc:'Demanding shop-floor & construction safety boot with reinforced ankle padding and anti-slip tread.', features:['High-ankle reinforced collar','PU double-density anti-skid sole','Heavy-duty steel toe cap'], img:'/images/cat1.jpeg', tag:'Heavy Duty' },
-  { id:'FX-310', name:'FORGEX Executive Work Shoe', category:'Safety Shoes', type:'Low ankle', desc:'Clean corporate profile for facility managers, engineers and light shop floors.', features:['Low-profile smart workwear look','Lightweight PU double-density sole','Cushioned insole for all-day comfort'], img:'/images/cat2.jpeg', tag:'Executive' },
-  { id:'FX-422', name:'FORGEX All-Terrain Safety Boot', category:'Safety Boots', type:'Mid ankle', desc:'Robust high-traction safety boot for outdoor infrastructure and heavy site operations.', features:['Deep-cleat mud & slip-resistant tread','Water-resistant leather upper','PU double-density cushioned midsole'], img:'/images/cat3.jpeg', tag:'All Terrain' },
-  { id:'FX-510', name:'FORGEX Lightweight Sport Sneaker', category:'Lightweight Range', type:'Low ankle', desc:'Contemporary safety footwear engineered for active logistics, warehousing and tech floors.', features:['Sport-inspired breathable upper','Protective steel toe cap','Flexible PU lightweight sole'], img:'/images/cat5.jpeg', tag:'Lightweight' },
-  { id:'FX-608', name:'FORGEX Industrial Utility Boot', category:'Safety Boots', type:'High ankle', desc:'Utility-led design for heavy manufacturing, chemical plants and engineering plants.', features:['Chemical & oil resistant PU sole','Anti-static properties design','Full-grain protective leather upper'], img:'/images/cat6.jpeg', tag:'Utility' },
-  { id:'FX-701', name:'FORGEX Pro-Grip Low Ankle', category:'Safety Shoes', type:'Low ankle', desc:'High performance anti-static footwear engineered for engineering & automotive assembly.', features:['Anti-static PU compound','Puncture resistant midsole','Shock absorbing heel cavity'], img:'/images/cat7.jpeg', tag:'Pro Series' },
-  { id:'FX-802', name:'FORGEX Heavy Construction Boot', category:'Safety Boots', type:'High ankle', desc:'Maximum impact & puncture protection built for infrastructure & construction sites.', features:['High tensile steel toe','Double density injection','Padded ankle protection'], img:'/images/cat8.jpeg', tag:'Construction' },
+  {
+    id: 'FX-101',
+    name: 'FORGEX Classic Steel Toe',
+    category: 'Safety Shoes',
+    type: 'Low Ankle',
+    tag: 'Steel Toe Cap',
+    img: '/images/cat1.jpeg',
+    desc: 'Trusted protection for everyday work. Features heavy-duty steel toe cap impact resistance, slip-resistant outsole, and all-day comfort support.',
+    features: ['Certified Steel Toe Impact (200J)', 'Slip Resistant PU Outsole', 'Premium Breathable Leather Upper', 'Cushioned Shock-Absorbing Heel'],
+  },
+  {
+    id: 'FX-204',
+    name: 'FORGEX Rugged High-Ankle Boot',
+    category: 'Safety Boots',
+    type: 'High Ankle',
+    tag: 'Heavy Duty Boot',
+    img: '/images/plant-1.jpeg',
+    desc: 'Engineered for tough environments and demanding construction & infrastructure sites with reinforced ankle collar and heavy-duty steel toe.',
+    features: ['Reinforced High-Ankle Collar', 'Deep-Cleat Mud & Slip Resistant Sole', 'High-Impact Steel Toe Cap', 'Breathable Weatherproof Upper'],
+  },
+  {
+    id: 'FX-310',
+    name: 'FORGEX Executive Work Shoe',
+    category: 'Executive Range',
+    type: 'Low Ankle',
+    tag: 'Corporate & Site',
+    img: '/images/plant-2.jpeg',
+    desc: 'Professional look with complete protection for facility managers, site engineers, inspection teams, and corporate industrial floors.',
+    features: ['Smart Sleek Executive Profile', 'Concealed Protective Steel Toe', 'Lightweight Flexible PU Sole', 'All-Day Ergonomic Cushioning'],
+  },
+  {
+    id: 'FX-401',
+    name: 'FORGEX Double-Density Safety Shoe',
+    category: 'Safety Shoes',
+    type: 'Low Ankle',
+    tag: 'Double-Density PU',
+    img: '/images/cat3.jpeg',
+    desc: 'Tough outside, comfort inside. Features advanced double-density PU sole technology combining a soft comfort upper layer with a hard durable outsole.',
+    features: ['Soft Upper PU Comfort Layer', 'Hard Lower PU Durable Tread', 'Certified Steel Toe Cap', 'Deep Anti-Slip Cleat Pattern'],
+  },
+  {
+    id: 'FX-502',
+    name: 'FORGEX Anti-Puncture Safety Shoe',
+    category: 'Safety Shoes',
+    type: 'Low Ankle',
+    tag: 'Anti-Puncture Tech',
+    img: '/images/cat5.jpeg',
+    desc: 'Built stronger for safer steps. Designed for hazardous work environments requiring high puncture resistance against sharp nails, metal, and glass.',
+    features: ['Anti-Puncture Steel/Composite Mid-Sole', 'Protects Against Nails & Metal Shards', 'Certified Steel Toe Protection', 'Heavy-Duty Slip-Resistant Outsole'],
+  },
+  {
+    id: 'FX-603',
+    name: 'FORGEX Sport Look Safety Shoe',
+    category: 'Lightweight Range',
+    type: 'Sport Sneaker',
+    tag: 'Sporty & Agile',
+    img: '/images/cat6.jpeg',
+    desc: 'Modern sporty design with maximum protection (up to 200 Joules). Engineered for active logistics, high-movement assembly, warehousing, and tech facilities.',
+    features: ['Sport-Inspired Breathable Upper', 'Steel Toe Cap (up to 200J)', 'Shock-Absorbing Cushioned Midsole', 'Available in 3 Dynamic Colorways'],
+  },
+  {
+    id: 'FX-701',
+    name: 'FORGEX Ergonomic PU Insole',
+    category: 'Insoles & Accessories',
+    type: 'Cushion Insole',
+    tag: 'Ergonomic Support',
+    img: '/images/cat.jpeg',
+    desc: 'Engineered for all-day comfort in tough working environments. Superior cushioning, arch support, and shock-absorbing heel zone reduce foot fatigue.',
+    features: ['Superior Cushioning Foam', 'Ergonomic Arch Support Layer', 'Breathable Air Ventilation Holes', 'Shock-Absorbing Heel Cavity'],
+  },
+  {
+    id: 'FX-702',
+    name: 'FORGEX PU Memory Insole',
+    category: 'Insoles & Accessories',
+    type: 'Memory Insole',
+    tag: 'Memory Foam Tech',
+    img: '/images/cat2.jpeg',
+    desc: 'Superior comfort for longer work hours with advanced multi-layer memory foam that moulds to the foot and delivers maximum joint impact relief.',
+    features: ['Multi-Layer PU Memory Foam', 'Custom Foot-Contour Moulding', 'Maximum Impact & Joint Relief', 'Anti-Microbial Breathable Fabric Top'],
+  },
+  {
+    id: 'FX-801',
+    name: 'FORGEX Everyday School Shoe',
+    category: 'School Shoes',
+    type: 'Kids Uniform',
+    tag: 'Active Kids',
+    img: '/images/cat7.jpeg',
+    desc: 'Everyday comfort for active school kids with durable sole, secure hook & loop closure, and easy-to-clean premium synthetic leather.',
+    features: ['Lightweight & Durable Plastic Sole', 'Quick Hook & Loop Velcro Closure', 'Easy-To-Clean Synthetic Leather', 'Soft Inner Cushion Lining'],
+  },
+  {
+    id: 'FX-802',
+    name: 'FORGEX School Shoes Full Range',
+    category: 'School Shoes',
+    type: 'Full Collection',
+    tag: '12 Models Series',
+    img: '/images/cat8.jpeg',
+    desc: 'Complete school uniform footwear collection featuring 12 models (FX-S01 to FX-S12) including lace-up, Velcro, Mary Jane, and formal options for boys and girls.',
+    features: ['12 Specialized Uniform Models', 'Lace-Up, Velcro & Mary Jane Options', 'Durable Sole Built for Playgrounds', 'Vasai & Institutional Bulk Orders'],
+  },
 ];
 
 const leadership = [
   {
     name: 'Hirasingh Parmar',
     role: 'Director',
-    desc: 'Provides business leadership, strategic direction and overall company development.',
+    desc: 'Provides business leadership, strategic direction and overall company development for GUARDEX Footwear Private Limited.',
     img: '/images/leadership-hirasingh.jpeg',
   },
   {
     name: 'Pratiksha Joshi',
     role: 'Director',
-    desc: 'Contributes to company management, business coordination and long-term growth.',
+    desc: 'Contributes to company management, organizational coordination, and long-term business growth.',
     img: '/images/leadership-pratiksha.jpeg',
   },
   {
     name: 'Nimesh Joshi',
     role: 'Sales Head, Quality & Production Planning',
-    desc: 'Sales, quality coordination and production planning to support business growth and operational efficiency.',
+    desc: 'Oversees sales operations, quality standards coordination, and production planning to support client satisfaction.',
     img: '/images/leadership-nimesh.jpeg',
   },
 ];
 
 const navItems = [
-  ['Home','/'],
-  ['About','/about'],
-  ['Products','/products'],
-  ['Manufacturing','/manufacturing'],
-  ['Quality & Compliance','/quality'],
-  ['Contact','/contact'],
+  ['Home', '/'],
+  ['About Us', '/about'],
+  ['Products Catalogue', '/products'],
+  ['Manufacturing Facility', '/manufacturing'],
+  ['Quality & Compliance', '/quality'],
+  ['Contact Us', '/contact'],
 ];
 
-function Brand({ light=false }) {
+function Brand({ light = false }) {
   return (
-    <Link to="/" className={`brand ${light?'brand-light':''}`} aria-label="FORGEX home">
-      <div className="brand-logo-wrap">
-        <img src="/forgex-logo.jpg" alt="FORGEX™ Logo" className="brand-logo-img" />
+    <Link to="/" className="flex items-center gap-3 shrink-0 group" aria-label="FORGEX home">
+      <div className={`h-12 w-auto px-2 py-1 rounded-lg border flex items-center justify-center transition-transform group-hover:scale-102 ${
+        light ? 'bg-white border-slate-700 shadow-xs' : 'bg-white border-slate-200 shadow-xs'
+      }`}>
+        <img src="/forgex-logo.jpg" alt="FORGEX™ Logo" className="h-9 w-auto max-w-[170px] object-contain block" />
       </div>
-      <div className="brand-text">
-        <strong>FORGEX<span>™</span></strong>
-        <small>{CONFIG.legalName.toUpperCase()}</small>
+      <div className="flex flex-col">
+        <div className={`font-extrabold text-xl sm:text-2xl tracking-wider leading-none font-display ${light ? 'text-white' : 'text-slate-900'}`}>
+          FORGEX<span className="text-amber-500 font-bold">™</span>
+        </div>
+        <div className={`text-[9.5px] sm:text-[10.5px] font-bold tracking-widest uppercase mt-1 leading-none ${light ? 'text-slate-400' : 'text-slate-500'}`}>
+          GUARDEX FOOTWEAR PVT LTD
+        </div>
       </div>
     </Link>
   );
@@ -130,11 +239,11 @@ function Header() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -143,103 +252,328 @@ function Header() {
     return () => { document.body.style.overflow = ''; };
   }, [open]);
 
-  React.useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth > 1180 && open) setOpen(false);
-    };
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, [open]);
-
   return (
     <>
-      <div className="topbar">
-        <div className="container topbar-inner">
-          <span className="topbar-left"><ShieldCheck size={14}/> Product Brand: FORGEX™ | {CONFIG.legalName}</span>
-          <span className="topbar-right">
-            <a href={`tel:${CONFIG.primaryPhone.replace(/\s+/g,'')}`} style={{display:'inline-flex', alignItems:'center', gap:'6px', marginRight:'16px'}}>
-              <Phone size={13}/> {CONFIG.primaryPhone}
+      {/* TOPBAR */}
+      <div className="bg-slate-950 text-slate-300 text-xs border-b border-slate-800/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+          <div className="flex items-center gap-2 text-slate-300">
+            <span className="inline-flex items-center gap-1.5 text-amber-400 font-semibold">
+              <ShieldCheck size={14} className="text-amber-400 shrink-0"/> Product Brand: FORGEX™
+            </span>
+            <span className="text-slate-600 hidden md:inline">|</span>
+            <span className="hidden md:inline text-slate-400">{CONFIG.legalName}</span>
+          </div>
+          <div className="flex items-center gap-4 text-xs">
+            <a href={`tel:${CONFIG.primaryPhone.replace(/\s+/g,'')}`} className="inline-flex items-center gap-1.5 hover:text-amber-400 transition-colors">
+              <Phone size={13} className="text-amber-400 shrink-0"/> {CONFIG.primaryPhone}
             </a>
-            <a href={`mailto:${CONFIG.salesEmail}`} style={{display:'inline-flex', alignItems:'center', gap:'6px'}}>
-              <Mail size={13}/> {CONFIG.salesEmail}
+            <span className="text-slate-700">•</span>
+            <a href={`mailto:${CONFIG.salesEmail}`} className="inline-flex items-center gap-1.5 hover:text-amber-400 transition-colors">
+              <Mail size={13} className="text-amber-400 shrink-0"/> {CONFIG.salesEmail}
             </a>
-          </span>
+          </div>
         </div>
       </div>
-      <header className="header">
-        <div className="container nav-wrap">
-          <Brand/>
-          {open && <div className="nav-backdrop" onClick={() => setOpen(false)} aria-hidden="true"/>}
-          <nav className={open ? 'nav nav-open' : 'nav'} aria-label="Main navigation">
+
+      {/* STICKY NAVBAR */}
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+          <Brand />
+
+          {/* Desktop Navigation */}
+          <nav className="hidden xl:flex items-center gap-1 lg:gap-2" aria-label="Main navigation">
             {navItems.map(([label, path]) => (
-              <NavLink key={path} to={path} end={path === '/'} onClick={() => setOpen(false)}>
+              <NavLink
+                key={path}
+                to={path}
+                end={path === '/'}
+                className={({ isActive }) => `px-3.5 py-2 rounded-lg text-sm font-semibold transition-all ${
+                  isActive
+                    ? 'text-amber-600 bg-amber-50/80 font-bold'
+                    : 'text-slate-700 hover:text-slate-950 hover:bg-slate-100/70'
+                }`}
+              >
                 {label}
               </NavLink>
             ))}
-            <div className="mobile-cta">
-              <Link className="btn btn-primary" to="/corporate-enquiry" onClick={() => setOpen(false)}>
-                Get a Bulk Quote <ArrowRight size={16}/>
-              </Link>
-            </div>
           </nav>
-          <div className="nav-actions">
-            <Link className="btn btn-primary nav-quote" to="/corporate-enquiry">Get a Bulk Quote <ArrowUpRight size={16}/></Link>
-            <button className="menu-btn" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>
+
+          {/* Action Button & Mobile Menu Trigger */}
+          <div className="flex items-center gap-3">
+            <Link
+              to="/corporate-enquiry"
+              className="hidden sm:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 lg:px-5 py-2.5 rounded-lg shadow-xs hover:shadow-md transition-all active:scale-98"
+            >
+              Get Bulk Quote <ArrowUpRight size={16} />
+            </Link>
+            
+            <button
+              onClick={() => setOpen(!open)}
+              className="xl:hidden p-2.5 rounded-lg border border-slate-200 text-slate-800 hover:bg-slate-100 focus:outline-none transition-colors"
+              aria-label={open ? 'Close Menu' : 'Open Menu'}
+            >
               {open ? <X size={22}/> : <Menu size={22}/>}
             </button>
           </div>
         </div>
+
+        {/* Mobile Navigation Drawer */}
+        {open && (
+          <>
+            <div
+              className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs z-40 xl:hidden"
+              onClick={() => setOpen(false)}
+              aria-hidden="true"
+            />
+            <div className="fixed top-20 left-0 right-0 max-h-[calc(100vh-5rem)] overflow-y-auto bg-white border-b-2 border-amber-500 shadow-2xl z-50 xl:hidden p-6 animate-in slide-in-from-top-4 duration-200">
+              <nav className="flex flex-col gap-1">
+                {navItems.map(([label, path]) => (
+                  <NavLink
+                    key={path}
+                    to={path}
+                    end={path === '/'}
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) => `px-4 py-3 rounded-lg text-base font-semibold flex items-center justify-between transition-colors ${
+                      isActive
+                        ? 'text-amber-600 bg-amber-50 font-bold'
+                        : 'text-slate-800 hover:bg-slate-50'
+                    }`}
+                  >
+                    <span>{label}</span>
+                    <ChevronRight size={18} className="text-slate-400"/>
+                  </NavLink>
+                ))}
+              </nav>
+
+              <div className="mt-6 pt-5 border-t border-slate-100 flex flex-col gap-3">
+                <Link
+                  to="/corporate-enquiry"
+                  onClick={() => setOpen(false)}
+                  className="w-full flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl shadow-md text-base"
+                >
+                  Get Bulk Quote <ArrowRight size={18}/>
+                </Link>
+                <a
+                  href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-xl text-sm"
+                >
+                  <MessageCircle size={18}/> WhatsApp Direct
+                </a>
+              </div>
+            </div>
+          </>
+        )}
       </header>
     </>
   );
 }
 
+// Modal for Full Product Inspection
+function ProductModal({ product, onClose }) {
+  if (!product) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 max-h-[90vh] flex flex-col">
+        {/* Header */}
+        <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">{product.category} • {product.id}</span>
+            <h3 className="text-xl font-bold font-display">{product.name}</h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+            aria-label="Close modal"
+          >
+            <X size={22} />
+          </button>
+        </div>
+
+        {/* Content Body */}
+        <div className="overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-center">
+            <img
+              src={product.img}
+              alt={product.name}
+              className="w-full h-auto max-h-[420px] object-contain rounded-xl"
+            />
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <div>
+              <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-md uppercase tracking-wider">
+                {product.tag}
+              </span>
+              <p className="mt-3 text-slate-700 leading-relaxed text-sm sm:text-base">
+                {product.desc}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Specifications & Features:</h4>
+              <ul className="grid grid-cols-1 gap-2 text-sm text-slate-700">
+                {product.features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckCircle2 size={16} className="text-amber-500 shrink-0 mt-0.5" />
+                    <span>{f}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
+              <Link
+                to={`/corporate-enquiry?model=${encodeURIComponent(product.name)}`}
+                onClick={onClose}
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 px-4 rounded-xl text-sm transition-colors"
+              >
+                Enquire Bulk Quote <ArrowRight size={16}/>
+              </Link>
+              <a
+                href={waLink(`Hello GUARDEX, I want to enquire about ${product.name} (${product.id}).`)}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-xl text-sm transition-colors"
+              >
+                <MessageCircle size={16}/> WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProductCard({ product, onSelect }) {
+  return (
+    <div className="group bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-xl hover:border-amber-400/70 transition-all duration-300 flex flex-col">
+      {/* Product Image Box */}
+      <div className="relative aspect-[4/3] w-full bg-slate-50 flex items-center justify-center p-3 border-b border-slate-100 overflow-hidden">
+        <img
+          src={product.img}
+          alt={product.name}
+          loading="lazy"
+          className="w-full h-full object-contain group-hover:scale-104 transition-transform duration-300"
+        />
+        <div className="absolute top-3 left-3 flex gap-2">
+          <span className="bg-slate-900/80 backdrop-blur-xs text-white text-[11px] font-bold px-2.5 py-1 rounded-md tracking-wider uppercase">
+            {product.type}
+          </span>
+        </div>
+        <div className="absolute top-3 right-3">
+          <span className="bg-amber-500 text-slate-950 text-[11px] font-extrabold px-2 py-0.5 rounded shadow-xs">
+            {product.id}
+          </span>
+        </div>
+      </div>
+
+      {/* Info Body */}
+      <div className="p-5 flex-1 flex flex-col justify-between">
+        <div>
+          <div className="text-xs font-bold text-amber-600 tracking-wider uppercase">{product.category}</div>
+          <h3 className="font-bold text-lg text-slate-900 mt-1 font-display group-hover:text-amber-600 transition-colors">
+            {product.name}
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+            {product.desc}
+          </p>
+
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {product.features.slice(0, 2).map((feat, idx) => (
+              <span key={idx} className="inline-flex items-center gap-1 text-[11.5px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded-md">
+                <Check size={11} className="text-amber-500 shrink-0"/> {feat}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Action Row */}
+        <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between gap-2">
+          <button
+            onClick={() => onSelect(product)}
+            className="text-xs sm:text-sm font-bold text-amber-600 hover:text-amber-700 inline-flex items-center gap-1 transition-colors"
+          >
+            View Spec Sheet <ArrowUpRight size={14}/>
+          </button>
+          <Link
+            to={`/corporate-enquiry?model=${encodeURIComponent(product.name)}`}
+            className="text-xs font-bold bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white px-3 py-1.5 rounded-md transition-colors"
+          >
+            Enquire
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Official MCA Registration Details Card matching reference layout
 function CompanyProfileCard() {
   return (
-    <div className="company-profile-card">
-      <div className="company-profile-header">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="#10b981" aria-hidden="true" style={{flexShrink:0}}>
+    <div className="bg-slate-950 text-white rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-xl my-8">
+      {/* Header */}
+      <div className="flex items-center gap-3 pb-4 border-b border-slate-800 mb-6">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#10b981" aria-hidden="true" className="shrink-0">
           <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z"/>
         </svg>
-        <h3>Company Profile & Registration Details</h3>
+        <h3 className="text-base sm:text-lg font-bold text-white tracking-wide font-display">
+          Company Profile & Registration Details
+        </h3>
       </div>
-      <div className="company-profile-grid">
-        <div className="profile-field">
-          <span className="profile-label">Company Name:</span>
-          <span className="profile-value">GUARDEX FOOTWEAR PRIVATE LIMITED</span>
+
+      {/* 2-Column Key Value Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5 text-sm">
+        <div>
+          <span className="block text-xs font-medium text-slate-400">Company Name:</span>
+          <span className="font-bold text-slate-100 tracking-wide mt-0.5 block">{CONFIG.legalName.toUpperCase()}</span>
         </div>
-        <div className="profile-field">
-          <span className="profile-label">Corporate Identification Number (CIN):</span>
-          <span className="profile-value highlight">{CONFIG.cin}</span>
+
+        <div>
+          <span className="block text-xs font-medium text-slate-400">Corporate Identification Number (CIN):</span>
+          <span className="font-bold text-amber-400 tracking-wider mt-0.5 block font-mono text-base">{CONFIG.cin}</span>
         </div>
-        <div className="profile-field">
-          <span className="profile-label">Registration Number:</span>
-          <span className="profile-value">481287</span>
+
+        <div>
+          <span className="block text-xs font-medium text-slate-400">Registration Number:</span>
+          <span className="font-bold text-slate-100 mt-0.5 block font-mono">{CONFIG.regNumber}</span>
         </div>
-        <div className="profile-field">
-          <span className="profile-label">Class & Type:</span>
-          <span className="profile-value">Private, Non-government company (Company limited by shares)</span>
+
+        <div>
+          <span className="block text-xs font-medium text-slate-400">Class & Type:</span>
+          <span className="font-bold text-slate-100 mt-0.5 block">Private, Non-government company (Company limited by shares)</span>
         </div>
-        <div className="profile-field">
-          <span className="profile-label">Registered Office Jurisdiction:</span>
-          <span className="profile-value">Registrar of Companies (RoC-Mumbai II), Maharashtra, India</span>
+
+        <div>
+          <span className="block text-xs font-medium text-slate-400">Registered Office Jurisdiction:</span>
+          <span className="font-bold text-slate-100 mt-0.5 block">{CONFIG.roc}</span>
         </div>
-        <div className="profile-field">
-          <span className="profile-label">Date of Incorporation & Status:</span>
-          <span className="profile-value">29 September 2026 &nbsp;|&nbsp; <span style={{color:'#10b981', fontWeight:700}}>Active</span></span>
+
+        <div>
+          <span className="block text-xs font-medium text-slate-400">Date of Incorporation & Status:</span>
+          <span className="font-bold text-slate-100 mt-0.5 block">
+            {CONFIG.incorpDate} &nbsp;|&nbsp; <span className="text-emerald-400 font-extrabold uppercase">● {CONFIG.status}</span>
+          </span>
         </div>
-        <div className="profile-field">
-          <span className="profile-label">Authorized Capital / Paid-up Capital:</span>
-          <span className="profile-value">₹1,00,000 / ₹1,00,000</span>
+
+        <div>
+          <span className="block text-xs font-medium text-slate-400">Authorized Capital / Paid-up Capital:</span>
+          <span className="font-bold text-slate-100 mt-0.5 block">{CONFIG.capital}</span>
         </div>
-        <div className="profile-field">
-          <span className="profile-label">Principal Business Activity:</span>
-          <span className="profile-value">Manufacture of footwear (NIC Code: 15201)</span>
+
+        <div>
+          <span className="block text-xs font-medium text-slate-400">Principal Business Activity:</span>
+          <span className="font-bold text-slate-100 mt-0.5 block">{CONFIG.nicCode}</span>
         </div>
-        <div className="profile-field full-width">
-          <span className="profile-label">Registered Office Address:</span>
-          <span className="profile-value" style={{fontWeight:600, fontSize:'14px', color:'#cbd5e1', lineHeight:'1.5'}}>
-            Flat No. 902, Vasai One Realty, Bldg. No. 2, Ambadi Road, Diwanman, Vasai West, Palghar, Maharashtra – 401202, India.
+
+        <div className="md:col-span-2 pt-3 border-t border-slate-800/80">
+          <span className="block text-xs font-medium text-slate-400">Registered Office Address:</span>
+          <span className="font-medium text-slate-300 mt-0.5 block leading-relaxed text-xs sm:text-sm">
+            {CONFIG.officeAddress}
           </span>
         </div>
       </div>
@@ -247,230 +581,105 @@ function CompanyProfileCard() {
   );
 }
 
-function Footer() {
+function SectionHeading({ badge, title, description, center = false }) {
   return (
-    <footer className="footer">
-      <div className="container footer-grid">
-        <div className="footer-about">
-          <Brand light/>
-          <p style={{marginTop:'16px', fontWeight: 700, color: '#fff', fontSize:'15px'}}>
-            {CONFIG.legalName}
-          </p>
-          <p style={{margin: '4px 0 10px', color: '#f3a33b', fontWeight: 700, fontSize:'14px'}}>
-            Product Brand: FORGEX | Industrial Safety Footwear
-          </p>
-          <div className="cin-badge" style={{marginTop:'10px', display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 12px', background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.14)', borderRadius:'6px', color:'#d0d8df', fontSize:'12.5px'}}>
-            <span style={{color:'#f3a33b', fontWeight:700}}>CIN:</span>
-            <strong style={{letterSpacing:'.06em', color:'#ffffff'}}>{CONFIG.cin}</strong>
-          </div>
-        </div>
-
-        <div>
-          <h4>Explore</h4>
-          <Link to="/">Home</Link>
-          <Link to="/about">About Us & Leadership</Link>
-          <Link to="/products">Products Catalogue</Link>
-          <Link to="/manufacturing">Manufacturing Facility</Link>
-          <Link to="/quality">Quality & Compliance</Link>
-          <Link to="/contact">Contact Us</Link>
-        </div>
-
-        <div>
-          <h4>Follow & Connect</h4>
-          <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="footer-social-link" style={{display:'flex', alignItems:'center', gap:'8px', color:'#fca5a5', textDecoration:'none', margin:'8px 0', fontSize:'13.5px'}}>
-            <YoutubeIcon size={16}/> YouTube: @Forgex-safetyshoes <ArrowUpRight size={12}/>
-          </a>
-          <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="footer-social-link" style={{display:'flex', alignItems:'center', gap:'8px', color:'#f472b6', textDecoration:'none', margin:'8px 0', fontSize:'13.5px'}}>
-            <InstagramIcon size={16}/> Instagram: @Forgex.footwear <ArrowUpRight size={12}/>
-          </a>
-          <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="footer-social-link" style={{display:'flex', alignItems:'center', gap:'8px', color:'#93c5fd', textDecoration:'none', margin:'8px 0', fontSize:'13.5px'}}>
-            <FacebookIcon size={16}/> Facebook: @Forgex safetyfootwear <ArrowUpRight size={12}/>
-          </a>
-          <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="footer-social-link" style={{display:'flex', alignItems:'center', gap:'8px', color:'#7dd3fc', textDecoration:'none', margin:'8px 0', fontSize:'13.5px'}}>
-            <LinkedinIcon size={16}/> LinkedIn: @guardex footwear pvt ltd <ArrowUpRight size={12}/>
-          </a>
-          <a href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" style={{display:'flex', alignItems:'center', gap:'8px', color:'#20b866', fontWeight: 700, margin:'12px 0 6px', fontSize:'13.5px', textDecoration:'none'}}>
-            <MessageCircle size={16}/> WhatsApp: +91 91850 38002 <ArrowUpRight size={12}/>
-          </a>
-        </div>
-
-        <div>
-          <h4>Contact & Locations</h4>
-          <p className="contact-line">
-            <Mail size={16}/>
-            <span>
-              Sales: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#f3a33b', fontWeight:600}}>{CONFIG.salesEmail}</a><br/>
-              Enquiries: <a href={`mailto:${CONFIG.enquiryEmail}`} style={{color:'#d0d8df'}}>{CONFIG.enquiryEmail}</a>
-            </span>
-          </p>
-          <p className="contact-line">
-            <Phone size={16}/>
-            <span>
-              <strong>Factory / WhatsApp:</strong> <a href="tel:+919185038002" style={{color:'#fff', fontWeight:600}}>+91 91850 38002</a><br/>
-              <strong>Office:</strong> <a href="tel:+917972458345" style={{color:'#c0ccd6'}}>+91 79-7245 8345</a>
-            </span>
-          </p>
-          <p className="contact-line">
-            <MapPin size={16}/>
-            <span style={{fontSize:'12px', lineHeight:'1.5'}}>
-              <strong>Office:</strong> Flat 902, Vasaione Reality, Ambadi Rd, Vasai West – 401202<br/>
-              <a href={CONFIG.officeMapUrl} target="_blank" rel="noreferrer" style={{color:'#f3a33b', fontWeight:700, display:'inline-flex', alignItems:'center', gap:'4px', marginTop:'3px', textDecoration:'none'}}>
-                📍 View on Google Maps <ArrowUpRight size={12}/>
-              </a>
-            </span>
-          </p>
-          <p className="contact-line">
-            <Factory size={16}/>
-            <span style={{fontSize:'12px', lineHeight:'1.5'}}>
-              <strong>Factory:</strong> Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Inds. Estate, Mori, Poman (Kaman Road), Tehsil Vasai – 401208
-            </span>
-          </p>
-        </div>
-      </div>
-
-      <div className="container">
-        <CompanyProfileCard/>
-      </div>
-
-      <div className="container footer-social-row">
-        <span className="social-row-label">Official Social Media:</span>
-        <div className="social-links-list">
-          <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="social-pill youtube" aria-label="YouTube">
-            <YoutubeIcon size={16}/> <span>YouTube: @Forgex-safetyshoes</span>
-          </a>
-          <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="social-pill instagram" aria-label="Instagram">
-            <InstagramIcon size={16}/> <span>Instagram: @Forgex.footwear</span>
-          </a>
-          <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="social-pill facebook" aria-label="Facebook">
-            <FacebookIcon size={15}/> <span>Facebook: @Forgex safetyfootwear</span>
-          </a>
-          <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="social-pill linkedin" aria-label="LinkedIn">
-            <LinkedinIcon size={15}/> <span>LinkedIn: @guardex footwear pvt ltd</span>
-          </a>
-        </div>
-      </div>
-
-      <div className="container footer-bottom">
-        <span>© 2026 GUARDEX Footwear Private Limited. All rights reserved. | CIN: <strong style={{color:'#f3a33b'}}>{CONFIG.cin}</strong></span>
-        <span>Product Brand: FORGEX | Industrial Safety Footwear | Designed for Work. Built for Durability.</span>
-      </div>
-    </footer>
-  );
-}
-
-function FloatingWhatsApp() {
-  return (
-    <a className="wa-float" href={waLink('Hello, I am interested in FORGEX safety footwear by GUARDEX Footwear Private Limited.')} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp">
-      <MessageCircle size={22}/><span>Chat with us</span>
-    </a>
-  );
-}
-
-function PageIntro({ title, description }) {
-  return (
-    <section className="page-intro">
-      <div className="container">
-        <h1>{title}</h1>
-        <p>{description}</p>
-      </div>
-    </section>
-  );
-}
-
-function SectionHeading({ title, description, center = false }) {
-  return (
-    <div className={`section-heading ${center ? 'text-center' : ''}`}>
-      <h2>{title}</h2>
-      {description && <p>{description}</p>}
+    <div className={`mb-10 sm:mb-12 ${center ? 'text-center max-w-3xl mx-auto' : 'max-w-2xl'}`}>
+      {badge && (
+        <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-md uppercase tracking-wider mb-3">
+          {badge}
+        </span>
+      )}
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight font-display">
+        {title}
+      </h2>
+      {description && (
+        <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+          {description}
+        </p>
+      )}
     </div>
-  );
-}
-
-function ProductCard({ product }) {
-  return (
-    <article className="product-card">
-      <Link to={`/products/${product.id}`} className="product-image">
-        <img src={product.img} alt={`${product.name} footwear`} loading="lazy" />
-        <span className="product-tag">{product.tag}</span>
-        <span className="product-arrow"><ArrowUpRight size={19}/></span>
-      </Link>
-      <div className="product-info">
-        <div className="product-meta"><span>{product.category}</span><span>{product.id}</span></div>
-        <h3><Link to={`/products/${product.id}`}>{product.name}</Link></h3>
-        <p>{product.desc}</p>
-        <Link className="text-link" to={`/products/${product.id}`}>View details <ArrowRight size={15}/></Link>
-      </div>
-    </article>
   );
 }
 
 function PartnerWithForgex() {
   const categories = [
-    { title: 'Industrial and corporate buyers', icon: Building2 },
-    { title: 'Manufacturing companies and factories', icon: Factory },
-    { title: 'Safety equipment suppliers', icon: ShieldCheck },
-    { title: 'Footwear dealers and distributors', icon: Truck },
-    { title: 'Contractors and bulk purchasers', icon: PackageCheck },
+    { title: 'Industrial & Corporate Buyers', icon: Building2 },
+    { title: 'Factories & Manufacturing Units', icon: Factory },
+    { title: 'Safety Equipment Suppliers', icon: ShieldCheck },
+    { title: 'Footwear Dealers & Distributors', icon: Truck },
+    { title: 'Contractors & Infrastructure Firms', icon: PackageCheck },
   ];
 
   return (
-    <section className="section partner-section">
-      <div className="container">
-        <div className="partner-header text-center" style={{maxWidth:'820px', margin:'0 auto 30px'}}>
-          <h2>Partner with FORGEX</h2>
-          <p className="partner-lead">We welcome business enquiries from:</p>
+    <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white border-y border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="inline-block px-3 py-1 bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider mb-3">
+            Business Partnerships
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-display text-white">
+            Partner with FORGEX™
+          </h2>
+          <p className="mt-3 text-slate-300 text-base sm:text-lg">
+            We welcome business enquiries, institutional bulk procurement, and dealership opportunities across India.
+          </p>
         </div>
 
-        <div className="partner-categories-grid">
+        {/* 5 Category Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-12">
           {categories.map((c, i) => (
-            <div className="partner-category-card" key={i}>
-              <div className="partner-icon-wrap">
-                <c.icon size={26}/>
+            <div
+              key={i}
+              className="bg-white/5 border border-white/10 hover:border-amber-400/60 hover:bg-white/10 transition-all rounded-xl p-4 text-center flex flex-col items-center justify-center gap-3 group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <c.icon size={24} />
               </div>
-              <h3>{c.title}</h3>
+              <h4 className="text-xs sm:text-sm font-semibold text-slate-200 leading-snug">{c.title}</h4>
             </div>
           ))}
         </div>
 
-        <div className="partner-invite-box">
-          <p className="partner-invite-text">
-            If your business requires industrial safety footwear, we invite you to contact us to discuss product development, future availability, bulk requirements and dealership opportunities.
+        {/* Contact Channels Bar */}
+        <div className="bg-white/5 border border-white/15 rounded-2xl p-6 sm:p-8 max-w-4xl mx-auto text-center">
+          <p className="text-sm sm:text-base text-slate-300 mb-6 max-w-2xl mx-auto">
+            If your business requires certified industrial safety footwear, contact our commercial team to discuss custom production runs, bulk pricing, and distribution tie-ups.
           </p>
 
-          <div className="partner-channels-grid">
-            <div className="partner-email-block">
-              <Mail size={22} color="#f3a33b"/>
-              <div>
-                <span className="partner-channel-label">Sales Enquiries:</span>
-                <a href={`mailto:${CONFIG.salesEmail}`} className="partner-channel-link">{CONFIG.salesEmail}</a>
-              </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+            <div className="bg-slate-900/80 border border-white/10 rounded-xl p-4 text-left">
+              <span className="text-xs text-slate-400 block font-medium">Sales Enquiries:</span>
+              <a href={`mailto:${CONFIG.salesEmail}`} className="text-amber-400 font-bold text-sm hover:underline block truncate mt-0.5">
+                {CONFIG.salesEmail}
+              </a>
             </div>
-
-            <div className="partner-email-block">
-              <Mail size={22} color="#f3a33b"/>
-              <div>
-                <span className="partner-channel-label">Business Enquiries:</span>
-                <a href={`mailto:${CONFIG.enquiryEmail}`} className="partner-channel-link">{CONFIG.enquiryEmail}</a>
-              </div>
+            <div className="bg-slate-900/80 border border-white/10 rounded-xl p-4 text-left">
+              <span className="text-xs text-slate-400 block font-medium">Bulk & Commercial:</span>
+              <a href={`mailto:${CONFIG.enquiryEmail}`} className="text-amber-400 font-bold text-sm hover:underline block truncate mt-0.5">
+                {CONFIG.enquiryEmail}
+              </a>
             </div>
-
-            <div className="partner-email-block">
-              <Phone size={22} color="#f3a33b"/>
-              <div>
-                <span className="partner-channel-label">Factory / WhatsApp:</span>
-                <a href="tel:+919185038002" className="partner-channel-link">+91 91850 38002</a>
-              </div>
+            <div className="bg-slate-900/80 border border-white/10 rounded-xl p-4 text-left">
+              <span className="text-xs text-slate-400 block font-medium">Direct Phone & WhatsApp:</span>
+              <a href="tel:+919185038002" className="text-amber-400 font-bold text-sm hover:underline block truncate mt-0.5">
+                +91 91850 38002
+              </a>
             </div>
           </div>
 
-          <div className="partner-actions-row">
-            <Link className="btn btn-primary" to="/corporate-enquiry">
-              Corporate Bulk Enquiry <ArrowRight size={16}/>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              to="/corporate-enquiry"
+              className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm shadow-md transition-all flex items-center gap-2"
+            >
+              Submit Corporate Enquiry <ArrowRight size={16}/>
             </Link>
-            <Link className="btn btn-outline-light" to="/dealer-enquiry">
-              Become a Dealer / Distributor <ArrowUpRight size={16}/>
-            </Link>
-            <a className="btn btn-wa" href={waLink('Hello GUARDEX, we are interested in discussing partnership opportunities for FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer">
+            <a
+              href={waLink('Hello GUARDEX, we are interested in discussing partnership opportunities for FORGEX industrial safety footwear.')}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-xl text-sm shadow-md transition-all flex items-center gap-2"
+            >
               <MessageCircle size={17}/> WhatsApp Us Direct
             </a>
           </div>
@@ -480,874 +689,1247 @@ function PartnerWithForgex() {
   );
 }
 
-function CTA({ title = 'Need footwear for your team?', text = 'Tell us your requirements and our team can help you explore the right product range.', button = 'Enquire for Bulk Orders', to = '/corporate-enquiry' }) {
+function Footer() {
   return (
-    <section className="cta-band">
-      <div className="container cta-inner">
-        <div>
-          <h2>{title}</h2>
-          <p>{text}</p>
+    <footer className="bg-slate-950 text-slate-400 pt-16 pb-12 border-t border-slate-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 pb-12 border-b border-slate-900">
+          {/* Column 1: Brand & Registration */}
+          <div className="flex flex-col gap-4">
+            <Brand light />
+            <p className="text-sm text-slate-400 leading-relaxed mt-2">
+              <strong className="text-slate-200">{CONFIG.legalName}</strong> manufactures reliable industrial safety footwear under the brand name <strong className="text-amber-400">FORGEX™</strong>.
+            </p>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/5 border border-white/10 text-xs text-slate-300">
+              <span className="text-amber-400 font-bold">CIN:</span>
+              <strong className="font-mono text-white tracking-wider">{CONFIG.cin}</strong>
+            </div>
+          </div>
+
+          {/* Column 2: Quick Links */}
+          <div>
+            <h4 className="text-white text-sm font-bold uppercase tracking-wider mb-4 font-display">
+              Explore
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {navItems.map(([label, path]) => (
+                <li key={path}>
+                  <Link to={path} className="hover:text-amber-400 transition-colors inline-block py-0.5">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/corporate-enquiry" className="text-amber-400 font-semibold hover:underline inline-block py-0.5">
+                  Corporate Bulk Enquiry →
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Social & WhatsApp */}
+          <div>
+            <h4 className="text-white text-sm font-bold uppercase tracking-wider mb-4 font-display">
+              Follow & Connect
+            </h4>
+            <div className="flex flex-col gap-2.5 text-xs sm:text-sm">
+              <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-red-400 hover:text-red-300 transition-colors">
+                <YoutubeIcon size={16}/> YouTube: @Forgex-safetyshoes
+              </a>
+              <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-pink-400 hover:text-pink-300 transition-colors">
+                <InstagramIcon size={16}/> Instagram: @Forgex.footwear
+              </a>
+              <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-blue-400 hover:text-blue-300 transition-colors">
+                <FacebookIcon size={16}/> Facebook: @Forgex safetyfootwear
+              </a>
+              <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-sky-400 hover:text-sky-300 transition-colors">
+                <LinkedinIcon size={16}/> LinkedIn: @guardex footwear pvt ltd
+              </a>
+              <a href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-emerald-400 hover:text-emerald-300 font-bold mt-2">
+                <MessageCircle size={16}/> WhatsApp: +91 91850 38002
+              </a>
+            </div>
+          </div>
+
+          {/* Column 4: Contact & Addresses */}
+          <div>
+            <h4 className="text-white text-sm font-bold uppercase tracking-wider mb-4 font-display">
+              Contact & Locations
+            </h4>
+            <div className="space-y-3.5 text-xs text-slate-400">
+              <div className="flex items-start gap-2.5">
+                <Mail size={15} className="text-amber-400 shrink-0 mt-0.5"/>
+                <div>
+                  <span className="text-slate-300 font-semibold">Sales: </span>
+                  <a href={`mailto:${CONFIG.salesEmail}`} className="text-amber-400 hover:underline">{CONFIG.salesEmail}</a>
+                  <br/>
+                  <span className="text-slate-400 font-normal">Enquiries: </span>
+                  <a href={`mailto:${CONFIG.enquiryEmail}`} className="text-slate-300 hover:underline">{CONFIG.enquiryEmail}</a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <Phone size={15} className="text-amber-400 shrink-0 mt-0.5"/>
+                <div>
+                  <span className="text-slate-300 font-semibold">Factory / WhatsApp: </span>
+                  <a href="tel:+919185038002" className="text-white font-bold hover:underline">+91 91850 38002</a>
+                  <br/>
+                  <span className="text-slate-400 font-normal">Office Desk: </span>
+                  <a href="tel:+917972458345" className="text-slate-300 hover:underline">+91 79-7245 8345</a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <MapPin size={15} className="text-amber-400 shrink-0 mt-0.5"/>
+                <div className="leading-snug">
+                  <strong className="text-slate-200">Office:</strong> Flat No. 902, Vasai One Realty, Ambadi Rd, Vasai West, Palghar – 401202<br/>
+                  <a href={CONFIG.officeMapUrl} target="_blank" rel="noreferrer" className="text-amber-400 hover:underline font-semibold inline-flex items-center gap-1 mt-1">
+                    📍 View on Google Maps <ArrowUpRight size={12}/>
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-2.5">
+                <Factory size={15} className="text-amber-400 shrink-0 mt-0.5"/>
+                <div className="leading-snug">
+                  <strong className="text-slate-200">Factory:</strong> Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Inds. Estate, Mori, Poman, Vasai – 401208
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <Link className="btn btn-light" to={to}>{button} <ArrowUpRight size={17}/></Link>
+
+        {/* Company Profile & Registration Details Card (MCA Falconebiz) */}
+        <CompanyProfileCard />
+
+        {/* Social Media Pill Row */}
+        <div className="pt-6 pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-900">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-500">Official Social Media:</span>
+          <div className="flex flex-wrap items-center gap-2.5">
+            <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-red-500/50 hover:bg-white/10 text-slate-300 text-xs font-medium transition-colors">
+              <YoutubeIcon size={14}/> YouTube
+            </a>
+            <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-pink-500/50 hover:bg-white/10 text-slate-300 text-xs font-medium transition-colors">
+              <InstagramIcon size={14}/> Instagram
+            </a>
+            <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-white/10 text-slate-300 text-xs font-medium transition-colors">
+              <FacebookIcon size={14}/> Facebook
+            </a>
+            <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-sky-500/50 hover:bg-white/10 text-slate-300 text-xs font-medium transition-colors">
+              <LinkedinIcon size={14}/> LinkedIn
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom Bar: Copyright & Tagline */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 text-center sm:text-left">
+          <span>
+            {CONFIG.copyright} | CIN: <strong className="text-amber-400 font-mono">{CONFIG.cin}</strong>
+          </span>
+          <span className="text-slate-400">
+            Product Brand: <strong className="text-white">FORGEX™</strong> | Industrial Safety Footwear
+          </span>
+        </div>
       </div>
-    </section>
+    </footer>
   );
 }
 
-function Home() {
+function FloatingWhatsApp() {
   return (
-    <>
-      <main>
-        <section className="hero">
-          <div className="hero-bg"/>
-          <div className="container hero-content">
-            <div className="hero-copy">
-              <h1>FORGEX – Built for Demanding Work Environments</h1>
-              <p style={{fontSize:'19px', fontWeight:700, color:'#f3a33b', margin:'0 0 16px', letterSpacing:'.02em'}}>
-                Industrial Safety Footwear | Designed for Work. Built for Durability.
-              </p>
-              <p style={{marginBottom:'14px'}}>
-                FORGEX is the industrial safety footwear brand of GUARDEX Footwear Private Limited, India.
-              </p>
-              <p style={{marginBottom:'24px'}}>
-                We are developing industrial safety footwear solutions for manufacturing units, engineering industries, construction businesses, warehouses, logistics operations and other demanding workplaces.
-              </p>
-              <div className="hero-buttons">
-                <Link className="btn btn-primary" to="/contact">Contact Us <ArrowRight size={17}/></Link>
-                <Link className="btn btn-outline-light" to="/corporate-enquiry">Business Enquiry <ArrowUpRight size={17}/></Link>
-              </div>
-              <div className="hero-proof">
-                <div className="proof-icon"><ShieldCheck size={20}/></div>
-                <div>
-                  <strong>PU Double-Density Safety Footwear</strong>
-                  <span>Engineered for Maximum Workplace Protection</span>
-                </div>
-              </div>
+    <a
+      href={waLink('Hello, I am interested in FORGEX safety footwear by GUARDEX Footwear Private Limited.')}
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Chat on WhatsApp"
+      className="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 transition-transform hover:scale-105 active:scale-95 group"
+    >
+      <MessageCircle size={22} className="shrink-0" />
+      <span className="hidden sm:inline text-sm font-bold tracking-wide">Chat with us</span>
+    </a>
+  );
+}
+
+function PageIntro({ title, description, badge }) {
+  return (
+    <div className="bg-slate-900 text-white py-14 sm:py-20 border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+        {badge && (
+          <span className="inline-block px-3 py-1 bg-amber-500/20 border border-amber-500/30 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider mb-3">
+            {badge}
+          </span>
+        )}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-white">
+          {title}
+        </h1>
+        {description && (
+          <p className="mt-3 text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+            {description}
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ----------------------------------------------------------------------
+// PAGES
+// ----------------------------------------------------------------------
+
+function Home() {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  return (
+    <main>
+      {/* HERO SECTION */}
+      <section className="relative bg-slate-950 text-white min-h-[580px] lg:min-h-[640px] flex flex-col justify-between overflow-hidden">
+        {/* Background Image with Dark Vignette */}
+        <div
+          className="absolute inset-0 bg-cover bg-[center_right] z-0"
+          style={{ backgroundImage: `url('/images/hero-clean.jpg')` }}
+        />
+        {/* Dark Gradient Overlay for razor-sharp typography */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 to-slate-950/20 z-10" />
+
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28 w-full flex-1 flex flex-col justify-center">
+          <div className="max-w-2xl">
+            <span className="inline-block px-3.5 py-1.5 bg-amber-500/20 border border-amber-500/40 text-amber-400 text-xs font-bold rounded-md uppercase tracking-wider mb-4">
+              Designed for Work. Built for Durability.
+            </span>
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-display leading-[1.15]">
+              FORGEX – Built for Demanding Work Environments
+            </h1>
+            <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+              Industrial safety footwear developed by <strong>GUARDEX Footwear Private Limited</strong> for manufacturing units, engineering plants, construction sites, warehouses, and heavy operations across India.
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <Link
+                to="/products"
+                className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg transition-all text-sm sm:text-base active:scale-98"
+              >
+                Explore Footwear Catalogue <ArrowRight size={18}/>
+              </Link>
+              <Link
+                to="/corporate-enquiry"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl transition-all text-sm sm:text-base"
+              >
+                Bulk Business Enquiry <ArrowUpRight size={18}/>
+              </Link>
             </div>
-          </div>
-          <div className="hero-bottom container">
-            <span><span className="orange-dot"/> PU DOUBLE-DENSITY INDUSTRIAL FOOTWEAR</span>
-            <span>FORGEX™ BY GUARDEX</span>
-          </div>
-        </section>
 
-        <section className="trust-strip">
-          <div className="container trust-grid">
-            <div><ShieldCheck/><span><strong>PU Double-Density</strong><small>High durability & shock absorption</small></span></div>
-            <div><Factory/><span><strong>Vasai Manufacturing Plant</strong><small>Shankheshwar Industrial Estate</small></span></div>
-            <div><PackageCheck/><span><strong>Bulk & Corporate Orders</strong><small>Direct procurement pricing</small></span></div>
-            <div><Truck/><span><strong>Dealer & Distributor Network</strong><small>Expansion across India</small></span></div>
-          </div>
-        </section>
-
-        <section className="section section-products">
-          <div className="container">
-            <div className="section-top">
-              <SectionHeading title="Our Product Range" description="Industrial footwear developed for manufacturing, engineering, construction, warehousing and logistics applications."/>
-              <Link className="text-link desktop-link" to="/products">View all products <ArrowRight size={16}/></Link>
-            </div>
-
-            <div className="range-overview-grid">
-              <div className="range-card">
-                <h3>Industrial Safety Shoes</h3>
-                <p>Industrial footwear developed for manufacturing, engineering, construction, warehousing and logistics applications.</p>
-              </div>
-              <div className="range-card">
-                <h3>PU Double-Density Safety Shoes</h3>
-                <p>Safety footwear under development using a double-density polyurethane sole construction, subject to individual model specifications.</p>
-              </div>
-              <div className="range-card">
-                <h3>Industrial Footwear Solutions</h3>
-                <p>We aim to develop footwear options for industrial customers and business buyers with requirements varying by application, size and product specification.</p>
-              </div>
-            </div>
-
-            <div className="product-grid">{productData.slice(0,6).map(p=><ProductCard key={p.id} product={p}/>)}</div>
-
-            <div className="range-notice-box">
-              <ClipboardCheck size={24}/>
+            {/* Proof Badge */}
+            <div className="mt-8 p-3.5 bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl inline-flex items-center gap-3 text-xs sm:text-sm text-slate-200">
+              <ShieldCheck size={22} className="text-amber-400 shrink-0"/>
               <div>
-                <p><strong>For model availability, sizes, technical details, product testing status and bulk pricing, please contact our team.</strong></p>
-                <p>Product availability and protection features will be confirmed according to the relevant model specifications and applicable certifications.</p>
-              </div>
-            </div>
-
-            <div className="mobile-center"><Link className="btn btn-outline-dark" to="/products">Explore all products <ArrowRight size={16}/></Link></div>
-          </div>
-        </section>
-
-        <section className="section dark-section">
-          <div className="container split-layout">
-            <div className="split-image">
-              <img src="/images/plant-1.jpeg" alt="FORGEX Manufacturing Plant" loading="lazy"/>
-              <div className="image-caption">
-                <Factory size={20}/>
-                <span>
-                  <strong>FORGEX Manufacturing Plant</strong>
-                  <small>Vasai, Palghar, Maharashtra</small>
-                </span>
-              </div>
-            </div>
-            <div className="split-copy">
-              <h2>FORGEX – Protection Begins with the Right Footwear.</h2>
-              <p>Our focus is on durable product design, PU double-density sole technology, comfort and quality-oriented manufacturing processes.</p>
-              <p>Our manufacturing setup is currently in progress, and we are working towards developing a range of industrial safety footwear for business customers across India.</p>
-
-              <div style={{margin:'26px 0 30px'}}>
-                <h3 style={{fontSize:'19px', color:'#f3a33b', margin:'0 0 14px', letterSpacing:'.03em'}}>Our Focus</h3>
-                <div className="feature-list" style={{margin:0, gap:'14px'}}>
-                  <div><CheckCircle2 size={20}/><span><strong>Industrial safety footwear</strong></span></div>
-                  <div><CheckCircle2 size={20}/><span><strong>PU double-density sole technology</strong></span></div>
-                  <div><CheckCircle2 size={20}/><span><strong>Product development and quality control</strong></span></div>
-                  <div><CheckCircle2 size={20}/><span><strong>Dealer and distributor enquiries</strong></span></div>
-                  <div><CheckCircle2 size={20}/><span><strong>Corporate and bulk-order enquiries</strong></span></div>
-                </div>
-              </div>
-
-              <div style={{display:'flex', gap:'12px', flexWrap:'wrap'}}>
-                <Link className="btn btn-primary" to="/contact">Contact Us <ArrowRight size={16}/></Link>
-                <Link className="btn btn-outline-light" to="/corporate-enquiry">Business Enquiry <ArrowUpRight size={16}/></Link>
+                <strong className="block text-white font-semibold">PU Double-Density Safety Footwear</strong>
+                <span className="text-slate-300 text-xs">Direct injection sole technology engineered for industrial protection</span>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
-        <section className="section industries">
-          <div className="container">
-            <SectionHeading title="Built for Demanding Industry Sectors" description="FORGEX footwear is engineered for tough operational environments across India." center/>
-            <div className="industry-grid">
-              {[
-                { icon: Factory, title: 'Manufacturing & Plants', text: 'Machinery floors, chemical plants & fabrication units' },
-                { icon: HardHat, title: 'Construction & Infra', text: 'Site engineers, contractors and heavy equipment work' },
-                { icon: Settings, title: 'Engineering & Utilities', text: 'Maintenance workshops, electrical & industrial servicing' },
-                { icon: Truck, title: 'Logistics & Warehousing', text: 'High-movement distribution centers & freight operations' },
-              ].map(x=>(
-                <div className="industry-card" key={x.title}>
-                  <span className="industry-icon"><x.icon size={24}/></span>
-                  <h3>{x.title}</h3>
-                  <p>{x.text}</p>
-                  <ArrowUpRight className="industry-arrow" size={18}/>
-                </div>
-              ))}
+        {/* Hero Bottom Bar */}
+        <div className="relative z-20 border-t border-white/15 bg-slate-950/60 backdrop-blur-xs">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs uppercase tracking-widest text-slate-400 text-center sm:text-left">
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-500 inline-block"/> PU DOUBLE-DENSITY INDUSTRIAL FOOTWEAR
+            </span>
+            <span className="font-semibold text-slate-300">FORGEX™ BY GUARDEX FOOTWEAR PVT LTD</span>
+          </div>
+        </div>
+      </section>
+
+      {/* TRUST STRIP */}
+      <section className="bg-white border-b border-slate-200 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-lg bg-amber-500/15 text-amber-600 flex items-center justify-center shrink-0">
+                <ShieldCheck size={22}/>
+              </div>
+              <div>
+                <h4 className="font-bold text-sm text-slate-900">PU Double-Density</h4>
+                <p className="text-xs text-slate-500 mt-0.5">High durability & shock absorption</p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-lg bg-amber-500/15 text-amber-600 flex items-center justify-center shrink-0">
+                <Factory size={22}/>
+              </div>
+              <div>
+                <h4 className="font-bold text-sm text-slate-900">Vasai Manufacturing Plant</h4>
+                <p className="text-xs text-slate-500 mt-0.5">Shankheshwar Industrial Estate</p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-lg bg-amber-500/15 text-amber-600 flex items-center justify-center shrink-0">
+                <PackageCheck size={22}/>
+              </div>
+              <div>
+                <h4 className="font-bold text-sm text-slate-900">Bulk & Corporate Orders</h4>
+                <p className="text-xs text-slate-500 mt-0.5">Direct procurement commercial pricing</p>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center gap-3.5">
+              <div className="w-11 h-11 rounded-lg bg-amber-500/15 text-amber-600 flex items-center justify-center shrink-0">
+                <Truck size={22}/>
+              </div>
+              <div>
+                <h4 className="font-bold text-sm text-slate-900">All-India Distribution</h4>
+                <p className="text-xs text-slate-500 mt-0.5">Dealer & supply network expansion</p>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="section quality-preview">
-          <div className="container quality-inner">
+      {/* FEATURED PRODUCTS SHOWCASE */}
+      <section className="py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-10">
             <div>
-              <h2>Quality & Compliance</h2>
-              <p>At FORGEX, product quality and workplace safety are important considerations in our product development process.</p>
-              <p style={{marginTop:'12px', color:'var(--muted)'}}>
-                The applicable BIS/ISI application and testing process for our planned safety footwear range is currently in progress. We are working towards meeting the applicable product requirements and standards.
+              <span className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-md uppercase tracking-wider mb-2">
+                Our Range
+              </span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 font-display">
+                Industrial Footwear Range
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base mt-1">
+                Engineered for manufacturing, engineering, logistics, and industrial safety.
               </p>
-              <p style={{fontSize:'13px', color:'#92400e', background:'#fff8ee', borderLeft:'3px solid #d97706', padding:'10px 14px', borderRadius:'4px', margin:'18px 0 20px', fontWeight:600}}>
-                Important: BIS/ISI certification has not been represented as granted.
-              </p>
-              <Link className="text-link" to="/quality">Learn more about Quality & Compliance <ArrowRight size={16}/></Link>
             </div>
-            <div className="quality-cards">
-              <div className="quality-card"><FlaskConical/><strong>Testing In Progress</strong><span>BIS/ISI application underway</span></div>
-              <div className="quality-card"><ClipboardCheck/><strong>Quality Benchmark</strong><span>PU double-density sole & steel toe</span></div>
-              <div className="quality-card"><BadgeCheck/><strong>Verified Standards</strong><span>Documentation upon official grant</span></div>
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-1.5 font-bold text-amber-600 hover:text-amber-700 text-sm transition-colors"
+            >
+              View all 10 products <ArrowRight size={16}/>
+            </Link>
+          </div>
+
+          {/* 6 Featured Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {productData.slice(0, 6).map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onSelect={(p) => setSelectedProduct(p)}
+              />
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-xl text-sm transition-colors"
+            >
+              Explore Complete Product Catalog <ArrowRight size={16}/>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* TECHNICAL FOCUS & PROCESS */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            badge="Engineering"
+            title="Protection Begins With The Right Footwear"
+            description="Our manufacturing setup is built around polyurethane (PU) double-density injection moulding, durable upper materials, and certified impact protection."
+            center
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center mb-4">
+                <Factory size={24}/>
+              </div>
+              <h3 className="font-bold text-lg text-slate-900 font-display">60-Station PU Conveyor</h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                Planned automatic conveyor system ensuring consistent sole density, precise chemical formulation, and high bond strength between upper and sole.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center mb-4">
+                <ShieldCheck size={24}/>
+              </div>
+              <h3 className="font-bold text-lg text-slate-900 font-display">Steel Toe Impact (200J)</h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                Reinforced high-tensile steel toe caps engineered to protect workers against compression loads and heavy falling objects up to 200 Joules.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center mb-4">
+                <Layers3 size={24}/>
+              </div>
+              <h3 className="font-bold text-lg text-slate-900 font-display">Double-Density Cushioning</h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                A dual-layer construction with a softer shock-absorbing PU midsole for worker comfort, paired with a high-abrasion, slip-resistant outer tread.
+              </p>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* LEADERSHIP & MANAGEMENT SECTION */}
-        <section className="section soft-section">
-          <div className="container">
-            <SectionHeading
-              title="Leadership & Management"
-              description="Experienced leadership guiding GUARDEX Footwear Private Limited towards operational excellence and customer trust."
-              center
-            />
-            <div className="leadership-grid">
-              {leadership.map(l => (
-                <div className="leadership-card" key={l.name}>
-                  {l.img && (
-                    <div className="leadership-avatar">
-                      <img src={l.img} alt={l.name} loading="lazy" />
-                    </div>
-                  )}
-                  <h3>{l.name}</h3>
-                  <div className="leadership-role">{l.role}</div>
-                  <p>{l.desc}</p>
+      {/* DEMANDING WORKPLACE SECTORS */}
+      <section className="py-16 sm:py-20 bg-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-2">Industry Applications</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white font-display">
+              Built for Demanding Industry Sectors
+            </h2>
+            <p className="mt-2 text-slate-400 text-sm sm:text-base">
+              Engineered to meet specific hazards across Indian manufacturing and infrastructure sectors.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Factory, title: 'Manufacturing & Plants', text: 'Automotive assembly, fabrication yards, processing plants, and machine floors.' },
+              { icon: HardHat, title: 'Construction & Infra', text: 'Civil contractors, infrastructure sites, heavy equipment, and road works.' },
+              { icon: Settings, title: 'Engineering & Utilities', text: 'Power stations, workshops, electrical servicing, and facility maintenance.' },
+              { icon: Truck, title: 'Logistics & Warehousing', text: 'Distribution hubs, cargo terminals, freight transit, and packaging floors.' },
+            ].map((s, idx) => (
+              <div key={idx} className="p-6 rounded-2xl bg-slate-800/60 border border-slate-700/80 hover:border-amber-400/50 transition-colors">
+                <s.icon size={26} className="text-amber-400 mb-3" />
+                <h3 className="font-bold text-base text-white">{s.title}</h3>
+                <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LEADERSHIP SECTION */}
+      <section className="py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            badge="Our People"
+            title="Leadership & Management"
+            description="Experienced leadership guiding GUARDEX Footwear Private Limited towards manufacturing excellence, quality control, and customer trust."
+            center
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {leadership.map((person, idx) => (
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-shadow">
+                <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={person.img}
+                    alt={person.name}
+                    className="w-full h-full object-cover object-top hover:scale-103 transition-transform duration-300"
+                    loading="lazy"
+                  />
                 </div>
-              ))}
-            </div>
+                <div className="p-5">
+                  <h3 className="font-bold text-lg text-slate-900 font-display">{person.name}</h3>
+                  <div className="text-xs font-bold text-amber-600 uppercase tracking-wider mt-1">{person.role}</div>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">{person.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <PartnerWithForgex/>
-      </main>
-    </>
+      <PartnerWithForgex />
+
+      {/* Product Spec Modal */}
+      {selectedProduct && (
+        <ProductModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
+    </main>
   );
 }
 
 function About() {
   return (
-    <>
-      <PageIntro title="About GUARDEX Footwear Private Limited" description="An Indian footwear company developing its industrial safety footwear business under the brand name FORGEX."/>
-      <section className="section">
-        <div className="container split-layout about-split">
-          <div className="split-image about-image">
-            <img src="/images/plant-2.jpeg" alt="Industrial workplace"/>
-            <div className="floating-number">
-              <strong>FORGEX</strong><span>SAFETY<br/>FOOTWEAR</span>
+    <main>
+      <PageIntro
+        badge="Company Overview"
+        title="About GUARDEX Footwear Private Limited"
+        description="An Indian footwear manufacturer developing industrial safety footwear and utility footwear under the brand name FORGEX™."
+      />
+
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-2">Our Foundation</span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 font-display">
+                Protecting India’s Workforce with Precision Footwear
+              </h2>
+              <div className="mt-4 space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+                <p>
+                  <strong>GUARDEX Footwear Private Limited</strong> (CIN: {CONFIG.cin}) is incorporated under the Companies Act, 2013, with registered headquarters in Vasai, Maharashtra.
+                </p>
+                <p>
+                  Our primary mission is to engineer dependable, durable, and certified industrial safety footwear under the registered brand name <strong>FORGEX™</strong>.
+                </p>
+                <p>
+                  We are developing our state-of-the-art manufacturing facility in Shankheshwar Industrial Estate, Vasai, featuring a <strong>60-station PU pouring conveyor machine</strong>, <strong>double-density PU injection systems</strong>, and precision aluminium moulds.
+                </p>
+              </div>
+
+              <div className="mt-8 p-4 rounded-xl bg-amber-50 border border-amber-200/80 flex items-start gap-3">
+                <ShieldCheck size={22} className="text-amber-600 shrink-0 mt-0.5" />
+                <div className="text-xs sm:text-sm text-amber-900">
+                  <strong>Commitment to Quality:</strong> All products are designed around rigorous dimensional standards, certified steel toe impact resistance, and ergonomic sole cushioning for demanding industrial shifts.
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="split-copy">
-            <h2>About GUARDEX Footwear Private Limited</h2>
-            <p><strong>GUARDEX Footwear Private Limited</strong> is an Indian footwear company developing its industrial safety footwear business under the brand name <strong>FORGEX</strong>.</p>
-            <p>Our objective is to develop dependable industrial safety footwear for professionals and businesses operating in demanding work environments.</p>
-            <p>We are establishing our manufacturing capabilities with a planned production setup featuring a <strong>60-station PU pouring conveyor machine</strong>, a <strong>double-density PU system</strong> and <strong>aluminium moulds</strong>.</p>
-            <p>We aim to build long-term relationships with industrial buyers, dealers, distributors and corporate customers through product quality, reliable service and a commitment to continuous improvement.</p>
-            <div className="info-note">
-              <ShieldCheck/>
-              <span>
-                <strong>Manufacturing & Quality Standards</strong>
-                <small>PU Double-Density direct injection sole with certified steel toe protection.</small>
-              </span>
+
+            {/* Quick Facts Card */}
+            <div className="bg-slate-900 text-white p-8 rounded-3xl border border-slate-800 shadow-xl">
+              <h3 className="text-xl font-bold font-display text-white mb-6">Corporate Highlights</h3>
+              <div className="space-y-4 text-sm">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                  <span className="text-slate-400">Company Name</span>
+                  <span className="font-bold text-white">{CONFIG.legalName}</span>
+                </div>
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                  <span className="text-slate-400">Product Brand</span>
+                  <span className="font-bold text-amber-400">FORGEX™</span>
+                </div>
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                  <span className="text-slate-400">CIN</span>
+                  <span className="font-mono font-bold text-white">{CONFIG.cin}</span>
+                </div>
+                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                  <span className="text-slate-400">Manufacturing Base</span>
+                  <span className="font-semibold text-white">Vasai, Maharashtra</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400">Core Technology</span>
+                  <span className="font-semibold text-amber-400">PU Double-Density Injection</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* MISSION & VISION */}
-      <section className="section" style={{background:'#f6f8f9', padding:'70px 0'}}>
-        <div className="container">
-          <SectionHeading title="Our Mission & Vision" description="Guiding principles driving FORGEX industrial safety footwear." center/>
-          <div className="mission-vision-grid">
-            <div className="mission-card">
-              <h3><Target size={26} color="#bd781f"/> Our Mission</h3>
-              <p>To develop durable and practical industrial safety footwear that supports worker protection, comfort and the requirements of modern workplaces.</p>
+      <section className="py-16 sm:py-20 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            badge="Purpose"
+            title="Our Mission & Vision"
+            center
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-xs border-l-4 border-l-amber-500">
+              <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center mb-4">
+                <Target size={26} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 font-display">Our Mission</h3>
+              <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                To develop durable, ergonomic, and practical industrial safety footwear that protects Indian workers, enhances workplace safety compliance, and delivers outstanding long-term durability.
+              </p>
             </div>
-            <div className="mission-card">
-              <h3><Eye size={26} color="#bd781f"/> Our Vision</h3>
-              <p>To establish FORGEX as a trusted Indian industrial safety footwear brand serving customers across India.</p>
+
+            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-xs border-l-4 border-l-slate-900">
+              <div className="w-12 h-12 rounded-xl bg-slate-900/10 text-slate-900 flex items-center justify-center mb-4">
+                <Eye size={26} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 font-display">Our Vision</h3>
+              <p className="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+                To establish FORGEX™ as a trusted, household name in Indian industrial safety footwear, recognized across manufacturing hubs, infrastructure sites, and institutions nationwide.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* OUR VALUES */}
-      <section className="section">
-        <div className="container">
-          <SectionHeading title="Our Values" description="The core values that define our manufacturing culture and client relationships." center/>
-          <div className="values-grid-cards">
-            <div className="value-mini-card">
-              <Factory size={28}/>
-              <strong>Quality-oriented manufacturing</strong>
-            </div>
-            <div className="value-mini-card">
-              <Footprints size={28}/>
-              <strong>Practical product design</strong>
-            </div>
-            <div className="value-mini-card">
-              <MessageCircle size={28}/>
-              <strong>Customer-focused service</strong>
-            </div>
-            <div className="value-mini-card">
-              <Building2 size={28}/>
-              <strong>Long-term business partnerships</strong>
-            </div>
-            <div className="value-mini-card">
-              <Layers3 size={28}/>
-              <strong>Continuous product development</strong>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* CORE VALUES */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            badge="Culture"
+            title="Our Core Values"
+            description="The foundational principles driving our factory floor, engineering processes, and client relationships."
+            center
+          />
 
-      {/* LEADERSHIP & MANAGEMENT SECTION */}
-      <section className="section soft-section">
-        <div className="container">
-          <SectionHeading title="Leadership & Management" description="Experienced leadership guiding GUARDEX Footwear towards operational excellence and customer trust." center/>
-          <div className="leadership-grid">
-            {leadership.map(l => (
-              <div className="leadership-card" key={l.name}>
-                {l.img && (
-                  <div className="leadership-avatar">
-                    <img src={l.img} alt={l.name} loading="lazy" />
-                  </div>
-                )}
-                <h3>{l.name}</h3>
-                <div className="leadership-role">{l.role}</div>
-                <p>{l.desc}</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {[
+              { icon: Factory, title: 'Quality-Oriented Manufacturing', desc: 'Strict batch control and chemical consistency.' },
+              { icon: Footprints, title: 'Practical Ergonomic Design', desc: 'Crafted for all-day comfort on hard floors.' },
+              { icon: MessageCircle, title: 'Customer-Focused Service', desc: 'Transparent communication and responsive fulfillment.' },
+              { icon: Building2, title: 'Long-Term Partnerships', desc: 'Fostering deep dealer and corporate buyer trust.' },
+              { icon: Layers3, title: 'Continuous Development', desc: 'Iterating designs to meet evolving workplace standards.' },
+            ].map((val, idx) => (
+              <div key={idx} className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 text-center flex flex-col items-center">
+                <div className="w-12 h-12 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center mb-3">
+                  <val.icon size={22} />
+                </div>
+                <h4 className="font-bold text-sm text-slate-900 leading-snug">{val.title}</h4>
+                <p className="mt-2 text-xs text-slate-500">{val.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <PartnerWithForgex/>
-    </>
+      {/* LEADERSHIP SECTION */}
+      <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            badge="Leadership"
+            title="Management Team"
+            description="Experienced professionals guiding GUARDEX Footwear towards operational efficiency and customer trust."
+            center
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {leadership.map((person, idx) => (
+              <div key={idx} className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-xs">
+                <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={person.img}
+                    alt={person.name}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="font-bold text-lg text-slate-900 font-display">{person.name}</h3>
+                  <div className="text-xs font-bold text-amber-600 uppercase tracking-wider mt-1">{person.role}</div>
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">{person.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <PartnerWithForgex />
+    </main>
   );
 }
 
 function Products() {
-  const [category, setCategory] = useState('All');
-  const [search, setSearch] = useState('');
-  const filtered = useMemo(() => productData.filter(p => (category === 'All' || p.category === category) && `${p.name} ${p.id} ${p.desc}`.toLowerCase().includes(search.toLowerCase())), [category, search]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [modalProduct, setModalProduct] = useState(null);
+
+  const categories = ['All', 'Safety Shoes', 'Safety Boots', 'Executive Range', 'Lightweight Range', 'Insoles & Accessories', 'School Shoes'];
+
+  const filteredProducts = useMemo(() => {
+    return productData.filter((p) => {
+      const matchCat = selectedCategory === 'All' || p.category === selectedCategory;
+      const matchSearch =
+        p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        p.desc.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        p.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        p.tag.toLowerCase().includes(searchTerm.toLowerCase());
+      return matchCat && matchSearch;
+    });
+  }, [selectedCategory, searchTerm]);
+
   return (
-    <>
-      <PageIntro title="Our Product Range" description="Industrial footwear developed for manufacturing, engineering, construction, warehousing and logistics applications."/>
-      <section className="section">
-        <div className="container">
+    <main>
+      <PageIntro
+        badge="Catalogue"
+        title="FORGEX™ Product Range"
+        description="Explore our complete line of industrial safety shoes, safety boots, executive workwear, ergonomic insoles, and school footwear."
+      />
 
-          <div className="range-overview-grid">
-            <div className="range-card">
-              <h3>Industrial Safety Shoes</h3>
-              <p>Industrial footwear developed for manufacturing, engineering, construction, warehousing and logistics applications.</p>
+      <section className="py-12 sm:py-16 bg-slate-50 min-h-screen">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Filter & Search Bar */}
+          <div className="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-xs mb-8 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
+            {/* Search Input */}
+            <div className="relative flex-1 max-w-md">
+              <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search products by model, code or feature..."
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-600"
+                >
+                  Clear
+                </button>
+              )}
             </div>
-            <div className="range-card">
-              <h3>PU Double-Density Safety Shoes</h3>
-              <p>Safety footwear under development using a double-density polyurethane sole construction, subject to individual model specifications.</p>
-            </div>
-            <div className="range-card">
-              <h3>Industrial Footwear Solutions</h3>
-              <p>We aim to develop footwear options for industrial customers and business buyers with requirements varying by application, size and product specification.</p>
+
+            {/* Category Pills */}
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-2 lg:pb-0 scrollbar-none">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-colors ${
+                    selectedCategory === cat
+                      ? 'bg-amber-500 text-slate-950 shadow-xs'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
           </div>
 
-          <div className="catalog-toolbar">
-            <div className="catalog-count">
-              <strong>{filtered.length.toString().padStart(2, '0')}</strong>
-              <span>models available<br/><small>FORGEX Range</small></span>
-            </div>
-            <div className="catalog-controls">
-              <label className="search-field">
-                <Search size={17}/>
-                <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search FORGEX model or feature" aria-label="Search products"/>
-              </label>
-              <label className="select-field">
-                <Filter size={16}/>
-                <select value={category} onChange={e => setCategory(e.target.value)} aria-label="Filter by category">
-                  <option>All</option>
-                  <option>Safety Shoes</option>
-                  <option>Safety Boots</option>
-                  <option>Lightweight Range</option>
-                </select>
-                <ChevronDown size={15}/>
-              </label>
-            </div>
+          {/* Product Counter */}
+          <div className="mb-6 flex items-center justify-between text-xs sm:text-sm text-slate-500">
+            <span>Showing <strong className="text-slate-900">{filteredProducts.length}</strong> products</span>
+            {selectedCategory !== 'All' && (
+              <span>Filtered by: <strong className="text-amber-600">{selectedCategory}</strong></span>
+            )}
           </div>
-          {filtered.length ? (
-            <div className="product-grid product-grid-all">
-              {filtered.map(p => <ProductCard key={p.id} product={p}/>)}
+
+          {/* Product Grid */}
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onSelect={(p) => setModalProduct(p)}
+                />
+              ))}
             </div>
           ) : (
-            <div className="empty-state">
-              <Search size={28}/>
-              <h3>No products found</h3>
-              <p>Try searching for another keyword or reset the category filter.</p>
-              <button className="btn btn-outline-dark" onClick={() => { setSearch(''); setCategory('All'); }}>Clear filters</button>
+            <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center max-w-md mx-auto my-12">
+              <Info size={36} className="text-amber-500 mx-auto mb-3" />
+              <h3 className="font-bold text-lg text-slate-900">No products matched</h3>
+              <p className="text-xs sm:text-sm text-slate-500 mt-1">Try adjusting your search terms or category filter.</p>
+              <button
+                onClick={() => { setSelectedCategory('All'); setSearchTerm(''); }}
+                className="mt-4 px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-bold hover:bg-slate-800"
+              >
+                Reset Filters
+              </button>
             </div>
           )}
-
-          <div className="range-notice-box">
-            <ClipboardCheck size={24}/>
-            <div>
-              <p><strong>For model availability, sizes, technical details, product testing status and bulk pricing, please contact our team.</strong></p>
-              <p>Product availability and protection features will be confirmed according to the relevant model specifications and applicable certifications.</p>
-            </div>
-          </div>
         </div>
       </section>
-      <PartnerWithForgex/>
-    </>
-  );
-}
 
-function ProductDetail() {
-  const { pathname } = useLocation();
-  const id = pathname.split('/').pop();
-  const product = productData.find(p => p.id === id);
-  if (!product) return <NotFound />;
-  return (
-    <>
-      <PageIntro title={product.name} description={`Detailed specifications for model ${product.id} from the FORGEX industrial safety footwear collection.`}/>
-      <section className="section">
-        <div className="container detail-layout">
-          <div className="detail-image">
-            <img src={product.img} alt={`${product.name}`} />
-            <span className="product-tag">{product.tag}</span>
-          </div>
-          <div className="detail-copy">
-            <div className="product-meta"><span>{product.category}</span><span>Model: {product.id}</span></div>
-            <h2>{product.name}</h2>
-            <p>{product.desc}</p>
-            <div className="detail-warning">
-              <ShieldCheck size={20}/>
-              <span>Manufactured by {CONFIG.legalName}. Engineered for industrial safety and durability.</span>
-            </div>
-            <h3>Key Features & Specifications</h3>
-            <ul className="check-list">
-              {product.features.map(f => (
-                <li key={f}><CheckCircle2 size={17}/>{f}</li>
-              ))}
-            </ul>
-            <div className="detail-actions">
-              <Link className="btn btn-primary" to={`/corporate-enquiry?product=${encodeURIComponent(product.name)}`}>
-                Enquire for Bulk Order <ArrowRight size={16}/>
-              </Link>
-              <a className="btn btn-outline-dark" href={waLink(`Hello, I would like to enquire about ${product.name} (${product.id}). Please share bulk pricing and technical details.`)} target="_blank" rel="noreferrer">
-                WhatsApp Enquiry <MessageCircle size={16}/>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      <PartnerWithForgex/>
-    </>
+      {/* Modal */}
+      {modalProduct && (
+        <ProductModal
+          product={modalProduct}
+          onClose={() => setModalProduct(null)}
+        />
+      )}
+    </main>
   );
 }
 
 function Manufacturing() {
   return (
-    <>
-      <PageIntro title="Manufacturing Facility" description="Explore GUARDEX Footwear Private Limited's modern production setup for FORGEX PU double-density safety shoes in Vasai, Maharashtra."/>
-      <section className="section">
-        <div className="container">
-          <div className="facility-hero">
-            <img src="/images/plant-1.jpeg" alt="Manufacturing setup"/>
-            <div className="facility-overlay">
-              <h2>Engineered for durability and industrial safety.</h2>
-              <p>{CONFIG.factoryAddress}</p>
+    <main>
+      <PageIntro
+        badge="Plant & Technology"
+        title="Manufacturing Facility"
+        description="Engineering excellence in Vasai, Maharashtra: 60-Station automatic PU pouring conveyor machine, precision moulds, and quality testing."
+      />
+
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            badge="Facility Overview"
+            title="Advanced Polyurethane Direct Injection Moulding"
+            description="Our planned production setup is tailored specifically for direct-on-upper PU double-density safety footwear manufacturing."
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-amber-600 font-bold text-xs uppercase tracking-wider block mb-2">Machine Setup</span>
+              <h3 className="text-xl font-bold text-slate-900 font-display">60-Station PU Pouring Conveyor</h3>
+              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                Automated continuous round-table conveyor allowing uniform cycle times, consistent metering of polyol and isocyanate, and high output productivity.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-amber-600 font-bold text-xs uppercase tracking-wider block mb-2">Polymer Formulation</span>
+              <h3 className="text-xl font-bold text-slate-900 font-display">Double-Density Injection</h3>
+              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                Direct dual-injection technology: a low-density polyurethane midsole for all-day cushion paired with a high-density outsole for abrasion resistance.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <span className="text-amber-600 font-bold text-xs uppercase tracking-wider block mb-2">Tooling</span>
+              <h3 className="text-xl font-bold text-slate-900 font-display">Aluminium Moulds</h3>
+              <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                CNC-machined aluminium moulds ensuring sharp tread definitions, deep anti-skid cleating, and consistent anatomical footbed ergonomics.
+              </p>
             </div>
           </div>
 
-          <div className="range-notice-box" style={{background:'#ffffff', border:'1px solid var(--line)', marginTop:'24px', marginBottom:'28px'}}>
-            <Settings size={28} color="#bd781f"/>
+          {/* Plant Address Banner */}
+          <div className="mt-12 p-8 rounded-2xl bg-slate-900 text-white flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <p style={{fontSize:'16px', color:'var(--navy)', marginBottom:'6px'}}><strong>Planned Production Setup & Machinery</strong></p>
-              <p style={{fontSize:'15px', color:'var(--muted)', margin:0}}>We are establishing our manufacturing capabilities with a planned production setup featuring a <strong>60-station PU pouring conveyor machine</strong>, a <strong>double-density PU system</strong> and <strong>aluminium moulds</strong>.</p>
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block mb-1">Plant Location</span>
+              <h4 className="text-xl font-bold font-display text-white">Vasai Manufacturing Unit</h4>
+              <p className="text-slate-300 text-sm mt-1 max-w-xl">
+                {CONFIG.factoryAddress}
+              </p>
             </div>
-          </div>
-
-          <div className="process-grid">
-            {[
-              { n: '01', icon: Layers3, title: 'Raw Material Selection', text: 'High-grade leather, certified steel toe caps, and premium polyurethane formulations.' },
-              { n: '02', icon: Wrench, title: 'Upper Stitching & Assembly', text: 'Precision cut patterns and reinforced multi-row stitching for structural endurance.' },
-              { n: '03', icon: ClipboardCheck, title: 'PU Direct Injection', text: 'Double-density PU moulding ensuring a permanent mechanical bond between upper and sole.' },
-              { n: '04', icon: PackageCheck, title: 'Final Inspection & Packing', text: 'Thorough inspection for toe cap clearance, sole adhesion, and secure batch dispatch packaging.' },
-            ].map(s => (
-              <article className="process-card" key={s.n}>
-                <div className="process-top"><span>{s.n}</span><s.icon size={23}/></div>
-                <h3>{s.title}</h3>
-                <p>{s.text}</p>
-              </article>
-            ))}
-          </div>
-
-          <div className="info-note wide-note">
-            <MapPin size={22}/>
-            <span>
-              <strong>Manufacturing Facility Address</strong>
-              <small>{CONFIG.factoryAddress}</small>
-            </span>
+            <Link
+              to="/contact"
+              className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm whitespace-nowrap"
+            >
+              Contact Factory Office →
+            </Link>
           </div>
         </div>
       </section>
-      <PartnerWithForgex/>
-    </>
+
+      <PartnerWithForgex />
+    </main>
   );
 }
 
 function Quality() {
   return (
-    <>
+    <main>
       <PageIntro
+        badge="Standards & Testing"
         title="Quality & Compliance"
-        description="At FORGEX, product quality and workplace safety are important considerations in our product development process."
+        description="Our approach to product durability, safety certifications, and continuous quality control."
       />
-      <section className="section">
-        <div className="container quality-feature">
-          <div className="quality-feature-copy">
-            <h2>Quality & Compliance Standards</h2>
-            <p>
-              At <strong>FORGEX</strong>, product quality and workplace safety are important considerations in our product development process.
-            </p>
-            <p>
-              The applicable BIS/ISI application and testing process for our planned safety footwear range is currently in progress.
-            </p>
-            <p>
-              We are working towards meeting the applicable product requirements and standards.
-            </p>
-            <p>
-              Certification status, product conformity and safety-performance claims will be updated only after the relevant official approvals and supporting documentation are available.
-            </p>
 
-            <div className="compliance-disclaimer-box">
-              <ShieldCheck size={28} color="#d97706" style={{flexShrink:0}}/>
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            badge="Compliance Status"
+            title="Testing & Certification in Progress"
+            description="At FORGEX, worker safety and product integrity are top priorities. Our planned safety footwear line is currently undergoing the applicable BIS/ISI application and laboratory testing process."
+          />
+
+          {/* Important Transparent Compliance Notice */}
+          <div className="p-6 rounded-2xl bg-amber-50 border border-amber-300/80 mb-12">
+            <div className="flex items-start gap-3">
+              <Info size={24} className="text-amber-700 shrink-0 mt-0.5" />
               <div>
-                <strong>Regulatory Compliance Disclosure</strong>
-                <p>Important: BIS/ISI certification has not been represented as granted.</p>
-              </div>
-            </div>
-
-            <div className="quality-points" style={{marginTop:'32px'}}>
-              <div className="quality-point-item">
-                <ClipboardCheck size={24} color="#bd781f" style={{flexShrink:0}}/>
-                <div>
-                  <strong>Testing In Progress</strong>
-                  <p>Applicable BIS/ISI application and testing process currently in progress.</p>
-                </div>
-              </div>
-              <div className="quality-point-item">
-                <FlaskConical size={24} color="#bd781f" style={{flexShrink:0}}/>
-                <div>
-                  <strong>Performance & Protection Objectives</strong>
-                  <p>Developing dependable PU double-density safety shoes engineered for tough workplace protection.</p>
-                </div>
-              </div>
-              <div className="quality-point-item">
-                <BadgeCheck size={24} color="#bd781f" style={{flexShrink:0}}/>
-                <div>
-                  <strong>Transparent Documentation</strong>
-                  <p>Product conformity and safety claims will be published immediately once official certifications are awarded.</p>
-                </div>
+                <strong className="text-amber-900 text-base font-bold block">Regulatory Compliance Notice</strong>
+                <p className="text-amber-800 text-sm mt-1 leading-relaxed">
+                  The applicable BIS/ISI testing and application process for our planned safety footwear range is underway. We are working diligently to meet and exceed all statutory industrial safety footwear criteria under relevant Indian standards (such as IS 15298). Official certification documentation will be provided upon formal grant.
+                </p>
               </div>
             </div>
           </div>
 
-          <div className="certificate-placeholder">
-            <div className="certificate-inner">
-              <ShieldCheck size={48} color="#bd781f"/>
-              <div className="certificate-rule"/>
-              <h3>Testing In Progress</h3>
-              <p>BIS / ISI application and laboratory testing currently underway for the FORGEX footwear range.</p>
-              <span className="status-badge-outline">TESTING IN PROGRESS</span>
-              <small style={{marginTop:'14px', display:'block', color:'#667085', fontSize:'13px'}}>
-                {CONFIG.legalName}
-              </small>
+          {/* Quality Pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <FlaskConical size={28} className="text-amber-600 mb-3" />
+              <h3 className="font-bold text-lg text-slate-900 font-display">Steel Toe Impact Testing</h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                Testing steel toe caps for impact resistance against falling objects (up to 200 Joules) and compression load thresholds.
+              </p>
             </div>
-          </div>
-        </div>
 
-        <div className="container" style={{marginTop:'36px'}}>
-          <div className="info-note wide-note">
-            <ShieldCheck size={24} color="#bd781f"/>
-            <span>
-              <strong>Regulatory & Compliance Disclosure</strong>
-              <small>
-                Certification status, product conformity and safety-performance claims will be updated only after the relevant official approvals and supporting documentation are available. Important: BIS/ISI certification has not been represented as granted.
-              </small>
-            </span>
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <ClipboardCheck size={28} className="text-amber-600 mb-3" />
+              <h3 className="font-bold text-lg text-slate-900 font-display">Sole Bond & Flex Adhesion</h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                Verifying that direct PU injection bond strength resists separation under harsh chemical, oil, and wet working conditions.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <BadgeCheck size={28} className="text-amber-600 mb-3" />
+              <h3 className="font-bold text-lg text-slate-900 font-display">Slip & Abrasion Resistance</h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                Analyzing outsole tread friction coefficients across wet steel, ceramic, and greasy factory floor surfaces.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <PartnerWithForgex/>
-    </>
-  );
-}
-
-function EnquiryForm({ type = 'corporate' }) {
-  const [form, setForm] = useState({ name: '', company: '', phone: '', email: '', city: '', quantity: '', product: '', message: '' });
-  const [errors, setErrors] = useState({});
-  const isDealer = type === 'dealer';
-  const title = isDealer ? 'Dealer & Distributor Enquiry' : 'Corporate Bulk Enquiry';
-  const update = e => setForm({ ...form, [e.target.name]: e.target.value });
-
-  function submit(e) {
-    e.preventDefault();
-    const next = {};
-    if (!form.name.trim()) next.name = 'Please enter your name.';
-    if (!form.phone.trim()) next.phone = 'Please enter a phone number.';
-    else if (!/^[+\d\s()-]{8,20}$/.test(form.phone.trim())) next.phone = 'Enter a valid phone number.';
-    if (form.email && !/^\S+@\S+\.\S+$/.test(form.email)) next.email = 'Enter a valid email address.';
-    if (!form.city.trim()) next.city = 'Please enter your city.';
-    if (!form.message.trim()) next.message = 'Please tell us a little about your requirement.';
-    setErrors(next);
-    if (Object.keys(next).length) return;
-    const msg = [
-      `Hello GUARDEX, I am submitting a ${isDealer ? 'dealer/distributor' : 'corporate bulk'} enquiry for FORGEX footwear.`,
-      `Name: ${form.name}`,
-      `Company: ${form.company || 'Not provided'}`,
-      `Phone: ${form.phone}`,
-      `Email: ${form.email || 'Not provided'}`,
-      `City: ${form.city}`,
-      `Estimated quantity: ${form.quantity || 'To be discussed'}`,
-      `Product interest: ${form.product || 'Not specified'}`,
-      `Requirement: ${form.message}`,
-    ].join('\n');
-    window.open(waLink(msg), '_blank', 'noopener,noreferrer');
-  }
-
-  return (
-    <>
-      <PageIntro title={title} description={isDealer ? 'Interested in becoming an authorized distributor for FORGEX safety footwear? Share your business profile to get started.' : 'Procuring safety footwear for your enterprise or workforce? Connect with our corporate sales team.'} />
-      <section className="section enquiry-section">
-        <div className="container enquiry-layout">
-          <aside className="enquiry-aside">
-            <h2>Partner with FORGEX</h2>
-            <p style={{marginBottom:'16px'}}>
-              If your business requires industrial safety footwear, we invite you to contact us to discuss product development, future availability, bulk requirements and dealership opportunities.
-            </p>
-
-            <div style={{marginBottom:'22px'}}>
-              <strong style={{display:'block', fontSize:'14px', color:'#bd781f', textTransform:'uppercase', letterSpacing:'.06em', marginBottom:'12px'}}>
-                We welcome business enquiries from:
-              </strong>
-              <div className="enquiry-benefits">
-                {[
-                  'Industrial and corporate buyers',
-                  'Manufacturing companies and factories',
-                  'Safety equipment suppliers',
-                  'Footwear dealers and distributors',
-                  'Contractors and bulk purchasers',
-                ].map(text => (
-                  <div key={text}><CheckCircle2 size={18}/><span>{text}</span></div>
-                ))}
-              </div>
-            </div>
-
-            <div style={{background:'#f0f4f8', padding:'16px', borderRadius:'6px', marginBottom:'20px'}}>
-              <div style={{fontSize:'12px', color:'#526071', textTransform:'uppercase', fontWeight:700, marginBottom:'8px', letterSpacing:'.05em'}}>
-                Direct Email Channels
-              </div>
-              <p style={{margin:'0 0 6px', fontSize:'14px'}}>
-                Sales Enquiries: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#bd781f', fontWeight:600}}>{CONFIG.salesEmail}</a>
-              </p>
-              <p style={{margin:0, fontSize:'14px'}}>
-                General Enquiries: <a href={`mailto:${CONFIG.infoEmail}`} style={{color:'#111f2c', fontWeight:600}}>{CONFIG.infoEmail}</a>
-              </p>
-            </div>
-
-            <div className="aside-contact">
-              <span>Need an immediate response?</span>
-              <a href={waLink(`Hello, I have a ${isDealer ? 'dealer' : 'corporate bulk'} enquiry for FORGEX.`)} target="_blank" rel="noreferrer">
-                <MessageCircle size={17}/> WhatsApp Us Direct <ArrowUpRight size={15}/>
-              </a>
-            </div>
-          </aside>
-          <form className="enquiry-form" onSubmit={submit} noValidate>
-            <div className="form-heading">
-              <div><h3>Tell us about your requirement</h3></div>
-              <span className="required-note">* Required fields</span>
-            </div>
-            <div className="form-grid">
-              <Field label="Full name" name="name" value={form.name} onChange={update} error={errors.name} required placeholder="Your full name"/>
-              <Field label="Company / Organisation" name="company" value={form.company} onChange={update} placeholder="Company or shop name"/>
-              <Field label="Phone number" name="phone" value={form.phone} onChange={update} error={errors.phone} required placeholder="+91 ..." type="tel"/>
-              <Field label="Work email" name="email" value={form.email} onChange={update} error={errors.email} placeholder="you@company.com" type="email"/>
-              <Field label="City / Delivery Location" name="city" value={form.city} onChange={update} error={errors.city} required placeholder="e.g. Mumbai, Pune, Ahmedabad"/>
-              <Field label="Estimated quantity" name="quantity" value={form.quantity} onChange={update} placeholder="e.g. 100 pairs"/>
-              <div className="field full-field">
-                <label htmlFor="product">Product Interest</label>
-                <select id="product" name="product" value={form.product} onChange={update}>
-                  <option value="">Select a product model (optional)</option>
-                  {productData.map(p => <option key={p.id} value={`${p.name} (${p.id})`}>{p.name} — {p.id}</option>)}
-                  <option value="All Models">Multiple models / full catalogue</option>
-                </select>
-              </div>
-              <div className="field full-field">
-                <label htmlFor="message">Your Requirement <span>*</span></label>
-                <textarea id="message" name="message" value={form.message} onChange={update} placeholder={isDealer ? 'Share your distribution reach, existing brands dealt with, and target market.' : 'Detail your workforce size, footwear specs, delivery location, and target timeline.'} rows="4" aria-invalid={!!errors.message}/>
-                {errors.message && <small className="field-error">{errors.message}</small>}
-              </div>
-            </div>
-            <div className="form-foot">
-              <p><ShieldCheck size={15}/> Submitting sends your requirement directly to our team via WhatsApp.</p>
-              <button className="btn btn-primary" type="submit">Submit Enquiry on WhatsApp <Send size={16}/></button>
-            </div>
-          </form>
-        </div>
-      </section>
-    </>
-  );
-}
-
-function Field({ label, name, value, onChange, error, required, placeholder, type = 'text' }) {
-  return (
-    <div className="field">
-      <label htmlFor={name}>{label} {required && <span>*</span>}</label>
-      <input id={name} name={name} type={type} value={value} onChange={onChange} placeholder={placeholder} required={required} aria-invalid={!!error}/>
-      {error && <small className="field-error">{error}</small>}
-    </div>
+      <PartnerWithForgex />
+    </main>
   );
 }
 
 function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
   return (
-    <>
-      <PageIntro title="Contact Us" description="Get in touch with GUARDEX Footwear Private Limited for FORGEX safety footwear enquiries, dealership, and bulk corporate orders."/>
-      <section className="section">
-        <div className="container contact-layout">
-          <div className="contact-main">
-            <h2>Connect with our team.</h2>
-            <p>Whether you require technical consultation, bulk quotations, or wish to explore dealership opportunities, our sales and management team is here to assist.</p>
+    <main>
+      <PageIntro
+        badge="Get in Touch"
+        title="Contact GUARDEX Footwear"
+        description="Reach out to our sales desk, factory management, or visit our registered corporate office in Vasai West."
+      />
 
-            <div className="address-card-group">
-              <div className="address-block">
-                <strong><Factory size={18} color="#bd781f"/> Factory Address</strong>
-                <p>{CONFIG.factoryAddress}</p>
+      <section className="py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Contact Details Column */}
+            <div className="space-y-6">
+              {/* Registered Office Card */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-2">Corporate Office</span>
+                <h3 className="text-xl font-bold text-slate-900 font-display">Registered Office Address</h3>
+                <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+                  {CONFIG.officeAddress}
+                </p>
+                <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
+                  <a
+                    href={CONFIG.officeMapUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-lg text-xs transition-colors"
+                  >
+                    📍 Open Google Maps Directions <ExternalLink size={14}/>
+                  </a>
+                  <a
+                    href="tel:+917972458345"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold"
+                  >
+                    <Phone size={14}/> +91 79-7245 8345
+                  </a>
+                </div>
               </div>
 
-              <div className="address-block">
-                <strong><Building2 size={18} color="#bd781f"/> Registered / Office Address</strong>
-                <p>{CONFIG.officeAddress}</p>
-                <a href={CONFIG.officeMapUrl} target="_blank" rel="noreferrer" style={{display:'inline-flex', alignItems:'center', gap:'6px', color:'#f3a33b', fontWeight:700, fontSize:'13.5px', marginTop:'8px', textDecoration:'none'}}>
-                  <MapPin size={15}/> View Office on Google Maps <ArrowUpRight size={13}/>
-                </a>
+              {/* Manufacturing Plant Card */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
+                <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-2">Factory Unit</span>
+                <h3 className="text-xl font-bold text-slate-900 font-display">Manufacturing Plant</h3>
+                <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+                  {CONFIG.factoryAddress}
+                </p>
+                <div className="mt-4 pt-4 border-t border-slate-100">
+                  <a
+                    href="tel:+919185038002"
+                    className="inline-flex items-center gap-1.5 text-slate-900 font-bold text-sm hover:text-amber-600"
+                  >
+                    <Phone size={15} className="text-amber-500"/> Plant Desk / WhatsApp: +91 91850 38002
+                  </a>
+                </div>
+              </div>
+
+              {/* Key Phone Numbers */}
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
+                <h4 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3">Direct Contact Directory</h4>
+                <div className="space-y-2 text-sm">
+                  {CONFIG.phones.map((p, idx) => (
+                    <div key={idx} className="flex items-center justify-between p-2.5 rounded-lg bg-slate-50 border border-slate-100">
+                      <span className="text-slate-600 text-xs font-medium">{p.label}</span>
+                      <a href={`tel:${p.tel}`} className="font-bold text-slate-900 hover:text-amber-600 text-xs font-mono">
+                        {p.number}
+                      </a>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
-            <div className="contact-options">
-              <Link to="/corporate-enquiry">
-                <span><PackageCheck/></span>
-                <div><strong>Corporate Bulk Orders</strong><small>Direct factory quotes & specifications</small></div>
-                <ArrowUpRight/>
-              </Link>
-              <Link to="/dealer-enquiry">
-                <span><Building2/></span>
-                <div><strong>Dealer / Distributor</strong><small>Regional distribution partnership</small></div>
-                <ArrowUpRight/>
-              </Link>
-              <a href={CONFIG.officeMapUrl} target="_blank" rel="noreferrer">
-                <span style={{color:'#f3a33b', background:'#fff6eb'}}><MapPin size={20}/></span>
-                <div><strong>Office on Google Maps</strong><small>Flat No. 902, Vasaione Reality, Vasai West</small></div>
-                <ArrowUpRight/>
-              </a>
-              <a href={waLink('Hello GUARDEX, I would like to get in touch regarding FORGEX footwear.')} target="_blank" rel="noreferrer">
-                <span style={{color:'#20b866', background:'#e8faee'}}><MessageCircle size={20}/></span>
-                <div><strong>WhatsApp Chat (+91 91850 38002)</strong><small>Instant sales & dealer assistance</small></div>
-                <ArrowUpRight/>
-              </a>
-              <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer">
-                <span style={{color:'#ff0000', background:'#fff0f0'}}><YoutubeIcon size={20}/></span>
-                <div><strong>YouTube: @Forgex-safetyshoes</strong><small>Watch product videos and demonstrations</small></div>
-                <ArrowUpRight/>
-              </a>
-              <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer">
-                <span style={{color:'#e1306c', background:'#fff0f5'}}><InstagramIcon size={20}/></span>
-                <div><strong>Instagram: @Forgex.footwear</strong><small>Product designs & updates</small></div>
-                <ArrowUpRight/>
-              </a>
-              <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer">
-                <span style={{color:'#1877f2', background:'#f0f5ff'}}><FacebookIcon size={20}/></span>
-                <div><strong>Facebook: @Forgex safetyfootwear</strong><small>Company updates and news</small></div>
-                <ArrowUpRight/>
-              </a>
-              <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer">
-                <span style={{color:'#0a66c2', background:'#edf5fc'}}><LinkedinIcon size={20}/></span>
-                <div><strong>LinkedIn: @guardex footwear pvt ltd</strong><small>B2B partnerships and networking</small></div>
-                <ArrowUpRight/>
-              </a>
-            </div>
-          </div>
+            {/* Quick Message Form */}
+            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block mb-1">Direct Message</span>
+              <h3 className="text-2xl font-bold text-slate-900 font-display">Send us a Message</h3>
+              <p className="text-slate-600 text-xs sm:text-sm mt-1 mb-6">
+                Fill out the form below and our sales coordination team will get back to you within 24 hours.
+              </p>
 
-          <div className="contact-card">
-            <h3>Contact Information</h3>
-
-            <div style={{marginBottom:'20px'}}>
-              <div style={{fontSize:'12px', color:'#ffb64e', textTransform:'uppercase', letterSpacing:'.08em', fontWeight:700, marginBottom:'6px'}}>
-                Legal Entity & Registration
-              </div>
-              <strong style={{fontSize:'16px', display:'block'}}>{CONFIG.legalName}</strong>
-              <small style={{color:'#d0d8df', display:'block', marginTop:'3px'}}>CIN: <strong style={{color:'#fff'}}>{CONFIG.cin}</strong></small>
-              <small style={{color:'#a4b2be', display:'block', marginTop:'2px'}}>Product Brand: FORGEX | Industrial Safety Footwear</small>
-            </div>
-
-            <div style={{marginBottom:'20px'}}>
-              <div style={{fontSize:'12px', color:'#ffb64e', textTransform:'uppercase', letterSpacing:'.08em', fontWeight:700, marginBottom:'8px'}}>
-                Phone Numbers
-              </div>
-              <div className="phones-list">
-                {CONFIG.phones.map(p => (
-                  <div className="phone-item" key={p.number}>
-                    <a href={`tel:${p.tel}`}>{p.number}</a>
-                    <span className="phone-label">{p.label}</span>
+              {submitted ? (
+                <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-xl text-center">
+                  <CheckCircle2 size={36} className="text-emerald-600 mx-auto mb-2"/>
+                  <h4 className="font-bold text-emerald-900 text-lg">Thank You!</h4>
+                  <p className="text-xs sm:text-sm text-emerald-700 mt-1">Your message has been received. Our team will contact you shortly.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Your Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Ramesh Kumar"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    />
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div style={{marginBottom:'20px'}}>
-              <div style={{fontSize:'12px', color:'#ffb64e', textTransform:'uppercase', letterSpacing:'.08em', fontWeight:700, marginBottom:'8px'}}>
-                Email Addresses
-              </div>
-              <p className="contact-line">
-                <Mail size={16}/>
-                <span>
-                  Sales: <a href={`mailto:${CONFIG.salesEmail}`} style={{color:'#f3a33b', fontWeight:600}}>{CONFIG.salesEmail}</a>
-                </span>
-              </p>
-              <p className="contact-line">
-                <Mail size={16}/>
-                <span>
-                  Enquiries: <a href={`mailto:${CONFIG.enquiryEmail}`} style={{color:'#f3a33b', fontWeight:600}}>{CONFIG.enquiryEmail}</a>
-                </span>
-              </p>
-              <p className="contact-line">
-                <Mail size={16}/>
-                <span>
-                  General: <a href={`mailto:${CONFIG.infoEmail}`} style={{color:'#d0d8df'}}>{CONFIG.infoEmail}</a>
-                </span>
-              </p>
-            </div>
-
-            <div className="contact-card-note">
-              <Clock3 size={20}/>
-              <span>
-                <strong>Operational Hours</strong>
-                <small>Monday – Saturday: 9:00 AM – 6:30 PM</small>
-              </span>
-            </div>
-
-            <div className="cin-badge" style={{marginTop:'20px', display:'inline-flex', alignItems:'center', gap:'8px', padding:'8px 14px', background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.14)', borderRadius:'6px', color:'#d0d8df', fontSize:'13px'}}>
-              <span style={{color:'#f3a33b', fontWeight:700}}>CIN:</span>
-              <strong style={{letterSpacing:'.06em', color:'#ffffff'}}>{CONFIG.cin}</strong>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Company / Organization</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Apex Industrial Solutions"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Email Address *</label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="you@company.com"
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Phone / WhatsApp *</label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="+91 98765 43210"
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Subject</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Dealership Query / Safety Shoes Quote"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Message *</label>
+                    <textarea
+                      rows={4}
+                      required
+                      placeholder="Tell us about your requirements, estimated quantity or enquiry..."
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-6 rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
+                  >
+                    Submit Message <Send size={16}/>
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
       </section>
-      <PartnerWithForgex/>
-    </>
+
+      <PartnerWithForgex />
+    </main>
+  );
+}
+
+function CorporateEnquiry() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const initialModel = searchParams.get('model') || '';
+
+  const [model, setModel] = useState(initialModel);
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
+  return (
+    <main>
+      <PageIntro
+        badge="Bulk Procurement"
+        title="Corporate & Commercial Bulk Enquiry"
+        description="Direct manufacturer pricing for industrial companies, civil contractors, safety equipment suppliers, and institutional distributors."
+      />
+
+      <section className="py-16 sm:py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-sm">
+            {submitted ? (
+              <div className="py-12 text-center">
+                <CheckCircle2 size={48} className="text-emerald-600 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold text-slate-900 font-display">Enquiry Submitted Successfully</h3>
+                <p className="mt-2 text-slate-600 text-sm sm:text-base max-w-md mx-auto">
+                  Our commercial sales coordination team has received your details. We will prepare your customized quotation and call or WhatsApp you within 24 hours.
+                </p>
+                <Link
+                  to="/"
+                  className="mt-6 inline-block bg-slate-900 text-white font-bold px-6 py-3 rounded-xl text-sm"
+                >
+                  Return to Home
+                </Link>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 font-display">Bulk Procurement Quotation Request</h3>
+                  <p className="text-xs sm:text-sm text-slate-500 mt-1">Please provide your organization requirements below.</p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Full Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Rajesh Sharma"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Company / Firm Name *</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Larson Steel Fabrication"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Email Address *</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="procurement@company.com"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Phone / WhatsApp Number *</label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="+91 98200 12345"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Estimated Quantity (Pairs) *</label>
+                    <select
+                      required
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none bg-white"
+                    >
+                      <option value="">Select Quantity Range</option>
+                      <option value="50-200">50 – 200 Pairs (Trial / Facility)</option>
+                      <option value="200-500">200 – 500 Pairs (Quarterly Batch)</option>
+                      <option value="500-1000">500 – 1,000 Pairs (Annual Supply)</option>
+                      <option value="1000+">1,000+ Pairs (Large Corporate / Dealer)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Preferred Model / Category</label>
+                    <input
+                      type="text"
+                      value={model}
+                      onChange={(e) => setModel(e.target.value)}
+                      placeholder="e.g. FORGEX Classic Steel Toe (FX-101)"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Delivery Destination (City / State) *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. Mumbai, Pune, Ahmedabad, Chennai, etc."
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Application Notes / Custom Requirements</label>
+                  <textarea
+                    rows={4}
+                    placeholder="Describe specific site hazards (oil/acid, puncture risk, high heat), size ratio requirements, or testing certificate needs..."
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm"
+                  />
+                </div>
+
+                <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-xs text-slate-500 text-center sm:text-left">
+                    Direct enquiry routed to <strong>{CONFIG.salesEmail}</strong>
+                  </div>
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                  >
+                    Submit Quotation Request <ArrowRight size={18} />
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
 
 function NotFound() {
   return (
-    <PageIntro title="This page isn’t here." description="The page may have moved, or the link may be incorrect.">
-      <Link className="btn btn-primary" to="/">Return home</Link>
-    </PageIntro>
+    <main className="min-h-[60vh] flex items-center justify-center py-20 px-4">
+      <div className="text-center max-w-md">
+        <h1 className="text-6xl font-extrabold text-amber-500 font-display">404</h1>
+        <h2 className="text-2xl font-bold text-slate-900 mt-2 font-display">Page Not Found</h2>
+        <p className="text-slate-600 text-sm mt-2">The page you requested could not be found.</p>
+        <Link
+          to="/"
+          className="mt-6 inline-block bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-colors"
+        >
+          Back to Home
+        </Link>
+      </div>
+    </main>
   );
 }
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  React.useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 }
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop/>
-      <Header/>
+      <ScrollToTop />
+      <Header />
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/about" element={<About/>}/>
-        <Route path="/products" element={<Products/>}/>
-        <Route path="/products/:id" element={<ProductDetail/>}/>
-        <Route path="/manufacturing" element={<Manufacturing/>}/>
-        <Route path="/quality" element={<Quality/>}/>
-        <Route path="/dealer-enquiry" element={<EnquiryForm type="dealer"/>}/>
-        <Route path="/corporate-enquiry" element={<EnquiryForm type="corporate"/>}/>
-        <Route path="/contact" element={<Contact/>}/>
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/manufacturing" element={<Manufacturing />} />
+        <Route path="/quality" element={<Quality />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/corporate-enquiry" element={<CorporateEnquiry />} />
+        <Route path="/dealer-enquiry" element={<CorporateEnquiry />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer/>
-      <FloatingWhatsApp/>
+      <Footer />
+      <FloatingWhatsApp />
     </BrowserRouter>
   );
 }
 
-const rootElement = document.getElementById('root');
-if (!rootElement._reactRoot) {
-  rootElement._reactRoot = createRoot(rootElement);
+const container = document.getElementById('root');
+if (container) {
+  if (!window.__react_root__) {
+    window.__react_root__ = createRoot(container);
+  }
+  window.__react_root__.render(<App />);
 }
-rootElement._reactRoot.render(<React.StrictMode><App/></React.StrictMode>);

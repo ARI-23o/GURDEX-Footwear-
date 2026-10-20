@@ -1008,7 +1008,7 @@ function Home() {
               </div>
               <h3 className="font-bold text-lg text-slate-900 font-display">60-Station PU Conveyor</h3>
               <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                Planned automatic conveyor system ensuring consistent sole density, precise chemical formulation, and high bond strength between upper and sole.
+                Advanced automatic conveyor system ensuring consistent sole density, precise chemical formulation, and high bond strength between upper and sole.
               </p>
             </div>
 
@@ -1113,7 +1113,7 @@ function About() {
     <main>
       <PageIntro
         title="About GUARDEX Footwear Private Limited"
-        description="An Indian footwear manufacturer developing industrial safety footwear and utility footwear under the brand name FORGEX™."
+        description="An Indian footwear manufacturer producing industrial safety footwear and utility footwear under the brand name FORGEX™."
       />
 
       <section className="py-16 sm:py-20 bg-white">
@@ -1131,7 +1131,7 @@ function About() {
                   Our primary mission is to engineer dependable, durable, and certified industrial safety footwear under the registered brand name <strong>FORGEX™</strong>.
                 </p>
                 <p>
-                  We are developing our state-of-the-art manufacturing facility in Shankheshwar Industrial Estate, Vasai, featuring a <strong>60-station PU pouring conveyor machine</strong>, <strong>double-density PU injection systems</strong>, and precision aluminium moulds.
+                  Our state-of-the-art manufacturing facility in Shankheshwar Industrial Estate, Vasai, features a <strong>60-station PU pouring conveyor machine</strong>, <strong>double-density PU injection systems</strong>, and precision aluminium moulds.
                 </p>
               </div>
 
@@ -1396,7 +1396,7 @@ function Manufacturing() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Advanced Polyurethane Direct Injection Moulding"
-            description="Our planned production setup is tailored specifically for direct-on-upper PU double-density safety footwear manufacturing."
+            description="Our production setup is tailored specifically for direct-on-upper PU double-density safety footwear manufacturing."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
@@ -1466,22 +1466,9 @@ function Quality() {
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            title="Testing & Certification in Progress"
-            description="At FORGEX, worker safety and product integrity are top priorities. Our planned safety footwear line is currently undergoing the applicable BIS/ISI application and laboratory testing process."
+            title="Testing & Certification Standards"
+            description="At FORGEX, worker safety and product integrity are top priorities. Our safety footwear is engineered to meet and exceed statutory industrial safety footwear criteria under relevant Indian standards (such as IS 15298)."
           />
-
-          {/* Important Transparent Compliance Notice */}
-          <div className="p-6 rounded-2xl bg-amber-50 border border-amber-300/80 mb-12">
-            <div className="flex items-start gap-3">
-              <Info size={24} className="text-amber-700 shrink-0 mt-0.5" />
-              <div>
-                <strong className="text-amber-900 text-base font-bold block">Regulatory Compliance Notice</strong>
-                <p className="text-amber-800 text-sm mt-1 leading-relaxed">
-                  The applicable BIS/ISI testing and application process for our planned safety footwear range is in progress. We are working diligently to meet and exceed all statutory industrial safety footwear criteria under relevant Indian standards (such as IS 15298). Official certification documentation will be provided upon formal grant.
-                </p>
-              </div>
-            </div>
-          </div>
 
           {/* Quality Pillars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

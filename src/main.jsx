@@ -60,8 +60,8 @@ const leadership = [
   },
   {
     name: 'Nimesh Joshi',
-    role: 'Head – Marketing, Quality & Production Planning',
-    desc: 'Responsible for marketing, quality coordination and production planning to support business growth and operational efficiency.',
+    role: 'Sales Head, Quality & Production Planning',
+    desc: 'Responsible for sales, quality coordination and production planning to support business growth and operational efficiency.',
   },
 ];
 

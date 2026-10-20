@@ -297,8 +297,8 @@ img {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(12, 22, 32, .98) 0%, rgba(12, 22, 32, .91) 37%, rgba(12, 22, 32, .46) 70%, rgba(12, 22, 32, .18) 100%), linear-gradient(0deg, rgba(12, 22, 32, .4), transparent 40%), url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=2000&q=90') center 46%/cover no-repeat;
-  opacity: .97;
+  background: linear-gradient(90deg, rgba(12, 22, 32, .96) 0%, rgba(12, 22, 32, .88) 42%, rgba(12, 22, 32, .38) 75%, rgba(12, 22, 32, .15) 100%), linear-gradient(0deg, rgba(12, 22, 32, .45), transparent 40%), url('/images/hero-bg.jpeg') right center/cover no-repeat;
+  opacity: .98;
 }
 
 .hero:after {
@@ -2080,8 +2080,8 @@ h1 em, h2 em {
     padding-bottom: 24px;
   }
   .hero-bg {
-    background-position: center;
-    background-image: linear-gradient(180deg, rgba(12, 22, 32, .96) 0%, rgba(12, 22, 32, .88) 100%), url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=85');
+    background-position: center right;
+    background-image: linear-gradient(180deg, rgba(12, 22, 32, .95) 0%, rgba(12, 22, 32, .82) 55%, rgba(12, 22, 32, .95) 100%), url('/images/hero-bg.jpeg');
   }
   .hero-content {
     min-height: auto;
@@ -2523,11 +2523,30 @@ h1 em, h2 em {
 .leadership-card {
   background: #ffffff;
   border: 1px solid var(--line);
-  padding: 28px;
-  border-radius: 6px;
+  padding: 24px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   transition: transform .2s, box-shadow .2s;
+}
+.leadership-avatar {
+  width: 100%;
+  height: 280px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  background: #f1f4f6;
+  border: 1px solid #eef2f5;
+}
+.leadership-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform .3s ease;
+}
+.leadership-card:hover .leadership-avatar img {
+  transform: scale(1.03);
 }
 .leadership-card:hover {
   transform: translateY(-3px);

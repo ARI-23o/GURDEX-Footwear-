@@ -24,7 +24,7 @@ const CONFIG = {
   factoryAddress: 'Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Industries Estate, Near Jain Mandir, Village Mori, Vasai, District Palghar, Maharashtra – 401208.',
   officeAddress: 'Flat No. 902, Vasaione Reality, Ambadi Road, Diwanman, Vasai West, District Palghar, Maharashtra – 401202.',
   youtube: 'https://youtube.com/@forgex-safetyshoes?si=REaSka5B6_rHnmQg',
-  statusNote: 'Manufacturing setup in progress. BIS/ISI application and testing in progress.',
+  cin: 'U15201MR2026PTC481287',
   copyright: '© 2026 GUARDEX Footwear Private Limited. All rights reserved.',
 };
 
@@ -39,12 +39,14 @@ function YoutubeIcon({ size = 18 }) {
 }
 
 const productData = [
-  { id:'FX-101', name:'FORGEX Classic Steel Toe', category:'Safety Shoes', type:'Low ankle', desc:'Everyday industrial protection with PU double-density sole & certified steel toe cap.', features:['PU double-density injection sole','Steel toe impact protection (200J)','Oil & acid resistant outsole'], img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=85', tag:'PU Double-Density' },
-  { id:'FX-204', name:'FORGEX Rugged High-Ankle Boot', category:'Safety Boots', type:'High ankle', desc:'Demanding shop-floor & construction safety boot with reinforced ankle padding and anti-slip tread.', features:['High-ankle reinforced collar','PU double-density anti-skid sole','Heavy-duty steel toe cap'], img:'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=1000&q=85', tag:'Heavy Duty' },
-  { id:'FX-310', name:'FORGEX Executive Work Shoe', category:'Safety Shoes', type:'Low ankle', desc:'Clean corporate profile for facility managers, engineers and light shop floors.', features:['Low-profile smart workwear look','Lightweight PU double-density sole','Cushioned insole for all-day comfort'], img:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=1000&q=85', tag:'Executive' },
-  { id:'FX-422', name:'FORGEX All-Terrain Safety Boot', category:'Safety Boots', type:'Mid ankle', desc:'Robust high-traction safety boot for outdoor infrastructure and heavy site operations.', features:['Deep-cleat mud & slip-resistant tread','Water-resistant leather upper','PU double-density cushioned midsole'], img:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1000&q=85', tag:'All Terrain' },
-  { id:'FX-510', name:'FORGEX Lightweight Sport Sneaker', category:'Lightweight Range', type:'Low ankle', desc:'Contemporary safety footwear engineered for active logistics, warehousing and tech floors.', features:['Sport-inspired breathable upper','Protective steel toe cap','Flexible PU lightweight sole'], img:'https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=1000&q=85', tag:'Lightweight' },
-  { id:'FX-608', name:'FORGEX Industrial Utility Boot', category:'Safety Boots', type:'High ankle', desc:'Utility-led design for heavy manufacturing, chemical plants and engineering plants.', features:['Chemical & oil resistant PU sole','Anti-static properties design','Full-grain protective leather upper'], img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=1000&q=85', tag:'Utility' },
+  { id:'FX-101', name:'FORGEX Classic Steel Toe', category:'Safety Shoes', type:'Low ankle', desc:'Everyday industrial protection with PU double-density sole & certified steel toe cap.', features:['PU double-density injection sole','Steel toe impact protection (200J)','Oil & acid resistant outsole'], img:'/images/cat.jpeg', tag:'PU Double-Density' },
+  { id:'FX-204', name:'FORGEX Rugged High-Ankle Boot', category:'Safety Boots', type:'High ankle', desc:'Demanding shop-floor & construction safety boot with reinforced ankle padding and anti-slip tread.', features:['High-ankle reinforced collar','PU double-density anti-skid sole','Heavy-duty steel toe cap'], img:'/images/cat1.jpeg', tag:'Heavy Duty' },
+  { id:'FX-310', name:'FORGEX Executive Work Shoe', category:'Safety Shoes', type:'Low ankle', desc:'Clean corporate profile for facility managers, engineers and light shop floors.', features:['Low-profile smart workwear look','Lightweight PU double-density sole','Cushioned insole for all-day comfort'], img:'/images/cat2.jpeg', tag:'Executive' },
+  { id:'FX-422', name:'FORGEX All-Terrain Safety Boot', category:'Safety Boots', type:'Mid ankle', desc:'Robust high-traction safety boot for outdoor infrastructure and heavy site operations.', features:['Deep-cleat mud & slip-resistant tread','Water-resistant leather upper','PU double-density cushioned midsole'], img:'/images/cat3.jpeg', tag:'All Terrain' },
+  { id:'FX-510', name:'FORGEX Lightweight Sport Sneaker', category:'Lightweight Range', type:'Low ankle', desc:'Contemporary safety footwear engineered for active logistics, warehousing and tech floors.', features:['Sport-inspired breathable upper','Protective steel toe cap','Flexible PU lightweight sole'], img:'/images/cat5.jpeg', tag:'Lightweight' },
+  { id:'FX-608', name:'FORGEX Industrial Utility Boot', category:'Safety Boots', type:'High ankle', desc:'Utility-led design for heavy manufacturing, chemical plants and engineering plants.', features:['Chemical & oil resistant PU sole','Anti-static properties design','Full-grain protective leather upper'], img:'/images/cat6.jpeg', tag:'Utility' },
+  { id:'FX-701', name:'FORGEX Pro-Grip Low Ankle', category:'Safety Shoes', type:'Low ankle', desc:'High performance anti-static footwear engineered for engineering & automotive assembly.', features:['Anti-static PU compound','Puncture resistant midsole','Shock absorbing heel cavity'], img:'/images/cat7.jpeg', tag:'Pro Series' },
+  { id:'FX-802', name:'FORGEX Heavy Construction Boot', category:'Safety Boots', type:'High ankle', desc:'Maximum impact & puncture protection built for infrastructure & construction sites.', features:['High tensile steel toe','Double density injection','Padded ankle protection'], img:'/images/cat8.jpeg', tag:'Construction' },
 ];
 
 const leadership = [
@@ -52,16 +54,19 @@ const leadership = [
     name: 'Hirasingh Parmar',
     role: 'Director',
     desc: 'Provides business leadership, strategic direction and overall company development.',
+    img: '/images/leadership-hirasingh.jpeg',
   },
   {
     name: 'Pratiksha N. Joshi',
     role: 'Director',
     desc: 'Contributes to company management, business coordination and long-term growth.',
+    img: '/images/leadership-pratiksha.jpeg',
   },
   {
     name: 'Nimesh Joshi',
     role: 'Sales Head, Quality & Production Planning',
     desc: 'Responsible for sales, quality coordination and production planning to support business growth and operational efficiency.',
+    img: '/images/leadership-nimesh.jpeg',
   },
 ];
 
@@ -165,12 +170,12 @@ function Footer() {
           <p style={{marginTop:'16px', fontWeight: 700, color: '#fff', fontSize:'15px'}}>
             {CONFIG.legalName}
           </p>
-          <p style={{margin: '4px 0 12px', color: '#f3a33b', fontWeight: 700, fontSize:'14px'}}>
+          <p style={{margin: '4px 0 10px', color: '#f3a33b', fontWeight: 700, fontSize:'14px'}}>
             Product Brand: FORGEX | Industrial Safety Footwear
           </p>
-          <div className="status-pill status-pill-dark" style={{marginTop:'12px'}}>
-            <Factory size={16}/>
-            <span style={{fontSize:'12.5px', lineHeight:'1.5'}}>{CONFIG.statusNote}</span>
+          <div className="cin-badge" style={{marginTop:'10px', display:'inline-flex', alignItems:'center', gap:'8px', padding:'6px 12px', background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.14)', borderRadius:'6px', color:'#d0d8df', fontSize:'12.5px'}}>
+            <span style={{color:'#f3a33b', fontWeight:700}}>CIN:</span>
+            <strong style={{letterSpacing:'.06em', color:'#ffffff'}}>{CONFIG.cin}</strong>
           </div>
         </div>
 
@@ -230,7 +235,7 @@ function Footer() {
       </div>
 
       <div className="container footer-bottom">
-        <span>© 2026 GUARDEX Footwear Private Limited. All rights reserved.</span>
+        <span>© 2026 GUARDEX Footwear Private Limited. All rights reserved. | CIN: <strong style={{color:'#f3a33b'}}>{CONFIG.cin}</strong></span>
         <span>Product Brand: FORGEX | Industrial Safety Footwear | Website: <a href="https://www.guardexfootwear.com" target="_blank" rel="noreferrer" style={{color:'#f3a33b', textDecoration:'none'}}>www.guardexfootwear.com</a></span>
       </div>
     </footer>
@@ -390,8 +395,8 @@ function Home() {
               <div className="hero-proof">
                 <div className="proof-icon"><ShieldCheck size={20}/></div>
                 <div>
-                  <strong>{CONFIG.statusNote}</strong>
-                  <span>Engineered in Vasai, Maharashtra</span>
+                  <strong>PU Double-Density Safety Footwear</strong>
+                  <span>Engineered for Maximum Workplace Protection</span>
                 </div>
               </div>
             </div>
@@ -439,7 +444,7 @@ function Home() {
               </div>
             </div>
 
-            <div className="product-grid">{productData.slice(0,3).map(p=><ProductCard key={p.id} product={p}/>)}</div>
+            <div className="product-grid">{productData.slice(0,6).map(p=><ProductCard key={p.id} product={p}/>)}</div>
 
             <div className="range-notice-box">
               <ClipboardCheck size={24}/>
@@ -456,7 +461,7 @@ function Home() {
         <section className="section dark-section">
           <div className="container split-layout">
             <div className="split-image">
-              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1200&q=85" alt="Industrial manufacturing plant" loading="lazy"/>
+              <img src="/images/plant-1.jpeg" alt="FORGEX Manufacturing Plant" loading="lazy"/>
               <div className="image-caption">
                 <Factory size={20}/>
                 <span>
@@ -518,11 +523,7 @@ function Home() {
               <p style={{marginTop:'12px', color:'var(--muted)'}}>
                 The applicable BIS/ISI application and testing process for our planned safety footwear range is currently in progress. We are working towards meeting the applicable product requirements and standards.
               </p>
-              <div className="status-pill" style={{marginTop:'18px', marginBottom:'14px'}}>
-                <ClipboardCheck size={16}/>
-                <span>{CONFIG.statusNote}</span>
-              </div>
-              <p style={{fontSize:'13px', color:'#92400e', background:'#fff8ee', borderLeft:'3px solid #d97706', padding:'10px 14px', borderRadius:'4px', margin:'14px 0 20px', fontWeight:600}}>
+              <p style={{fontSize:'13px', color:'#92400e', background:'#fff8ee', borderLeft:'3px solid #d97706', padding:'10px 14px', borderRadius:'4px', margin:'18px 0 20px', fontWeight:600}}>
                 Important: BIS/ISI certification has not been represented as granted.
               </p>
               <Link className="text-link" to="/quality">Learn more about Quality & Compliance <ArrowRight size={16}/></Link>
@@ -546,6 +547,11 @@ function Home() {
             <div className="leadership-grid">
               {leadership.map(l => (
                 <div className="leadership-card" key={l.name}>
+                  {l.img && (
+                    <div className="leadership-avatar">
+                      <img src={l.img} alt={l.name} loading="lazy" />
+                    </div>
+                  )}
                   <h3>{l.name}</h3>
                   <div className="leadership-role">{l.role}</div>
                   <p>{l.desc}</p>
@@ -568,7 +574,7 @@ function About() {
       <section className="section">
         <div className="container split-layout about-split">
           <div className="split-image about-image">
-            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1200&q=85" alt="Industrial workplace"/>
+            <img src="/images/plant-2.jpeg" alt="Industrial workplace"/>
             <div className="floating-number">
               <strong>FORGEX</strong><span>SAFETY<br/>FOOTWEAR</span>
             </div>
@@ -582,8 +588,8 @@ function About() {
             <div className="info-note">
               <ShieldCheck/>
               <span>
-                <strong>Manufacturing & Quality Status</strong>
-                <small>{CONFIG.statusNote}</small>
+                <strong>Manufacturing & Quality Standards</strong>
+                <small>PU Double-Density direct injection sole with certified steel toe protection.</small>
               </span>
             </div>
           </div>
@@ -643,6 +649,11 @@ function About() {
           <div className="leadership-grid">
             {leadership.map(l => (
               <div className="leadership-card" key={l.name}>
+                {l.img && (
+                  <div className="leadership-avatar">
+                    <img src={l.img} alt={l.name} loading="lazy" />
+                  </div>
+                )}
                 <h3>{l.name}</h3>
                 <div className="leadership-role">{l.role}</div>
                 <p>{l.desc}</p>
@@ -751,7 +762,7 @@ function ProductDetail() {
             <p>{product.desc}</p>
             <div className="detail-warning">
               <ShieldCheck size={20}/>
-              <span>Manufactured by {CONFIG.legalName}. {CONFIG.statusNote}</span>
+              <span>Manufactured by {CONFIG.legalName}. Engineered for industrial safety and durability.</span>
             </div>
             <h3>Key Features & Specifications</h3>
             <ul className="check-list">
@@ -782,16 +793,11 @@ function Manufacturing() {
       <section className="section">
         <div className="container">
           <div className="facility-hero">
-            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1800&q=85" alt="Manufacturing setup"/>
+            <img src="/images/plant-1.jpeg" alt="Manufacturing setup"/>
             <div className="facility-overlay">
               <h2>Engineered for durability and industrial safety.</h2>
               <p>{CONFIG.factoryAddress}</p>
             </div>
-          </div>
-
-          <div className="status-pill" style={{marginTop:'28px', fontSize:'15px', padding:'12px 18px'}}>
-            <Factory size={20}/>
-            <span>{CONFIG.statusNote}</span>
           </div>
 
           <div className="range-notice-box" style={{background:'#ffffff', border:'1px solid var(--line)', marginTop:'24px', marginBottom:'28px'}}>
@@ -908,7 +914,7 @@ function Quality() {
             <span>
               <strong>Regulatory & Compliance Disclosure</strong>
               <small>
-                {CONFIG.statusNote} Certification status, product conformity and safety-performance claims will be updated only after the relevant official approvals and supporting documentation are available. Important: BIS/ISI certification has not been represented as granted.
+                Certification status, product conformity and safety-performance claims will be updated only after the relevant official approvals and supporting documentation are available. Important: BIS/ISI certification has not been represented as granted.
               </small>
             </span>
           </div>
@@ -1097,10 +1103,11 @@ function Contact() {
 
             <div style={{marginBottom:'20px'}}>
               <div style={{fontSize:'12px', color:'#ffb64e', textTransform:'uppercase', letterSpacing:'.08em', fontWeight:700, marginBottom:'6px'}}>
-                Legal Entity
+                Legal Entity & Registration
               </div>
               <strong style={{fontSize:'16px', display:'block'}}>{CONFIG.legalName}</strong>
-              <small style={{color:'#a4b2be'}}>Product Brand: FORGEX | Industrial Safety Footwear</small>
+              <small style={{color:'#d0d8df', display:'block', marginTop:'3px'}}>CIN: <strong style={{color:'#fff'}}>{CONFIG.cin}</strong></small>
+              <small style={{color:'#a4b2be', display:'block', marginTop:'2px'}}>Product Brand: FORGEX | Industrial Safety Footwear</small>
             </div>
 
             <div style={{marginBottom:'20px'}}>
@@ -1155,9 +1162,9 @@ function Contact() {
               </span>
             </div>
 
-            <div className="status-pill status-pill-dark" style={{marginTop:'20px'}}>
-              <Factory size={16}/>
-              <span style={{fontSize:'12px'}}>{CONFIG.statusNote}</span>
+            <div className="cin-badge" style={{marginTop:'20px', display:'inline-flex', alignItems:'center', gap:'8px', padding:'8px 14px', background:'rgba(255,255,255,0.06)', border:'1px solid rgba(255,255,255,0.14)', borderRadius:'6px', color:'#d0d8df', fontSize:'13px'}}>
+              <span style={{color:'#f3a33b', fontWeight:700}}>CIN:</span>
+              <strong style={{letterSpacing:'.06em', color:'#ffffff'}}>{CONFIG.cin}</strong>
             </div>
           </div>
         </div>

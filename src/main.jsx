@@ -27,6 +27,7 @@ const CONFIG = {
     { label: 'Nimesh Joshi (Office)', number: '+91 79-7245 8345', tel: '+917972458345' },
   ],
   factoryAddress: 'Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Inds. Estate, Near Jain Mandir, Village Mori, Poman (Kaman Road), Tehsil Vasai, District Palghar, Maharashtra - 401208, India.',
+  factoryMapUrl: 'https://maps.app.goo.gl/Y7rBsEDcE7eh2SK48',
   officeAddress: 'Flat No. 902, Vasai One Realty, Bldg. No. 2, Ambadi Road, Diwanman, Vasai West, Palghar, Maharashtra – 401202, India.',
   officeMapUrl: 'https://maps.app.goo.gl/Xb6EA651zJ1R7bmK8?g_st=i&utm_campaign=ac-im',
   cin: 'U15201MR2026PTC481287',
@@ -39,7 +40,7 @@ const CONFIG = {
   social: {
     youtube: 'https://youtube.com/@Forgex-safetyshoes',
     instagram: 'https://www.instagram.com/Forgex.footwear',
-    facebook: 'https://www.facebook.com/Forgexsafetyfootwear',
+    facebook: 'https://www.facebook.com/share/1DfK6bySYC/?mibextid=wwXIfr',
     linkedin: 'https://www.linkedin.com/company/guardex-footwear-pvt-ltd',
   },
   copyright: '© 2026 GUARDEX Footwear Private Limited. All rights reserved.',
@@ -734,20 +735,25 @@ function Footer() {
               Follow & Connect
             </h4>
             <div className="flex flex-col gap-2.5 text-xs sm:text-sm">
-              <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-red-400 hover:text-red-300 transition-colors">
-                <YoutubeIcon size={16}/> YouTube: @Forgex-safetyshoes
+              <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-slate-300 hover:text-red-400 transition-colors">
+                <span className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-red-400 shrink-0"><YoutubeIcon size={14}/></span>
+                <span>YouTube <span className="text-slate-400 text-xs block">@Forgex-safetyshoes</span></span>
               </a>
-              <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-pink-400 hover:text-pink-300 transition-colors">
-                <InstagramIcon size={16}/> Instagram: @Forgex.footwear
+              <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-slate-300 hover:text-pink-400 transition-colors">
+                <span className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-pink-400 shrink-0"><InstagramIcon size={14}/></span>
+                <span>Instagram <span className="text-slate-400 text-xs block">@Forgex.footwear</span></span>
               </a>
-              <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-blue-400 hover:text-blue-300 transition-colors">
-                <FacebookIcon size={16}/> Facebook: @Forgex safetyfootwear
+              <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-slate-300 hover:text-blue-400 transition-colors">
+                <span className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-blue-400 shrink-0"><FacebookIcon size={14}/></span>
+                <span>Facebook <span className="text-slate-400 text-xs block">FORGEX Footwear</span></span>
               </a>
-              <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-sky-400 hover:text-sky-300 transition-colors">
-                <LinkedinIcon size={16}/> LinkedIn: @guardex footwear pvt ltd
+              <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-slate-300 hover:text-sky-400 transition-colors">
+                <span className="p-1.5 rounded-lg bg-white/5 border border-white/10 text-sky-400 shrink-0"><LinkedinIcon size={14}/></span>
+                <span>LinkedIn <span className="text-slate-400 text-xs block">GUARDEX Footwear Pvt Ltd</span></span>
               </a>
-              <a href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-emerald-400 hover:text-emerald-300 font-bold mt-2">
-                <MessageCircle size={16}/> WhatsApp: +91 91850 38002
+              <a href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-emerald-400 hover:text-emerald-300 font-bold mt-1">
+                <span className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shrink-0"><MessageCircle size={14}/></span>
+                <span>WhatsApp Enquiry <span className="text-emerald-500/80 text-xs block font-mono">+91 91850 38002</span></span>
               </a>
             </div>
           </div>
@@ -793,7 +799,10 @@ function Footer() {
               <div className="flex items-start gap-2.5">
                 <Factory size={15} className="text-amber-400 shrink-0 mt-0.5"/>
                 <div className="leading-snug">
-                  <strong className="text-slate-200">Factory:</strong> Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Inds. Estate, Mori, Poman, Vasai – 401208
+                  <strong className="text-slate-200">Factory:</strong> Gala No. 1 & 2, Survey No. 47/2, Shankheshwar Inds. Estate, Mori, Poman, Vasai – 401208<br/>
+                  <a href={CONFIG.factoryMapUrl} target="_blank" rel="noreferrer" className="text-amber-400 hover:underline font-semibold inline-flex items-center gap-1 mt-1">
+                    📍 View on Google Maps <ArrowUpRight size={12}/>
+                  </a>
                 </div>
               </div>
             </div>
@@ -803,27 +812,8 @@ function Footer() {
         {/* Company Profile & Registration Details Card (MCA Falconebiz) */}
         <CompanyProfileCard />
 
-        {/* Social Media Pill Row */}
-        <div className="pt-6 pb-8 flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-slate-900">
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-500">Official Social Media:</span>
-          <div className="flex flex-wrap items-center gap-2.5">
-            <a href={CONFIG.social.youtube} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-red-500/50 hover:bg-white/10 text-slate-300 text-xs font-medium transition-colors">
-              <YoutubeIcon size={14}/> YouTube
-            </a>
-            <a href={CONFIG.social.instagram} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-pink-500/50 hover:bg-white/10 text-slate-300 text-xs font-medium transition-colors">
-              <InstagramIcon size={14}/> Instagram
-            </a>
-            <a href={CONFIG.social.facebook} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-blue-500/50 hover:bg-white/10 text-slate-300 text-xs font-medium transition-colors">
-              <FacebookIcon size={14}/> Facebook
-            </a>
-            <a href={CONFIG.social.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-sky-500/50 hover:bg-white/10 text-slate-300 text-xs font-medium transition-colors">
-              <LinkedinIcon size={14}/> LinkedIn
-            </a>
-          </div>
-        </div>
-
         {/* Bottom Bar: Copyright & Tagline */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 text-center sm:text-left">
+        <div className="pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 text-center sm:text-left">
           <span>
             {CONFIG.copyright} | CIN: <strong className="text-amber-400 font-mono">{CONFIG.cin}</strong>
           </span>
@@ -1486,12 +1476,22 @@ function Manufacturing() {
                 {CONFIG.factoryAddress}
               </p>
             </div>
-            <Link
-              to="/contact"
-              className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm whitespace-nowrap"
-            >
-              Contact Factory Office →
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={CONFIG.factoryMapUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="bg-white/10 hover:bg-white/20 text-white font-semibold px-5 py-3 rounded-xl text-sm inline-flex items-center gap-2 border border-white/15 transition-colors"
+              >
+                📍 View on Google Maps <ArrowUpRight size={14}/>
+              </a>
+              <Link
+                to="/contact"
+                className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm whitespace-nowrap transition-colors"
+              >
+                Contact Factory Office →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -1525,7 +1525,7 @@ function Quality() {
               <div>
                 <strong className="text-amber-900 text-base font-bold block">Regulatory Compliance Notice</strong>
                 <p className="text-amber-800 text-sm mt-1 leading-relaxed">
-                  The applicable BIS/ISI testing and application process for our planned safety footwear range is underway. We are working diligently to meet and exceed all statutory industrial safety footwear criteria under relevant Indian standards (such as IS 15298). Official certification documentation will be provided upon formal grant.
+                  The applicable BIS/ISI testing and application process for our planned safety footwear range is in progress. We are working diligently to meet and exceed all statutory industrial safety footwear criteria under relevant Indian standards (such as IS 15298). Official certification documentation will be provided upon formal grant.
                 </p>
               </div>
             </div>
@@ -1618,12 +1618,20 @@ function Contact() {
                 <p className="mt-2 text-slate-600 text-sm leading-relaxed">
                   {CONFIG.factoryAddress}
                 </p>
-                <div className="mt-4 pt-4 border-t border-slate-100">
+                <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap gap-3">
+                  <a
+                    href={CONFIG.factoryMapUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-4 py-2.5 rounded-lg text-xs transition-colors"
+                  >
+                    📍 Open Factory Google Maps <ExternalLink size={14}/>
+                  </a>
                   <a
                     href="tel:+919185038002"
-                    className="inline-flex items-center gap-1.5 text-slate-900 font-bold text-sm hover:text-amber-600"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50 text-xs font-semibold"
                   >
-                    <Phone size={15} className="text-amber-500"/> Plant Desk / WhatsApp: +91 91850 38002
+                    <Phone size={14}/> +91 91850 38002
                   </a>
                 </div>
               </div>

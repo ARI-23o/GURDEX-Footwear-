@@ -35,7 +35,6 @@ const CONFIG = {
   roc: 'Registrar of Companies (RoC-Mumbai II), Maharashtra, India',
   incorpDate: '29 September 2026',
   status: 'Active',
-  capital: '₹1,00,000 / ₹1,00,000',
   nicCode: 'Manufacture of footwear (NIC Code: 15201)',
   social: {
     youtube: 'https://youtube.com/@Forgex-safetyshoes',
@@ -557,11 +556,6 @@ function CompanyProfileCard() {
           <span className="font-bold text-slate-100 mt-0.5 block">
             {CONFIG.incorpDate} &nbsp;|&nbsp; <span className="text-emerald-400 font-extrabold uppercase">● {CONFIG.status}</span>
           </span>
-        </div>
-
-        <div>
-          <span className="block text-xs font-medium text-slate-400">Authorized Capital / Paid-up Capital:</span>
-          <span className="font-bold text-slate-100 mt-0.5 block">{CONFIG.capital}</span>
         </div>
 
         <div>

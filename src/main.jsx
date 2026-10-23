@@ -218,17 +218,17 @@ const navItems = [
 
 function Brand({ light = false }) {
   return (
-    <Link to="/" className="flex items-center gap-3 shrink-0 group" aria-label="FORGEX home">
-      <div className={`h-12 w-auto px-2 py-1 rounded-lg border flex items-center justify-center transition-transform group-hover:scale-102 ${
+    <Link to="/" className="flex items-center gap-2 sm:gap-3 min-w-0 group" aria-label="FORGEX home">
+      <div className={`h-10 sm:h-12 w-auto px-1.5 sm:px-2 py-1 rounded-lg border flex items-center justify-center shrink-0 transition-transform group-hover:scale-102 ${
         light ? 'bg-white border-slate-700 shadow-xs' : 'bg-white border-slate-200 shadow-xs'
       }`}>
-        <img src="/forgex-logo.jpg" alt="FORGEX™ Logo" className="h-9 w-auto max-w-[170px] object-contain block" />
+        <img src="/forgex-logo.jpg" alt="FORGEX™ Logo" className="h-7 sm:h-9 w-auto max-w-[110px] sm:max-w-[170px] object-contain block" />
       </div>
-      <div className="flex flex-col">
-        <div className={`font-extrabold text-xl sm:text-2xl tracking-wider leading-none font-display ${light ? 'text-white' : 'text-slate-900'}`}>
+      <div className="flex flex-col min-w-0">
+        <div className={`font-extrabold text-lg sm:text-2xl tracking-wide leading-none font-display truncate ${light ? 'text-white' : 'text-slate-900'}`}>
           FORGEX<span className="text-amber-500 font-bold">™</span>
         </div>
-        <div className={`text-[9.5px] sm:text-[10.5px] font-bold tracking-widest uppercase mt-1 leading-none ${light ? 'text-slate-400' : 'text-slate-500'}`}>
+        <div className={`text-[8px] sm:text-[10px] font-bold tracking-wider sm:tracking-widest uppercase mt-1 leading-none truncate ${light ? 'text-slate-400' : 'text-slate-500'}`}>
           GUARDEX FOOTWEAR PVT LTD
         </div>
       </div>
@@ -257,20 +257,20 @@ function Header() {
     <>
       {/* TOPBAR */}
       <div className="bg-slate-950 text-slate-300 text-xs border-b border-slate-800/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-          <div className="flex items-center gap-2 text-slate-300">
-            <span className="inline-flex items-center gap-1.5 text-amber-400 font-semibold">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="inline-flex items-center gap-1.5 text-amber-400 font-semibold text-[11px] sm:text-xs truncate">
               <ShieldCheck size={14} className="text-amber-400 shrink-0"/> Product Brand: FORGEX™
             </span>
             <span className="text-slate-600 hidden md:inline">|</span>
-            <span className="hidden md:inline text-slate-400">{CONFIG.legalName}</span>
+            <span className="hidden md:inline text-slate-400 text-xs truncate">{CONFIG.legalName}</span>
           </div>
-          <div className="flex items-center gap-4 text-xs">
-            <a href={`tel:${CONFIG.primaryPhone.replace(/\s+/g,'')}`} className="inline-flex items-center gap-1.5 hover:text-amber-400 transition-colors">
-              <Phone size={13} className="text-amber-400 shrink-0"/> {CONFIG.primaryPhone}
+          <div className="flex items-center gap-3 sm:gap-4 text-[11px] sm:text-xs shrink-0">
+            <a href={`tel:${CONFIG.primaryPhone.replace(/\s+/g,'')}`} className="inline-flex items-center gap-1 hover:text-amber-400 transition-colors font-mono">
+              <Phone size={12} className="text-amber-400 shrink-0"/> {CONFIG.primaryPhone}
             </a>
-            <span className="text-slate-700">•</span>
-            <a href={`mailto:${CONFIG.salesEmail}`} className="inline-flex items-center gap-1.5 hover:text-amber-400 transition-colors">
+            <span className="text-slate-700 hidden sm:inline">•</span>
+            <a href={`mailto:${CONFIG.salesEmail}`} className="hidden sm:inline-flex items-center gap-1.5 hover:text-amber-400 transition-colors">
               <Mail size={13} className="text-amber-400 shrink-0"/> {CONFIG.salesEmail}
             </a>
           </div>
@@ -279,7 +279,7 @@ function Header() {
 
       {/* STICKY NAVBAR */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
           <Brand />
 
           {/* Desktop Navigation */}
@@ -301,7 +301,7 @@ function Header() {
           </nav>
 
           {/* Action Button & Mobile Menu Trigger */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
               to="/corporate-enquiry"
               className="hidden sm:inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 lg:px-5 py-2.5 rounded-lg shadow-xs hover:shadow-md transition-all active:scale-98"
@@ -311,8 +311,9 @@ function Header() {
             
             <button
               onClick={() => setOpen(!open)}
-              className="xl:hidden p-2.5 rounded-lg border border-slate-200 text-slate-800 hover:bg-slate-100 focus:outline-none transition-colors"
+              className="xl:hidden shrink-0 w-11 h-11 flex items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-800 hover:bg-slate-100 active:bg-slate-200 active:scale-95 transition-all focus:outline-none shadow-2xs"
               aria-label={open ? 'Close Menu' : 'Open Menu'}
+              aria-expanded={open}
             >
               {open ? <X size={22}/> : <Menu size={22}/>}
             </button>
@@ -327,7 +328,7 @@ function Header() {
               onClick={() => setOpen(false)}
               aria-hidden="true"
             />
-            <div className="fixed top-20 left-0 right-0 max-h-[calc(100vh-5rem)] overflow-y-auto bg-white border-b-2 border-amber-500 shadow-2xl z-50 xl:hidden p-6 animate-in slide-in-from-top-4 duration-200">
+            <div className="fixed top-16 sm:top-20 left-0 right-0 max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] overflow-y-auto bg-white border-b-2 border-amber-500 shadow-2xl z-50 xl:hidden p-5 sm:p-6 animate-in slide-in-from-top-4 duration-200">
               <nav className="flex flex-col gap-1">
                 {navItems.map(([label, path]) => (
                   <NavLink
@@ -377,17 +378,17 @@ function ProductModal({ product, onClose }) {
   if (!product) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200 max-h-[90vh] flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-slate-200 max-h-[92vh] flex flex-col">
         {/* Header */}
-        <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-400">{product.category} • {product.id}</span>
-            <h3 className="text-xl font-bold font-display">{product.name}</h3>
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-900 text-white flex items-center justify-between shrink-0">
+          <div className="min-w-0 pr-3">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-400 block truncate">{product.category} • {product.id}</span>
+            <h3 className="text-lg sm:text-xl font-bold font-display truncate">{product.name}</h3>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+            className="p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors shrink-0"
             aria-label="Close modal"
           >
             <X size={22} />
@@ -395,7 +396,7 @@ function ProductModal({ product, onClose }) {
         </div>
 
         {/* Content Body */}
-        <div className="overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div className="overflow-y-auto p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 items-center">
           <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-center">
             <img
               src={product.img}
@@ -822,7 +823,7 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 transition-transform hover:scale-105 active:scale-95 group"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 transition-transform hover:scale-105 active:scale-95 group border-2 border-white/20"
     >
       <MessageCircle size={22} className="shrink-0" />
       <span className="hidden sm:inline text-sm font-bold tracking-wide">Chat with us</span>
@@ -830,15 +831,15 @@ function FloatingWhatsApp() {
   );
 }
 
-function PageIntro({ title, description, badge }) {
+function PageIntro({ title, description }) {
   return (
-    <div className="bg-slate-900 text-white py-14 sm:py-20 border-b border-slate-800">
+    <div className="bg-slate-900 text-white py-10 sm:py-16 lg:py-20 border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-white">
+        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-display text-white">
           {title}
         </h1>
         {description && (
-          <p className="mt-3 text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+          <p className="mt-2.5 sm:mt-3 text-slate-300 text-sm sm:text-lg max-w-3xl leading-relaxed">
             {description}
           </p>
         )}
@@ -857,7 +858,7 @@ function Home() {
   return (
     <main>
       {/* HERO SECTION */}
-      <section className="relative bg-slate-950 text-white min-h-[580px] lg:min-h-[640px] flex flex-col justify-between overflow-hidden">
+      <section className="relative bg-slate-950 text-white min-h-[480px] sm:min-h-[580px] lg:min-h-[640px] flex flex-col justify-between overflow-hidden">
         {/* Background Image with Dark Vignette */}
         <div
           className="absolute inset-0 bg-cover bg-[center_right] z-0"
@@ -866,16 +867,16 @@ function Home() {
         {/* Dark Gradient Overlay for razor-sharp typography */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 to-slate-950/20 z-10" />
 
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-28 w-full flex-1 flex flex-col justify-center">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-20 lg:py-28 w-full flex-1 flex flex-col justify-center">
           <div className="max-w-2xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-display leading-[1.15]">
+            <h1 className="text-2xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-display leading-tight sm:leading-[1.15]">
               FORGEX – Built for Demanding Work Environments
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-slate-300 leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-lg text-slate-300 leading-relaxed">
               Industrial safety footwear developed by <strong>GUARDEX Footwear Private Limited</strong> for manufacturing units, engineering plants, construction sites, warehouses, and heavy operations across India.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
               <Link
                 to="/products"
                 className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-6 py-3.5 rounded-xl shadow-lg transition-all text-sm sm:text-base active:scale-98"
@@ -893,10 +894,10 @@ function Home() {
         </div>
 
         {/* Hero Bottom Bar */}
-        <div className="relative z-20 border-t border-white/15 bg-slate-950/60 backdrop-blur-xs">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs uppercase tracking-widest text-slate-400 text-center sm:text-left">
+        <div className="relative z-20 border-t border-white/15 bg-slate-950/70 backdrop-blur-xs">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2 text-[10px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-slate-400 text-center sm:text-left">
             <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-500 inline-block"/> PU DOUBLE-DENSITY INDUSTRIAL FOOTWEAR
+              <span className="w-2 h-2 rounded-full bg-amber-500 inline-block shrink-0"/> PU DOUBLE-DENSITY INDUSTRIAL FOOTWEAR
             </span>
             <span className="font-semibold text-slate-300">FORGEX™ BY GUARDEX FOOTWEAR PVT LTD</span>
           </div>
@@ -1695,9 +1696,9 @@ function CorporateEnquiry() {
         description="Direct manufacturer pricing for industrial companies, civil contractors, safety equipment suppliers, and institutional distributors."
       />
 
-      <section className="py-16 sm:py-20 bg-slate-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 shadow-sm">
+      <section className="py-10 sm:py-20 bg-slate-50">
+        <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-5 sm:p-10 lg:p-12 shadow-sm">
             {submitted ? (
               <div className="py-12 text-center">
                 <CheckCircle2 size={48} className="text-emerald-600 mx-auto mb-4" />

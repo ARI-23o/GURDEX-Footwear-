@@ -81,7 +81,27 @@ function LinkedinIcon({ size = 18 }) {
   );
 }
 
-// Exactly mapped to flyer graphics and scanned content
+function WhatsAppIcon({ size = 20, className = '' }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className={`shrink-0 ${className}`}
+    >
+      <path d="M17.472 14.382c-.301-.15-1.78-.879-2.056-.98-.276-.1-.476-.15-.676.15-.2.301-.776.98-.952 1.18-.176.2-.351.226-.652.076-.301-.15-1.27-.468-2.42-1.493-.895-.798-1.5-1.784-1.676-2.085-.176-.3-.019-.462.132-.612.135-.135.301-.35.451-.526.15-.176.2-.301.301-.501.1-.2.05-.376-.025-.526-.075-.15-.676-1.63-.927-2.232-.244-.587-.492-.507-.676-.516l-.576-.01c-.2 0-.526.075-.802.376-.276.301-1.052 1.028-1.052 2.508 0 1.48 1.077 2.909 1.228 3.11.15.2 2.12 3.238 5.136 4.542.717.311 1.278.497 1.714.636.721.23 1.377.197 1.896.12.578-.087 1.78-.727 2.03-1.43.25-.702.25-1.303.175-1.43-.075-.127-.275-.202-.576-.352z" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12.004 2C6.48 2 2 6.48 2 12.004c0 1.848.502 3.58 1.378 5.071L2 22l5.068-1.33c1.442.822 3.109 1.334 4.936 1.334 5.524 0 10.004-4.48 10.004-10.004C22.008 6.48 17.528 2 12.004 2zm0 18.25c-1.566 0-3.033-.448-4.283-1.225l-.307-.189-3.136.823.837-3.057-.207-.33c-.854-1.358-1.347-2.964-1.347-4.686 0-4.687 3.813-8.5 8.5-8.5 4.687 0 8.5 3.813 8.5 8.5 0 4.687-3.813 8.5-8.5 8.5z"
+      />
+    </svg>
+  );
+}
+
+// Exactly mapped to flyer graphics and scanned content (Next-gen WebP)
 const productData = [
   {
     id: 'FX-101',
@@ -89,7 +109,7 @@ const productData = [
     category: 'Safety Shoes',
     type: 'Low Ankle',
     tag: 'Steel Toe Cap',
-    img: '/images/cat1.jpeg',
+    img: '/images/cat1.webp',
     desc: 'Trusted protection for everyday work. Features heavy-duty steel toe cap impact resistance, slip-resistant outsole, and all-day comfort support.',
     features: ['Certified Steel Toe Impact (200J)', 'Slip Resistant PU Outsole', 'Premium Breathable Leather Upper', 'Cushioned Shock-Absorbing Heel'],
   },
@@ -99,7 +119,7 @@ const productData = [
     category: 'Safety Boots',
     type: 'High Ankle',
     tag: 'Heavy Duty Boot',
-    img: '/images/plant-1.jpeg',
+    img: '/images/plant-1.webp',
     desc: 'Engineered for tough environments and demanding construction & infrastructure sites with reinforced ankle collar and heavy-duty steel toe.',
     features: ['Reinforced High-Ankle Collar', 'Deep-Cleat Mud & Slip Resistant Sole', 'High-Impact Steel Toe Cap', 'Breathable Weatherproof Upper'],
   },
@@ -109,7 +129,7 @@ const productData = [
     category: 'Executive Range',
     type: 'Low Ankle',
     tag: 'Corporate & Site',
-    img: '/images/plant-2.jpeg',
+    img: '/images/plant-2.webp',
     desc: 'Professional look with complete protection for facility managers, site engineers, inspection teams, and corporate industrial floors.',
     features: ['Smart Sleek Executive Profile', 'Concealed Protective Steel Toe', 'Lightweight Flexible PU Sole', 'All-Day Ergonomic Cushioning'],
   },
@@ -119,7 +139,7 @@ const productData = [
     category: 'Safety Shoes',
     type: 'Low Ankle',
     tag: 'Double-Density PU',
-    img: '/images/cat3.jpeg',
+    img: '/images/cat3.webp',
     desc: 'Tough outside, comfort inside. Features advanced double-density PU sole technology combining a soft comfort upper layer with a hard durable outsole.',
     features: ['Soft Upper PU Comfort Layer', 'Hard Lower PU Durable Tread', 'Certified Steel Toe Cap', 'Deep Anti-Slip Cleat Pattern'],
   },
@@ -129,7 +149,7 @@ const productData = [
     category: 'Safety Shoes',
     type: 'Low Ankle',
     tag: 'Anti-Puncture Tech',
-    img: '/images/cat5.jpeg',
+    img: '/images/cat5.webp',
     desc: 'Built stronger for safer steps. Designed for hazardous work environments requiring high puncture resistance against sharp nails, metal, and glass.',
     features: ['Anti-Puncture Steel/Composite Mid-Sole', 'Protects Against Nails & Metal Shards', 'Certified Steel Toe Protection', 'Heavy-Duty Slip-Resistant Outsole'],
   },
@@ -139,7 +159,7 @@ const productData = [
     category: 'Lightweight Range',
     type: 'Sport Sneaker',
     tag: 'Sporty & Agile',
-    img: '/images/cat6.jpeg',
+    img: '/images/cat6.webp',
     desc: 'Modern sporty design with maximum protection (up to 200 Joules). Engineered for active logistics, high-movement assembly, warehousing, and tech facilities.',
     features: ['Sport-Inspired Breathable Upper', 'Steel Toe Cap (up to 200J)', 'Shock-Absorbing Cushioned Midsole', 'Available in 3 Dynamic Colorways'],
   },
@@ -149,7 +169,7 @@ const productData = [
     category: 'Insoles & Accessories',
     type: 'Cushion Insole',
     tag: 'Ergonomic Support',
-    img: '/images/cat.jpeg',
+    img: '/images/cat.webp',
     desc: 'Engineered for all-day comfort in tough working environments. Superior cushioning, arch support, and shock-absorbing heel zone reduce foot fatigue.',
     features: ['Superior Cushioning Foam', 'Ergonomic Arch Support Layer', 'Breathable Air Ventilation Holes', 'Shock-Absorbing Heel Cavity'],
   },
@@ -159,7 +179,7 @@ const productData = [
     category: 'Insoles & Accessories',
     type: 'Memory Insole',
     tag: 'Memory Foam Tech',
-    img: '/images/cat2.jpeg',
+    img: '/images/cat2.webp',
     desc: 'Superior comfort for longer work hours with advanced multi-layer memory foam that moulds to the foot and delivers maximum joint impact relief.',
     features: ['Multi-Layer PU Memory Foam', 'Custom Foot-Contour Moulding', 'Maximum Impact & Joint Relief', 'Anti-Microbial Breathable Fabric Top'],
   },
@@ -169,7 +189,7 @@ const productData = [
     category: 'School Shoes',
     type: 'Kids Uniform',
     tag: 'Active Kids',
-    img: '/images/cat7.jpeg',
+    img: '/images/cat7.webp',
     desc: 'Everyday comfort for active school kids with durable sole, secure hook & loop closure, and easy-to-clean premium synthetic leather.',
     features: ['Lightweight & Durable Plastic Sole', 'Quick Hook & Loop Velcro Closure', 'Easy-To-Clean Synthetic Leather', 'Soft Inner Cushion Lining'],
   },
@@ -179,7 +199,7 @@ const productData = [
     category: 'School Shoes',
     type: 'Full Collection',
     tag: '12 Models Series',
-    img: '/images/cat8.jpeg',
+    img: '/images/cat8.webp',
     desc: 'Complete school uniform footwear collection featuring 12 models (FX-S01 to FX-S12) including lace-up, Velcro, Mary Jane, and formal options for boys and girls.',
     features: ['12 Specialized Uniform Models', 'Lace-Up, Velcro & Mary Jane Options', 'Durable Sole Built for Playgrounds', 'Vasai & Institutional Bulk Orders'],
   },
@@ -190,19 +210,19 @@ const leadership = [
     name: 'Hirasingh Parmar',
     role: 'Director',
     desc: 'Provides business leadership, strategic direction and overall company development for GUARDEX Footwear Private Limited.',
-    img: '/images/leadership-hirasingh.jpeg',
+    img: '/images/leadership-hirasingh.webp',
   },
   {
     name: 'Pratiksha Joshi',
     role: 'Director',
     desc: 'Contributes to company management, organizational coordination, and long-term business growth.',
-    img: '/images/leadership-pratiksha.jpeg',
+    img: '/images/leadership-pratiksha.webp',
   },
   {
     name: 'Nimesh Joshi',
     role: 'Sales Head, Quality & Production Planning',
     desc: 'Oversees sales operations, quality standards coordination, and production planning to support client satisfaction.',
-    img: '/images/leadership-nimesh.jpeg',
+    img: '/images/leadership-nimesh.webp',
   },
 ];
 
@@ -359,9 +379,9 @@ function Header() {
                   href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-xl text-sm"
+                  className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-3 px-4 rounded-xl text-sm"
                 >
-                  <MessageCircle size={18}/> WhatsApp Direct
+                  <WhatsAppIcon size={18}/> WhatsApp Direct
                 </a>
               </div>
             </div>
@@ -435,9 +455,9 @@ function ProductModal({ product, onClose }) {
                 href={waLink(`Hello GUARDEX, I want to enquire about ${product.name} (${product.id}).`)}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 px-4 rounded-xl text-sm transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-3 px-4 rounded-xl text-sm transition-colors"
               >
-                <MessageCircle size={16}/> WhatsApp
+                <WhatsAppIcon size={18}/> WhatsApp
               </a>
             </div>
           </div>
@@ -663,9 +683,9 @@ function PartnerWithForgex() {
               href={waLink('Hello GUARDEX, we are interested in discussing partnership opportunities for FORGEX industrial safety footwear.')}
               target="_blank"
               rel="noreferrer"
-              className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-xl text-sm shadow-md transition-all flex items-center gap-2"
+              className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold px-6 py-3 rounded-xl text-sm shadow-md transition-all flex items-center gap-2"
             >
-              <MessageCircle size={17}/> WhatsApp Us Direct
+              <WhatsAppIcon size={18}/> WhatsApp Us Direct
             </a>
           </div>
         </div>
@@ -736,7 +756,7 @@ function Footer() {
                 <span>LinkedIn <span className="text-slate-400 text-xs block">GUARDEX Footwear Pvt Ltd</span></span>
               </a>
               <a href={waLink('Hello GUARDEX, I would like to enquire about FORGEX industrial safety footwear.')} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-emerald-400 hover:text-emerald-300 font-bold mt-1">
-                <span className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 shrink-0"><MessageCircle size={14}/></span>
+                <span className="p-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[#25D366] shrink-0"><WhatsAppIcon size={14}/></span>
                 <span>WhatsApp Enquiry <span className="text-emerald-500/80 text-xs block font-mono">+91 91850 38002</span></span>
               </a>
             </div>
@@ -813,14 +833,14 @@ function Footer() {
 function FloatingWhatsApp() {
   return (
     <a
-      href={waLink('Hello, I am interested in FORGEX safety footwear by GUARDEX Footwear Private Limited.')}
+      href={waLink('Hello GUARDEX, I am interested in FORGEX safety footwear.')}
       target="_blank"
       rel="noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white p-3 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 transition-transform hover:scale-105 active:scale-95 group border-2 border-white/20"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-[#25D366] hover:bg-[#20bd5a] text-white p-3 sm:px-5 sm:py-3.5 rounded-full shadow-2xl flex items-center gap-2.5 transition-all hover:scale-105 active:scale-95 group border-2 border-white/30"
     >
-      <MessageCircle size={22} className="shrink-0" />
-      <span className="hidden sm:inline text-sm font-bold tracking-wide">Chat with us</span>
+      <WhatsAppIcon size={24} className="shrink-0 text-white fill-white" />
+      <span className="hidden sm:inline text-sm font-bold tracking-wide">WhatsApp Us</span>
     </a>
   );
 }
@@ -856,7 +876,7 @@ function Home() {
         {/* Background Image with Dark Vignette */}
         <div
           className="absolute inset-0 bg-cover bg-[center_right] z-0"
-          style={{ backgroundImage: `url('/images/hero-clean.jpg')` }}
+          style={{ backgroundImage: `url('/images/hero-clean.webp')` }}
         />
         {/* Dark Gradient Overlay for razor-sharp typography */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 to-slate-950/20 z-10" />
@@ -1500,11 +1520,34 @@ function Quality() {
 }
 
 function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
+  const [submittedUrl, setSubmittedUrl] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
+    const msgText = [
+      `*New Website Message - GUARDEX Footwear*`,
+      ``,
+      `*Name:* ${formData.name.trim()}`,
+      formData.company.trim() ? `*Company / Firm:* ${formData.company.trim()}` : null,
+      `*Email:* ${formData.email.trim()}`,
+      `*Phone / WhatsApp:* ${formData.phone.trim()}`,
+      formData.subject.trim() ? `*Subject:* ${formData.subject.trim()}` : null,
+      ``,
+      `*Message:*`,
+      formData.message.trim(),
+    ].filter(Boolean).join('\n');
+
+    const waUrl = `https://wa.me/919185038002?text=${encodeURIComponent(msgText)}`;
+    window.open(waUrl, '_blank');
+    setSubmittedUrl(waUrl);
   }
 
   return (
@@ -1587,14 +1630,40 @@ function Contact() {
             <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-xs">
               <h3 className="text-2xl font-bold text-slate-900 font-display">Send us a Message</h3>
               <p className="text-slate-600 text-xs sm:text-sm mt-1 mb-6">
-                Fill out the form below and our sales coordination team will get back to you within 24 hours.
+                Fill out the form below to connect instantly with our WhatsApp desk (+91 91850 38002).
               </p>
 
-              {submitted ? (
-                <div className="p-6 bg-emerald-50 border border-emerald-200 rounded-xl text-center">
-                  <CheckCircle2 size={36} className="text-emerald-600 mx-auto mb-2"/>
-                  <h4 className="font-bold text-emerald-900 text-lg">Thank You!</h4>
-                  <p className="text-xs sm:text-sm text-emerald-700 mt-1">Your message has been received. Our team will contact you shortly.</p>
+              {submittedUrl ? (
+                <div className="p-6 sm:p-8 bg-emerald-50 border border-emerald-200 rounded-2xl text-center space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-[#25D366] flex items-center justify-center mx-auto shadow-xs">
+                    <CheckCircle2 size={36} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 text-xl font-display">Thank You, {formData.name}!</h4>
+                    <p className="text-xs sm:text-sm text-slate-600 mt-2 max-w-md mx-auto leading-relaxed">
+                      Your message has been pre-filled and directed to our WhatsApp coordination desk (+91 91850 38002).
+                    </p>
+                  </div>
+                  <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <a
+                      href={submittedUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3 rounded-xl text-sm shadow-md transition-all active:scale-98"
+                    >
+                      <WhatsAppIcon size={20} className="fill-white" /> Open WhatsApp Chat
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSubmittedUrl(null);
+                        setFormData({ name: '', company: '', email: '', phone: '', subject: '', message: '' });
+                      }}
+                      className="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-sm font-semibold transition-colors"
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 text-sm">
@@ -1603,6 +1672,8 @@ function Contact() {
                     <input
                       type="text"
                       required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Ramesh Kumar"
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                     />
@@ -1611,6 +1682,8 @@ function Contact() {
                     <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Company / Organization</label>
                     <input
                       type="text"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder="e.g. Apex Industrial Solutions"
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                     />
@@ -1621,6 +1694,8 @@ function Contact() {
                       <input
                         type="email"
                         required
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="you@company.com"
                         className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                       />
@@ -1630,6 +1705,8 @@ function Contact() {
                       <input
                         type="tel"
                         required
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+91 98765 43210"
                         className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                       />
@@ -1639,6 +1716,8 @@ function Contact() {
                     <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Subject</label>
                     <input
                       type="text"
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="e.g. Dealership Query / Safety Shoes Quote"
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                     />
@@ -1648,15 +1727,17 @@ function Contact() {
                     <textarea
                       rows={4}
                       required
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Tell us about your requirements, estimated quantity or enquiry..."
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-6 rounded-xl transition-colors shadow-md flex items-center justify-center gap-2"
+                    className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3.5 px-6 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 active:scale-98"
                   >
-                    Submit Message <Send size={16}/>
+                    <WhatsAppIcon size={20} className="fill-white"/> Submit & Send on WhatsApp (9185038002)
                   </button>
                 </form>
               )}
@@ -1675,12 +1756,42 @@ function CorporateEnquiry() {
   const searchParams = new URLSearchParams(location.search);
   const initialModel = searchParams.get('model') || '';
 
-  const [model, setModel] = useState(initialModel);
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    quantity: '',
+    model: initialModel,
+    destination: '',
+    notes: '',
+  });
+  const [submittedUrl, setSubmittedUrl] = useState(null);
+
+  useEffect(() => {
+    if (initialModel) {
+      setFormData((prev) => ({ ...prev, model: initialModel }));
+    }
+  }, [initialModel]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
+    const lines = [
+      `*Bulk Procurement Quotation Request - GUARDEX Footwear*`,
+      ``,
+      `*Full Name:* ${formData.name.trim()}`,
+      `*Company / Firm:* ${formData.company.trim()}`,
+      `*Email:* ${formData.email.trim()}`,
+      `*Phone / WhatsApp:* ${formData.phone.trim()}`,
+      `*Estimated Quantity:* ${formData.quantity} Pairs`,
+      `*Preferred Model:* ${formData.model.trim() || 'Standard Recommendation'}`,
+      `*Delivery Destination:* ${formData.destination.trim()}`,
+      formData.notes.trim() ? `\n*Requirements / Hazard Notes:*\n${formData.notes.trim()}` : null,
+    ].filter(Boolean).join('\n');
+
+    const waUrl = `https://wa.me/919185038002?text=${encodeURIComponent(lines)}`;
+    window.open(waUrl, '_blank');
+    setSubmittedUrl(waUrl);
   }
 
   return (
@@ -1693,19 +1804,50 @@ function CorporateEnquiry() {
       <section className="py-10 sm:py-20 bg-slate-50">
         <div className="max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-5 sm:p-10 lg:p-12 shadow-sm">
-            {submitted ? (
-              <div className="py-12 text-center">
-                <CheckCircle2 size={48} className="text-emerald-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-slate-900 font-display">Enquiry Submitted Successfully</h3>
-                <p className="mt-2 text-slate-600 text-sm sm:text-base max-w-md mx-auto">
-                  Our commercial sales coordination team has received your details. We will prepare your customized quotation and call or WhatsApp you within 24 hours.
+            {submittedUrl ? (
+              <div className="py-10 text-center space-y-4">
+                <div className="w-16 h-16 rounded-full bg-emerald-100 text-[#25D366] flex items-center justify-center mx-auto shadow-xs">
+                  <CheckCircle2 size={42} />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 font-display">Quotation Request Prepared!</h3>
+                <p className="mt-2 text-slate-600 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+                  Your bulk quotation request has been directed to our WhatsApp coordination desk (+91 91850 38002). We will respond with institutional pricing and specs within 24 hours.
                 </p>
-                <Link
-                  to="/"
-                  className="mt-6 inline-block bg-slate-900 text-white font-bold px-6 py-3 rounded-xl text-sm"
-                >
-                  Return to Home
-                </Link>
+                <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+                  <a
+                    href={submittedUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3 rounded-xl text-sm shadow-md transition-all active:scale-98"
+                  >
+                    <WhatsAppIcon size={20} className="fill-white"/> Open WhatsApp Chat Again
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSubmittedUrl(null);
+                      setFormData({
+                        name: '',
+                        company: '',
+                        email: '',
+                        phone: '',
+                        quantity: '',
+                        model: '',
+                        destination: '',
+                        notes: '',
+                      });
+                    }}
+                    className="px-5 py-3 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-sm font-semibold transition-colors"
+                  >
+                    Submit Another Request
+                  </button>
+                  <Link
+                    to="/"
+                    className="inline-block bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-colors"
+                  >
+                    Return to Home
+                  </Link>
+                </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -1720,6 +1862,8 @@ function CorporateEnquiry() {
                     <input
                       type="text"
                       required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Rajesh Sharma"
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
                     />
@@ -1729,6 +1873,8 @@ function CorporateEnquiry() {
                     <input
                       type="text"
                       required
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder="e.g. Larson Steel Fabrication"
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
                     />
@@ -1738,6 +1884,8 @@ function CorporateEnquiry() {
                     <input
                       type="email"
                       required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="procurement@company.com"
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
                     />
@@ -1747,6 +1895,8 @@ function CorporateEnquiry() {
                     <input
                       type="tel"
                       required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 98200 12345"
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
                     />
@@ -1755,6 +1905,8 @@ function CorporateEnquiry() {
                     <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Estimated Quantity (Pairs) *</label>
                     <select
                       required
+                      value={formData.quantity}
+                      onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none bg-white"
                     >
                       <option value="">Select Quantity Range</option>
@@ -1768,8 +1920,8 @@ function CorporateEnquiry() {
                     <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Preferred Model / Category</label>
                     <input
                       type="text"
-                      value={model}
-                      onChange={(e) => setModel(e.target.value)}
+                      value={formData.model}
+                      onChange={(e) => setFormData({ ...formData, model: e.target.value })}
                       placeholder="e.g. FORGEX Classic Steel Toe (FX-101)"
                       className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none"
                     />
@@ -1781,6 +1933,8 @@ function CorporateEnquiry() {
                   <input
                     type="text"
                     required
+                    value={formData.destination}
+                    onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
                     placeholder="e.g. Mumbai, Pune, Ahmedabad, Chennai, etc."
                     className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm"
                   />
@@ -1790,6 +1944,8 @@ function CorporateEnquiry() {
                   <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Application Notes / Custom Requirements</label>
                   <textarea
                     rows={4}
+                    value={formData.notes}
+                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                     placeholder="Describe specific site hazards (oil/acid, puncture risk, high heat), size ratio requirements, or testing certificate needs..."
                     className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 outline-none text-sm"
                   />
@@ -1797,13 +1953,13 @@ function CorporateEnquiry() {
 
                 <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="text-xs text-slate-500 text-center sm:text-left">
-                    Direct enquiry routed to <strong>{CONFIG.salesEmail}</strong>
+                    Enquiry directly prefilled to WhatsApp: <strong className="text-slate-800">+91 91850 38002</strong>
                   </div>
                   <button
                     type="submit"
-                    className="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-8 py-3.5 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 active:scale-98"
                   >
-                    Submit Quotation Request <ArrowRight size={18} />
+                    <WhatsAppIcon size={20} className="fill-white"/> Submit Quotation via WhatsApp (9185038002)
                   </button>
                 </div>
               </form>

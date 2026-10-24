@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="22" fill="#0f172a" />
+  <rect x="5" y="5" width="90" height="90" rx="18" fill="none" stroke="#f59e0b" stroke-width="4" stroke-opacity="0.8" />
+  <text x="50" y="66" font-family="'Manrope', -apple-system, sans-serif" font-weight="900" font-size="52" text-anchor="middle" fill="#ffffff">F</text>
+  <circle cx="78" cy="28" r="8" fill="#f59e0b" />
+</svg>

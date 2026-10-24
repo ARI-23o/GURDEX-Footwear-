@@ -241,7 +241,7 @@ function Brand({ light = false }) {
       <div className={`h-10 sm:h-12 w-auto px-1.5 sm:px-2 py-1 rounded-lg border flex items-center justify-center shrink-0 transition-transform group-hover:scale-102 ${
         light ? 'bg-white border-slate-700 shadow-xs' : 'bg-white border-slate-200 shadow-xs'
       }`}>
-        <img src="/forgex-logo.jpg" alt="FORGEX™ Logo" className="h-7 sm:h-9 w-auto max-w-[110px] sm:max-w-[170px] object-contain block" />
+        <img src="/forgex-logo.jpg" alt="FORGEX™ Industrial Safety Footwear Logo - GUARDEX Footwear Private Limited" className="h-7 sm:h-9 w-auto max-w-[110px] sm:max-w-[170px] object-contain block" />
       </div>
       <div className="flex flex-col min-w-0">
         <div className={`font-extrabold text-lg sm:text-2xl tracking-wide leading-none font-display truncate ${light ? 'text-white' : 'text-slate-900'}`}>
@@ -419,7 +419,7 @@ function ProductModal({ product, onClose }) {
           <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex items-center justify-center">
             <img
               src={product.img}
-              alt={product.name}
+              alt={`${product.name} - ${product.category} (${product.id}) safety footwear`}
               className="w-full h-auto max-h-[420px] object-contain rounded-xl"
             />
           </div>
@@ -474,7 +474,7 @@ function ProductCard({ product, onSelect }) {
       <div className="relative aspect-[4/3] w-full bg-slate-50 flex items-center justify-center p-3 border-b border-slate-100 overflow-hidden">
         <img
           src={product.img}
-          alt={product.name}
+          alt={`${product.name} - ${product.category} (${product.id})`}
           loading="lazy"
           className="w-full h-full object-contain group-hover:scale-104 transition-transform duration-300"
         />
@@ -730,6 +730,11 @@ function Footer() {
                   Corporate Bulk Enquiry →
                 </Link>
               </li>
+              <li className="pt-2 border-t border-slate-900 flex items-center gap-3 text-xs text-slate-500">
+                <Link to="/privacy" className="hover:text-amber-400 transition-colors">Privacy Policy</Link>
+                <span>•</span>
+                <Link to="/terms" className="hover:text-amber-400 transition-colors">Terms of Use</Link>
+              </li>
             </ul>
           </div>
 
@@ -816,11 +821,21 @@ function Footer() {
         {/* Company Profile & Registration Details Card (MCA Falconebiz) */}
         <CompanyProfileCard />
 
-        {/* Bottom Bar: Copyright & Tagline */}
-        <div className="pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400 text-center sm:text-left">
-          <span>
-            {CONFIG.copyright} | CIN: <strong className="text-amber-400 font-mono">{CONFIG.cin}</strong>
-          </span>
+        {/* Bottom Bar: Copyright & Tagline & Legal Policies */}
+        <div className="pt-6 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center md:text-left">
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-3 gap-y-1">
+            <span>
+              {CONFIG.copyright} | CIN: <strong className="text-amber-400 font-mono">{CONFIG.cin}</strong>
+            </span>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <Link to="/privacy" className="text-slate-400 hover:text-amber-400 transition-colors underline-offset-2 hover:underline">
+              Privacy Policy
+            </Link>
+            <span className="hidden sm:inline text-slate-700">•</span>
+            <Link to="/terms" className="text-slate-400 hover:text-amber-400 transition-colors underline-offset-2 hover:underline">
+              Terms & Conditions
+            </Link>
+          </div>
           <span className="text-slate-400">
             Product Brand: <strong className="text-white">FORGEX™</strong> | Industrial Safety Footwear
           </span>
@@ -1094,7 +1109,7 @@ function Home() {
                 <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
                   <img
                     src={person.img}
-                    alt={person.name}
+                    alt={`${person.name} - ${person.role} at GUARDEX Footwear`}
                     className="w-full h-full object-cover object-top hover:scale-103 transition-transform duration-300"
                     loading="lazy"
                   />
@@ -1264,7 +1279,7 @@ function About() {
                 <div className="aspect-[4/5] w-full overflow-hidden bg-slate-100">
                   <img
                     src={person.img}
-                    alt={person.name}
+                    alt={`${person.name} - ${person.role} at GUARDEX Footwear`}
                     className="w-full h-full object-cover object-top"
                     loading="lazy"
                   />
@@ -1528,10 +1543,15 @@ function Contact() {
     subject: '',
     message: '',
   });
+  const [honeypot, setHoneypot] = useState('');
   const [submittedUrl, setSubmittedUrl] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (honeypot) {
+      // Bot detected - reject silently
+      return;
+    }
     const msgText = [
       `*New Website Message - GUARDEX Footwear*`,
       ``,
@@ -1667,11 +1687,24 @@ function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 text-sm">
+                  {/* Anti-spam honeypot */}
+                  <input
+                    type="text"
+                    name="_hp_security_check"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden="true"
+                    style={{ display: 'none' }}
+                  />
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1 uppercase tracking-wider">Your Name *</label>
                     <input
                       type="text"
                       required
+                      minLength={2}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Ramesh Kumar"
@@ -1705,6 +1738,9 @@ function Contact() {
                       <input
                         type="tel"
                         required
+                        minLength={10}
+                        pattern="[0-9+\s\-]{10,15}"
+                        title="Please enter a valid phone number with at least 10 digits"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+91 98765 43210"
@@ -1766,6 +1802,7 @@ function CorporateEnquiry() {
     destination: '',
     notes: '',
   });
+  const [honeypot, setHoneypot] = useState('');
   const [submittedUrl, setSubmittedUrl] = useState(null);
 
   useEffect(() => {
@@ -1776,6 +1813,10 @@ function CorporateEnquiry() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (honeypot) {
+      // Bot detected
+      return;
+    }
     const lines = [
       `*Bulk Procurement Quotation Request - GUARDEX Footwear*`,
       ``,
@@ -1851,6 +1892,18 @@ function CorporateEnquiry() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Anti-spam honeypot */}
+                <input
+                  type="text"
+                  name="_hp_security_check"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                  style={{ display: 'none' }}
+                />
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 font-display">Bulk Procurement Quotation Request</h3>
                   <p className="text-xs sm:text-sm text-slate-500 mt-1">Please provide your organization requirements below.</p>
@@ -1862,6 +1915,7 @@ function CorporateEnquiry() {
                     <input
                       type="text"
                       required
+                      minLength={2}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g. Rajesh Sharma"
@@ -1895,6 +1949,9 @@ function CorporateEnquiry() {
                     <input
                       type="tel"
                       required
+                      minLength={10}
+                      pattern="[0-9+\s\-]{10,15}"
+                      title="Please enter a valid phone number with at least 10 digits"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 98200 12345"
@@ -1971,29 +2028,266 @@ function CorporateEnquiry() {
   );
 }
 
+function PrivacyPolicy() {
+  return (
+    <main>
+      <PageIntro
+        title="Privacy Policy"
+        description="How GUARDEX Footwear Private Limited collects, protects, and handles commercial procurement and visitor information."
+      />
+
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+          <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600">
+            <strong>Entity:</strong> {CONFIG.legalName} • <strong>Brand:</strong> {CONFIG.brand}™ • <strong>CIN:</strong> {CONFIG.cin}
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">1. Scope of Privacy Policy</h2>
+            <p>
+              This Privacy Policy applies to the official website (<strong>www.guardexfootwear.com</strong>) operated by <strong>GUARDEX Footwear Private Limited</strong> ("Company", "we", "us", or "our"), manufacturing and marketing industrial safety footwear under the brand name <strong>FORGEX™</strong>. We respect the confidentiality of institutional clients, dealers, safety officers, and visitors.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">2. Information We Collect</h2>
+            <p>We only collect information voluntarily submitted through our enquiry forms, quotation requests, or direct WhatsApp coordination:</p>
+            <ul className="list-disc list-inside mt-2 space-y-1 text-slate-600">
+              <li><strong>Contact Information:</strong> Full name, corporate email address, telephone/WhatsApp number.</li>
+              <li><strong>Commercial Details:</strong> Company/organization name, delivery destination (city/state), estimated pairs required, and specific site hazard protection requirements.</li>
+              <li><strong>Technical Metadata:</strong> Anonymized browser information, device type, and visit statistics used solely to optimize site loading speed and prevent spam.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">3. How Your Information Is Used</h2>
+            <ul className="list-disc list-inside mt-2 space-y-1 text-slate-600">
+              <li>Preparing accurate bulk quotations, factory proforma estimates, and technical specification sheets.</li>
+              <li>Coordinating sample dispatches, bulk production batches, and distribution logistics.</li>
+              <li>Connecting directly via our verified WhatsApp desk (<strong>+91 91850 38002</strong>) to answer safety inquiries.</li>
+              <li>We <strong>never sell, rent, or trade</strong> your commercial or personal data to third parties.</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">4. WhatsApp Communication</h2>
+            <p>
+              When you submit a quotation or message, our website formats a direct WhatsApp chat with our factory management. WhatsApp communications are encrypted end-to-end and governed by WhatsApp's privacy framework.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">5. Data Protection Compliance</h2>
+            <p>
+              We comply with applicable provisions of the <em>Information Technology Act, 2000</em> and the <em>Digital Personal Data Protection Act, 2023</em> of India. We implement standard security safeguards to protect all submitted data.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">6. Grievance & Contact Information</h2>
+            <p>For data queries or compliance clarifications, please contact our administrative desk:</p>
+            <div className="mt-3 p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-xs text-slate-700">
+              <p><strong>Company:</strong> {CONFIG.legalName}</p>
+              <p><strong>Registered Office:</strong> {CONFIG.officeAddress}</p>
+              <p><strong>Factory:</strong> {CONFIG.factoryAddress}</p>
+              <p><strong>Email:</strong> <a href={`mailto:${CONFIG.infoEmail}`} className="text-amber-600 underline font-semibold">{CONFIG.infoEmail}</a></p>
+              <p><strong>Phone:</strong> {CONFIG.primaryPhone}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function TermsConditions() {
+  return (
+    <main>
+      <PageIntro
+        title="Terms & Conditions"
+        description="Commercial terms, intellectual property, quotation validity, and site usage guidelines for GUARDEX Footwear Private Limited."
+      />
+
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 text-sm sm:text-base text-slate-700 leading-relaxed">
+          <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600">
+            <strong>Corporate Registration:</strong> GUARDEX Footwear Private Limited • <strong>CIN:</strong> {CONFIG.cin} • <strong>Brand:</strong> {CONFIG.brand}™
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">1. Commercial Identity & Acceptance</h2>
+            <p>
+              By accessing this website (<strong>www.guardexfootwear.com</strong>) or requesting quotations, you acknowledge acceptance of these Terms and Conditions. This website is operated by <strong>GUARDEX Footwear Private Limited</strong>, an incorporated company under the Companies Act, 2013 (RoC-Mumbai II).
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">2. Intellectual Property & FORGEX™ Trademark</h2>
+            <p>
+              The brand name <strong>FORGEX™</strong>, associated sole profile designs, product flyer artworks, catalog descriptions, and digital graphics are proprietary assets of GUARDEX Footwear Private Limited. Unauthorized reproduction, modification, or commercial exploitation is prohibited without prior written consent.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">3. Quotations & Bulk Order Terms</h2>
+            <ul className="list-disc list-inside mt-2 space-y-1 text-slate-600">
+              <li>Website form submissions generate an initial quotation request and do not constitute a binding purchase contract until a formal proforma invoice or purchase order is confirmed in writing.</li>
+              <li>Institutional quotes reflect requested quantity tiers (e.g. 50–200, 200–500, 500–1,000+ pairs), sole density configuration, leather specification, and delivery logistics.</li>
+              <li>Commercial quotes remain valid for the period specified in official documentation (standard 30 days).</li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">4. Safety Footwear Standards & Fit for Purpose</h2>
+            <p>
+              FORGEX™ industrial safety shoes are engineered to meet applicable occupational safety standards (including steel toe impact resistance up to 200 Joules, anti-puncture midsole, and slip resistance). Safety managers and procurement teams are responsible for verifying the required safety rating for their site hazard profile.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 font-display mb-3">5. Governing Law & Jurisdiction</h2>
+            <p>
+              These Terms and Conditions shall be governed by and construed in accordance with the laws of the Republic of India. Any disputes arising hereunder shall be subject to the exclusive jurisdiction of the competent courts in Vasai / Palghar / Mumbai, Maharashtra, India.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function CookieConsent() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    try {
+      const consent = localStorage.getItem('forgex_cookie_consent');
+      if (!consent) {
+        const timer = setTimeout(() => setVisible(true), 1200);
+        return () => clearTimeout(timer);
+      }
+    } catch {
+      // Ignore storage access errors
+    }
+  }, []);
+
+  function handleConsent(choice) {
+    try {
+      localStorage.setItem('forgex_cookie_consent', choice);
+    } catch {
+      // Ignore storage access errors
+    }
+    setVisible(false);
+  }
+
+  if (!visible) return null;
+
+  return (
+    <aside
+      aria-label="Cookie and Privacy Notice"
+      className="fixed bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md z-50 bg-slate-950/95 text-white p-4 sm:p-5 rounded-2xl shadow-2xl border border-slate-800 backdrop-blur-md animate-in fade-in duration-300"
+    >
+      <div className="flex items-start gap-3">
+        <span className="text-2xl shrink-0" aria-hidden="true">🍪</span>
+        <div className="flex-1 text-xs text-slate-300 leading-relaxed">
+          <strong className="text-white block text-sm font-bold mb-1">Cookie & Privacy Notice</strong>
+          We use essential cookies and browser storage to optimize site navigation, remember quotation models, and facilitate direct WhatsApp procurement. See our{' '}
+          <Link to="/privacy" className="text-amber-400 underline hover:text-amber-300">
+            Privacy Policy
+          </Link>.
+        </div>
+      </div>
+      <div className="mt-3.5 pt-3 border-t border-slate-800/80 flex items-center justify-end gap-2 text-xs">
+        <button
+          type="button"
+          onClick={() => handleConsent('essential')}
+          className="px-3 py-1.5 rounded-lg border border-slate-700 hover:bg-slate-800 text-slate-300 transition-colors font-medium cursor-pointer"
+        >
+          Essential Only
+        </button>
+        <button
+          type="button"
+          onClick={() => handleConsent('all')}
+          className="px-4 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition-colors shadow-xs cursor-pointer"
+        >
+          Accept All
+        </button>
+      </div>
+    </aside>
+  );
+}
+
 function NotFound() {
   return (
-    <main className="min-h-[60vh] flex items-center justify-center py-20 px-4">
-      <div className="text-center max-w-md">
-        <h1 className="text-6xl font-extrabold text-amber-500 font-display">404</h1>
-        <h2 className="text-2xl font-bold text-slate-900 mt-2 font-display">Page Not Found</h2>
-        <p className="text-slate-600 text-sm mt-2">The page you requested could not be found.</p>
+    <main className="min-h-[70vh] flex items-center justify-center py-16 px-4 bg-slate-50">
+      <div className="text-center max-w-lg bg-white p-8 sm:p-12 rounded-3xl border border-slate-200 shadow-sm">
+        <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-amber-600 bg-amber-50 px-3 py-1 rounded-full mb-3">
+          Error 404
+        </span>
+        <h1 className="text-5xl sm:text-6xl font-black text-slate-900 font-display">404</h1>
+        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mt-2 font-display">Page Not Found</h2>
+        <p className="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed">
+          The page you requested may have been moved, renamed, or is temporarily unavailable. Explore our industrial safety footwear collection below.
+        </p>
+
+        <div className="mt-6 pt-6 border-t border-slate-100 grid grid-cols-2 gap-2 text-xs font-semibold">
+          <Link to="/products" className="p-2.5 rounded-xl bg-slate-50 hover:bg-amber-50 text-slate-700 hover:text-amber-700 border border-slate-200 transition-colors">
+            Safety Shoes Catalogue →
+          </Link>
+          <Link to="/corporate-enquiry" className="p-2.5 rounded-xl bg-slate-50 hover:bg-amber-50 text-slate-700 hover:text-amber-700 border border-slate-200 transition-colors">
+            Get Bulk Quote →
+          </Link>
+          <Link to="/manufacturing" className="p-2.5 rounded-xl bg-slate-50 hover:bg-amber-50 text-slate-700 hover:text-amber-700 border border-slate-200 transition-colors">
+            Factory Tour →
+          </Link>
+          <Link to="/contact" className="p-2.5 rounded-xl bg-slate-50 hover:bg-amber-50 text-slate-700 hover:text-amber-700 border border-slate-200 transition-colors">
+            Contact Vasai Desk →
+          </Link>
+        </div>
+
         <Link
           to="/"
-          className="mt-6 inline-block bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-colors"
+          className="mt-6 inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md"
         >
-          Back to Home
+          Return to Home <ArrowRight size={16}/>
         </Link>
       </div>
     </main>
   );
 }
 
+const routeTitles = {
+  '/': 'FORGEX™ | Industrial Safety Footwear Manufacturer in India | GUARDEX',
+  '/about': 'About Us | GUARDEX Footwear Private Limited',
+  '/products': 'Products Catalogue | FORGEX™ Safety Shoes & Boots',
+  '/manufacturing': 'Manufacturing Plant Vasai | GUARDEX Footwear',
+  '/quality': 'Quality & Compliance | FORGEX™ Safety Footwear',
+  '/contact': 'Contact Us | Sales & Factory Vasai Desk',
+  '/corporate-enquiry': 'Corporate Bulk Procurement | FORGEX™ Safety Footwear',
+  '/dealer-enquiry': 'Dealership & Distribution Enquiry | FORGEX™ Footwear',
+  '/privacy': 'Privacy Policy | GUARDEX Footwear Private Limited',
+  '/privacy-policy': 'Privacy Policy | GUARDEX Footwear Private Limited',
+  '/terms': 'Terms & Conditions | GUARDEX Footwear Private Limited',
+  '/terms-and-conditions': 'Terms & Conditions | GUARDEX Footwear Private Limited',
+};
+
 function ScrollToTop() {
   const { pathname } = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Dynamic SEO Document Title
+    document.title = routeTitles[pathname] || 'FORGEX™ | Industrial Safety Footwear';
+
+    // Google Analytics 4 pageview event trigger
+    if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_path: pathname,
+        page_title: document.title,
+      });
+    }
   }, [pathname]);
+
   return null;
 }
 
@@ -2011,10 +2305,15 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/corporate-enquiry" element={<CorporateEnquiry />} />
         <Route path="/dealer-enquiry" element={<CorporateEnquiry />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<TermsConditions />} />
+        <Route path="/terms-and-conditions" element={<TermsConditions />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <FloatingWhatsApp />
+      <CookieConsent />
     </BrowserRouter>
   );
 }
